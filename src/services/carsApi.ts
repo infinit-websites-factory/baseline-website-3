@@ -55,7 +55,7 @@ export interface Vehicle {
 
 const API_URL = 'https://multipost-api.app.infinit.cc/api/public/inventory/profiles/442804f3-ac62-4488-b940-1c11a0f641c2';
 export const CONTACT_FORM_API_URL = 'https://multipost-api.app.infinit.cc/api/interactions/contact-form';
-export const COMPANY_ID = 'company_bcce0ba100f74b4ab89eeb41dd71987c';
+export const PROFILE_ID = '442804f3-ac62-4488-b940-1c11a0f641c2';
 
 const TRANSMISSION_TRANSLATIONS: Record<string, string> = {
   'Manual': 'Manual',

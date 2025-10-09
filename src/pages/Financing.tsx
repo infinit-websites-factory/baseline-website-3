@@ -17,7 +17,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
-import { CONTACT_FORM_API_URL, COMPANY_ID, fetchCars, transformApiCarToVehicle, Vehicle } from "@/services/carsApi";
+import { CONTACT_FORM_API_URL, PROFILE_ID, fetchCars, transformApiCarToVehicle, Vehicle } from "@/services/carsApi";
 
 const Financing = () => {
   const { toast } = useToast();
@@ -289,7 +289,7 @@ Ingreso neto mensual: ${formData.ingresoNetoMensual}€
 Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No especificado'}€`;
 
       const payload = {
-        company_id: COMPANY_ID,
+        profile_id: PROFILE_ID,
         lead_firstname: formData.nombre,
         lead_lastname: formData.apellidos,
         lead_phone_number: formData.telefono,

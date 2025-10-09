@@ -16,7 +16,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
-import { CONTACT_FORM_API_URL, COMPANY_ID } from "@/services/carsApi";
+import { CONTACT_FORM_API_URL, PROFILE_ID } from "@/services/carsApi";
 
 const Sell = () => {
   const { toast } = useToast();
@@ -198,7 +198,7 @@ Kilometraje: ${formData.kilometraje} km`;
 ¿Interesado en comprar un coche a cambio?: ${interesIntercambioLabel}`;
 
       const payload = {
-        company_id: COMPANY_ID,
+        profile_id: PROFILE_ID,
         lead_firstname: formData.nombre,
         lead_lastname: formData.apellido,
         lead_phone_number: formData.telefono,

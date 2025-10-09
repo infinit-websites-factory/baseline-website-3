@@ -17,7 +17,7 @@ import Footer from "@/components/Footer";
 import FAQ from "@/components/FAQ";
 import contactBackground from "@/assets/contact.png";
 import { useToast } from "@/hooks/use-toast";
-import { CONTACT_FORM_API_URL, COMPANY_ID } from "@/services/carsApi";
+import { CONTACT_FORM_API_URL, PROFILE_ID } from "@/services/carsApi";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -49,7 +49,7 @@ const Contact = () => {
 
     try {
       const payload = {
-        company_id: COMPANY_ID,
+        profile_id: PROFILE_ID,
         lead_firstname: formData.nombre,
         lead_lastname: formData.apellido,
         lead_phone_number: formData.telefono,
