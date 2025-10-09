@@ -580,7 +580,7 @@ const VehicleDetail = () => {
                 <DialogContent className="sm:max-w-md bg-background">
                   <DialogHeader>
                     <DialogTitle className="text-lg font-semibold text-foreground">
-                      Reserva tu cita en Acierto Cars
+                      Reserva tu cita en INFINIT Cars
                     </DialogTitle>
                   </DialogHeader>
                   <form onSubmit={handleAppointmentSubmit} className="space-y-6 mt-4">
@@ -836,9 +836,9 @@ const VehicleDetail = () => {
             <div className="space-y-4">
               <h3 className="text-lg font-semibold">2.1 Responsable del Tratamiento de Datos</h3>
               <div className="bg-muted/50 p-4 rounded-lg">
-                <p><strong>Nombre de la empresa:</strong> Acierto Cars Luxury S.L.U.</p>
+                <p><strong>Nombre de la empresa:</strong> INFINIT Cars</p>
                 <p><strong>Dirección:</strong> Calle Río Tormes, nº 83, 28110, Algete</p>
-                <p><strong>Correo electrónico:</strong> contacto@aciertocars.com</p>
+                <p><strong>Correo electrónico:</strong> contact@infinit.com</p>
                 <p><strong>Teléfono:</strong> 690715080</p>
               </div>
               
@@ -861,7 +861,7 @@ const VehicleDetail = () => {
               </ul>
               
               <h3 className="text-lg font-semibold">2.4 Derechos del Usuario</h3>
-              <p>Tiene derecho a acceder, rectificar, suprimir o limitar el tratamiento de sus datos enviando un correo a: <strong>contacto@aciertocars.com</strong></p>
+              <p>Tiene derecho a acceder, rectificar, suprimir o limitar el tratamiento de sus datos enviando un correo a: <strong>contact@infinit.com</strong></p>
             </div>
           </div>
         </DialogContent>

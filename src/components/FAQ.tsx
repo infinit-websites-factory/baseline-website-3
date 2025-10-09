@@ -21,11 +21,11 @@ const FAQ = () => {
     },
     {
       question: "¿Qué control de calidad pasan nuestros vehículos?",
-      answer: "En Acierto Cars, cada vehículo es sometido a un exhaustivo control de calidad para garantizar su fiabilidad y seguridad. Este proceso incluye: Inspección Mecánica Completa, Revisión Estética y Funcional, Pruebas de Rendimiento en Carretera y Control de Calidad Final."
+      answer: "En INFINIT Cars, cada vehículo es sometido a un exhaustivo control de calidad para garantizar su fiabilidad y seguridad. Este proceso incluye: Inspección Mecánica Completa, Revisión Estética y Funcional, Pruebas de Rendimiento en Carretera y Control de Calidad Final."
     },
     {
       question: "¿Aceptáis vehículos como parte de pago?",
-      answer: "Sí, en Acierto Cars aceptamos vehículos como parte de pago. Para decidir si aceptamos un vehículo o no, realizamos una evaluación detallada del coche que se ofrece en parte de pago, considerando factores como el año, el kilometraje, el estado general y el historial de mantenimiento, asegurando así un acuerdo justo y transparente para ambas partes. Te invitamos a visitar nuestro concesionario con tu vehículo actual para una valoración sin compromiso y discutir las opciones disponibles para ti."
+      answer: "Sí, en INFINIT Cars aceptamos vehículos como parte de pago. Para decidir si aceptamos un vehículo o no, realizamos una evaluación detallada del coche que se ofrece en parte de pago, considerando factores como el año, el kilometraje, el estado general y el historial de mantenimiento, asegurando así un acuerdo justo y transparente para ambas partes. Te invitamos a visitar nuestro concesionario con tu vehículo actual para una valoración sin compromiso y discutir las opciones disponibles para ti."
     }
   ];
 

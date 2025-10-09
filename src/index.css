@@ -17,10 +17,10 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 9%;
 
-    /* Acierto Cars brand color #ff4001 */
-    --primary: 14 100% 50%;
+    /* INFINIT Cars brand color - Deep Navy Blue */
+    --primary: 220 55% 40%;
     --primary-foreground: 0 0% 98%;
-    --primary-hover: 14 100% 45%;
+    --primary-hover: 220 55% 35%;
 
     --secondary: 0 0% 96%;
     --secondary-foreground: 0 0% 9%;
@@ -28,7 +28,7 @@ All colors MUST be HSL.
     --muted: 0 0% 96%;
     --muted-foreground: 0 0% 45%;
 
-    --accent: 14 100% 50%;
+    --accent: 220 55% 40%;
     --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84% 60%;
@@ -36,7 +36,7 @@ All colors MUST be HSL.
 
     --border: 0 0% 91%;
     --input: 0 0% 91%;
-    --ring: 14 100% 50%;
+    --ring: 220 55% 40%;
 
     /* Navigation colors */
     --nav-background: 0 0% 9%;
@@ -44,7 +44,7 @@ All colors MUST be HSL.
     --nav-muted: 0 0% 70%;
 
     /* Premium gradients with new brand color */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(14 100% 55%));
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(220 60% 50%));
     --gradient-hero: linear-gradient(135deg, hsl(0 0% 9%), hsl(0 0% 15%));
     
     /* Shadows */
@@ -80,9 +80,9 @@ All colors MUST be HSL.
     --popover: 0 0% 9%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 14 100% 55%;
-    --primary-foreground: 0 0% 9%;
-    --primary-hover: 14 100% 60%;
+    --primary: 220 60% 55%;
+    --primary-foreground: 0 0% 98%;
+    --primary-hover: 220 60% 60%;
 
     --secondary: 0 0% 15%;
     --secondary-foreground: 0 0% 98%;
@@ -90,15 +90,15 @@ All colors MUST be HSL.
     --muted: 0 0% 15%;
     --muted-foreground: 0 0% 65%;
 
-    --accent: 14 100% 55%;
-    --accent-foreground: 0 0% 9%;
+    --accent: 220 60% 55%;
+    --accent-foreground: 0 0% 98%;
 
     --destructive: 0 75% 55%;
     --destructive-foreground: 0 0% 98%;
 
     --border: 0 0% 15%;
     --input: 0 0% 15%;
-    --ring: 14 100% 55%;
+    --ring: 220 60% 55%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;

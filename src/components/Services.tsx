@@ -27,7 +27,7 @@ const Services = () => {
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Nuestros servicios en Acierto Cars
+            Nuestros servicios en INFINIT Cars
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             Comercialización e importación de vehículos premium a la carta, de ocasión, seminuevos y Km0.

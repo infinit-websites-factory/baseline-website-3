@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Phone } from "lucide-react";
-import aciertoCarsLogo from "@/assets/acierto-cars-logo.png";
+import infinitCarsLogo from "@/assets/infinit-cars-logo.png";
 
 const Header = () => {
   return (
@@ -9,13 +9,13 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <a href="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
-            <img 
-              src={aciertoCarsLogo} 
-              alt="Acierto Cars Logo" 
+            <img
+              src={infinitCarsLogo}
+              alt="INFINIT Cars Logo"
               className="w-12 h-12 object-contain"
             />
             <div>
-              <h1 className="text-xl font-bold">Acierto Cars</h1>
+              <h1 className="text-xl font-bold">INFINIT Cars</h1>
             </div>
           </a>
 

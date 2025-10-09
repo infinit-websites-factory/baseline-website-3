@@ -6,7 +6,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import aciertoCarsLogo from "@/assets/acierto-cars-logo.png";
+import infinitCarsLogo from "@/assets/infinit-cars-logo.png";
 
 const Footer = () => {
   const [openModal, setOpenModal] = useState<string | null>(null);
@@ -18,9 +18,9 @@ const Footer = () => {
         <div className="space-y-4">
           <h3 className="text-lg font-semibold">2.1 Responsable del Tratamiento de Datos</h3>
           <div className="bg-muted/50 p-4 rounded-lg">
-            <p><strong>Nombre de la empresa:</strong> Acierto Cars Luxury S.L.U.</p>
+            <p><strong>Nombre de la empresa:</strong> INFINIT Cars</p>
             <p><strong>Dirección:</strong> Calle Río Tormes, nº 83, 28110, Algete</p>
-            <p><strong>Correo electrónico:</strong> contacto@aciertocars.com</p>
+            <p><strong>Correo electrónico:</strong> contact@infinit.com</p>
             <p><strong>Teléfono:</strong> 690715080</p>
           </div>
           
@@ -43,7 +43,7 @@ const Footer = () => {
           </ul>
           
           <h3 className="text-lg font-semibold">2.4 Derechos del Usuario</h3>
-          <p>Tiene derecho a acceder, rectificar, suprimir o limitar el tratamiento de sus datos enviando un correo a: <strong>contacto@aciertocars.com</strong></p>
+          <p>Tiene derecho a acceder, rectificar, suprimir o limitar el tratamiento de sus datos enviando un correo a: <strong>contact@infinit.com</strong></p>
         </div>
       )
     },
@@ -52,13 +52,13 @@ const Footer = () => {
       content: (
         <div className="space-y-4">
           <h3 className="text-lg font-semibold">1.1 Identificación del Titular</h3>
-          <p>En cumplimiento de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSICE), se informa que el presente sitio web www.aciertocars.com es propiedad de:</p>
+          <p>En cumplimiento de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSICE), se informa que el presente sitio web infinit.com es propiedad de:</p>
           <div className="bg-muted/50 p-4 rounded-lg">
-            <p><strong>Titular:</strong> Acierto Cars Luxury S.L.U.</p>
+            <p><strong>Titular:</strong> INFINIT Cars</p>
             <p><strong>CIF/NIF:</strong> B44976579</p>
             <p><strong>Domicilio social:</strong> Calle Río Tormes, nº 83, 28110, Algete</p>
             <p><strong>Teléfono:</strong> 690715080</p>
-            <p><strong>Correo electrónico:</strong> contacto@aciertocars.com</p>
+            <p><strong>Correo electrónico:</strong> contact@infinit.com</p>
           </div>
           
           <h3 className="text-lg font-semibold">1.2 Condiciones de Uso</h3>
@@ -70,7 +70,7 @@ const Footer = () => {
           </ul>
           
           <h3 className="text-lg font-semibold">1.3 Propiedad Intelectual e Industrial</h3>
-          <p>Todos los contenidos del sitio web (textos, imágenes, logotipos, diseños, etc.) son propiedad de Acierto Cars Luxury S.L.U. o de terceros autorizados. Queda prohibida su reproducción, distribución o modificación sin autorización expresa.</p>
+          <p>Todos los contenidos del sitio web (textos, imágenes, logotipos, diseños, etc.) son propiedad de INFINIT Cars o de terceros autorizados. Queda prohibida su reproducción, distribución o modificación sin autorización expresa.</p>
           
           <h3 className="text-lg font-semibold">1.4 Responsabilidad</h3>
           <p>No nos hacemos responsables del uso indebido del sitio web ni de los enlaces de terceros que puedan aparecer en él.</p>
@@ -142,12 +142,12 @@ const Footer = () => {
           {/* Company Info */}
           <div>
             <div className="flex items-center space-x-3 mb-4">
-              <img 
-                src={aciertoCarsLogo} 
-                alt="Acierto Cars Logo" 
+              <img
+                src={infinitCarsLogo}
+                alt="INFINIT Cars Logo"
                 className="w-10 h-10 object-contain"
               />
-              <span className="text-xl font-bold">Acierto Cars</span>
+              <span className="text-xl font-bold">INFINIT Cars</span>
             </div>
             <p className="text-nav-muted mb-4">
               Tu concesionario de confianza para vehículos premium de ocasión en Madrid.
@@ -164,7 +164,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <Mail size={16} className="text-primary" />
-                <span className="text-nav-muted">contacto@aciertocars.com</span>
+                <span className="text-nav-muted">contact@infinit.com</span>
               </div>
               <div className="flex items-center space-x-2">
                 <MapPin size={16} className="text-primary" />
@@ -208,7 +208,7 @@ const Footer = () => {
         <div className="border-t border-border/10 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-nav-muted">
-              © 2025 Acierto Cars. Powered by <a href="https://www.infinit.com/" target="_blank" rel="noopener noreferrer" className="underline">INFINIT</a>
+              © 2025 INFINIT Cars. Powered by <a href="https://infinit.com/" target="_blank" rel="noopener noreferrer" className="underline">INFINIT</a>
             </p>
             
             {/* Legal Links */}
