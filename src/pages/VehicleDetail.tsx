@@ -29,8 +29,17 @@ const VehicleDetail = () => {
   }>();
   const navigate = useNavigate();
   const { toast: toastHook } = useToast();
-  const { getPhoneNumber, getAddress } = useLanguage();
+  const { language, getPhoneNumber, getAddress, t, translateVehicleAttribute } = useLanguage();
   const address = getAddress();
+
+  const getFlag = () => {
+    switch (language) {
+      case "es": return "🇪🇸";
+      case "en": return "🇬🇧";
+      case "fr": return "🇫🇷";
+      default: return "🇪🇸";
+    }
+  };
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isAppointmentModalOpen, setIsAppointmentModalOpen] = useState(false);
   const [isReservationModalOpen, setIsReservationModalOpen] = useState(false);
@@ -109,9 +118,9 @@ const VehicleDetail = () => {
     setCurrentImageIndex(prev => (prev - 1 + vehicle.images.length) % vehicle.images.length);
   };
   const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('es-ES', {
+    return new Intl.NumberFormat('en-GB', {
       style: 'currency',
-      currency: 'EUR',
+      currency: 'GBP',
       minimumFractionDigits: 0
     }).format(price);
   };
@@ -323,9 +332,9 @@ const VehicleDetail = () => {
             </h1>
             <div className="flex flex-wrap gap-2 mt-2">
               <Badge variant="secondary">{vehicle.year}</Badge>
-              <Badge variant="secondary">{vehicle.transmission}</Badge>
-              <Badge variant="secondary">{vehicle.fuel}</Badge>
-              <Badge variant="secondary">{vehicle.mileage.toLocaleString()} km</Badge>
+              <Badge variant="secondary">{translateVehicleAttribute('transmission', vehicle.transmission)}</Badge>
+              <Badge variant="secondary">{translateVehicleAttribute('fuel', vehicle.fuel)}</Badge>
+              <Badge variant="secondary">{vehicle.mileage.toLocaleString()}</Badge>
             </div>
           </div>
           <Button variant="outline" size="sm" onClick={handleShare} className="flex items-center gap-2">
@@ -372,7 +381,7 @@ const VehicleDetail = () => {
                   <p><strong>{vehicle.brand} {vehicle.model}</strong></p>
                   <p>Financiación a tu medida.</p>
                   <p>En precio de venta están incluidos 12 meses de garantía. (Ampliable a 3 años)</p>
-                  <p>Gastos de transferencia y gestor 260€.</p>
+                  <p>Gastos de transferencia y gestor £260.</p>
                   <p>Aceptamos vehículo como parte de pago.</p>
                   <p>Entrega en toda España, consulte condiciones.</p>
                 </div>
@@ -392,23 +401,23 @@ const VehicleDetail = () => {
                   </div>
                   <div>
                     <div className="text-muted-foreground mb-1">KILÓMETROS</div>
-                    <div className="font-semibold">{vehicle.mileage.toLocaleString()} km</div>
+                    <div className="font-semibold">{vehicle.mileage.toLocaleString()}</div>
                   </div>
                   <div>
                     <div className="text-muted-foreground mb-1">COMBUSTIBLE</div>
-                    <div className="font-semibold">{vehicle.fuel.toUpperCase()}</div>
+                    <div className="font-semibold">{translateVehicleAttribute('fuel', vehicle.fuel).toUpperCase()}</div>
                   </div>
                   <div>
                     <div className="text-muted-foreground mb-1">CAMBIO</div>
-                    <div className="font-semibold">{vehicle.transmission.toUpperCase()}</div>
+                    <div className="font-semibold">{translateVehicleAttribute('transmission', vehicle.transmission).toUpperCase()}</div>
                   </div>
                   <div>
                     <div className="text-muted-foreground mb-1">CARROCERÍA</div>
-                    <div className="font-semibold">{vehicle.type.toUpperCase()}</div>
+                    <div className="font-semibold">{translateVehicleAttribute('body_type', vehicle.type).toUpperCase()}</div>
                   </div>
                   {vehicle.color && <div>
                       <div className="text-muted-foreground mb-1">COLOR</div>
-                      <div className="font-semibold">{vehicle.color.toUpperCase()}</div>
+                      <div className="font-semibold">{translateVehicleAttribute('color', vehicle.color).toUpperCase()}</div>
                     </div>}
                   {vehicle.doors && <div>
                       <div className="text-muted-foreground mb-1">PUERTAS</div>
@@ -513,7 +522,7 @@ const VehicleDetail = () => {
                           <Label htmlFor="reservationPhone" className="text-gray-600">Teléfono</Label>
                           <div className="flex">
                             <div className="flex items-center px-3 bg-gray-50 border border-r-0 border-gray-200 rounded-l-md">
-                              <span className="text-sm text-red-600 font-semibold">🇪🇸</span>
+                              <span className="text-sm text-red-600 font-semibold">{getFlag()}</span>
                             </div>
                             <Input
                               id="reservationPhone"
@@ -629,7 +638,7 @@ const VehicleDetail = () => {
                         <Label htmlFor="appointmentPhone" className="text-gray-600">Teléfono</Label>
                         <div className="flex">
                           <div className="flex items-center px-3 bg-gray-50 border border-r-0 border-gray-200 rounded-l-md">
-                            <span className="text-sm text-red-600 font-semibold">🇪🇸</span>
+                            <span className="text-sm text-red-600 font-semibold">{getFlag()}</span>
                           </div>
                           <Input
                             id="appointmentPhone"
@@ -789,7 +798,7 @@ const VehicleDetail = () => {
                       <Label htmlFor="phone">Teléfono</Label>
                       <div className="flex">
                         <div className="flex items-center px-3 border border-r-0 border-input rounded-l-md bg-muted text-sm whitespace-nowrap">
-                          🇪🇸 +34
+                          {getFlag()} {language === "es" ? "+34" : language === "en" ? "+44" : "+33"}
                         </div>
                         <Input
                           id="phone"
@@ -833,38 +842,36 @@ const VehicleDetail = () => {
       <Dialog open={openPrivacyModal} onOpenChange={setOpenPrivacyModal}>
         <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle className="text-xl font-bold">Política de Privacidad</DialogTitle>
+            <DialogTitle className="text-xl font-bold">{t('legal.privacy_policy.title')}</DialogTitle>
           </DialogHeader>
           <div className="mt-4 text-sm text-muted-foreground">
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold">2.1 Responsable del Tratamiento de Datos</h3>
+              <h3 className="text-lg font-semibold">{t('legal.privacy_policy.section_2_1.title')}</h3>
               <div className="bg-muted/50 p-4 rounded-lg">
-                <p><strong>Nombre de la empresa:</strong> INFINIT Cars</p>
-                <p><strong>Dirección:</strong> {address.full}</p>
-                <p><strong>Correo electrónico:</strong> contact@infinit.com</p>
-                <p><strong>Teléfono:</strong> {getPhoneNumber()}</p>
+                <p><strong>{t('legal.privacy_policy.section_2_1.company_name')}:</strong> INFINIT Cars</p>
+                <p><strong>{t('legal.privacy_policy.section_2_1.address')}:</strong> {address.full}</p>
+                <p><strong>{t('legal.privacy_policy.section_2_1.email')}:</strong> contact@infinit.com</p>
+                <p><strong>{t('legal.privacy_policy.section_2_1.phone')}:</strong> {getPhoneNumber()}</p>
               </div>
-              
-              <h3 className="text-lg font-semibold">2.2 Datos que Recopilamos</h3>
-              <p>Podemos recopilar los siguientes datos personales:</p>
+
+              <h3 className="text-lg font-semibold">{t('legal.privacy_policy.section_2_2.title')}</h3>
+              <p>{t('legal.privacy_policy.section_2_2.intro')}</p>
               <ul className="list-disc pl-6 space-y-1">
-                <li>Nombre y apellidos</li>
-                <li>CIF/NIF o número de identificación fiscal</li>
-                <li>Correo electrónico y teléfono</li>
-                <li>Dirección postal</li>
-                <li>Datos de navegación mediante cookies (ver nuestra Política de Cookies)</li>
+                {t('legal.privacy_policy.section_2_2.items', { returnObjects: true }).map((item: string, index: number) => (
+                  <li key={index}>{item}</li>
+                ))}
               </ul>
-              
-              <h3 className="text-lg font-semibold">2.3 Finalidad del Tratamiento</h3>
-              <p>Usamos sus datos para:</p>
+
+              <h3 className="text-lg font-semibold">{t('legal.privacy_policy.section_2_3.title')}</h3>
+              <p>{t('legal.privacy_policy.section_2_3.intro')}</p>
               <ul className="list-disc pl-6 space-y-1">
-                <li>Gestionar la compra y venta de vehículos</li>
-                <li>Gestionar garantías, seguros y financiación</li>
-                <li>Cumplir con obligaciones legales</li>
+                {t('legal.privacy_policy.section_2_3.items', { returnObjects: true }).map((item: string, index: number) => (
+                  <li key={index}>{item}</li>
+                ))}
               </ul>
-              
-              <h3 className="text-lg font-semibold">2.4 Derechos del Usuario</h3>
-              <p>Tiene derecho a acceder, rectificar, suprimir o limitar el tratamiento de sus datos enviando un correo a: <strong>contact@infinit.com</strong></p>
+
+              <h3 className="text-lg font-semibold">{t('legal.privacy_policy.section_2_4.title')}</h3>
+              <p>{t('legal.privacy_policy.section_2_4.content')} <strong>contact@infinit.com</strong></p>
             </div>
           </div>
         </DialogContent>

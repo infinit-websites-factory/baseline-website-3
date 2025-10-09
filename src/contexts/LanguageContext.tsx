@@ -1,4 +1,5 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import { createContext, useContext, useState, ReactNode } from "react";
+import { translations, TranslationKey } from "@/translations";
 
 export type Language = "es" | "en" | "fr";
 
@@ -18,6 +19,8 @@ interface LanguageContextType {
   getWhatsAppNumber: () => string;
   getAddress: () => AddressInfo;
   getCityName: () => string;
+  t: (key: TranslationKey, options?: { returnObjects?: boolean }) => any;
+  translateVehicleAttribute: (category: 'fuel' | 'transmission' | 'body_type' | 'color', value: string) => string;
 }
 
 const PHONE_NUMBERS = {
@@ -109,16 +112,47 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     return cityNames[language];
   };
 
-  useEffect(() => {
-    // Sync with localStorage on mount
-    const savedLanguage = localStorage.getItem("language") as Language;
-    if (savedLanguage && savedLanguage !== language) {
-      setLanguageState(savedLanguage);
+  const t = (key: TranslationKey, options?: { returnObjects?: boolean }): any => {
+    const keys = key.split('.');
+    let value: any = translations[language];
+
+    for (const k of keys) {
+      if (value && typeof value === 'object' && k in value) {
+        value = value[k];
+      } else {
+        console.warn(`Translation key not found: ${key}`);
+        return key;
+      }
     }
-  }, []);
+
+    // If returnObjects is true, return the value as-is (could be array or object)
+    if (options?.returnObjects) {
+      return value;
+    }
+
+    return typeof value === 'string' ? value : key;
+  };
+
+  const translateVehicleAttribute = (category: 'fuel' | 'transmission' | 'body_type' | 'color', value: string): string => {
+    if (!value) return value;
+
+    try {
+      const translationKey = `vehicle_attributes.${category}.${value}` as TranslationKey;
+      const translated = t(translationKey);
+
+      // If translation key not found, return the original value
+      if (translated === translationKey) {
+        return value;
+      }
+
+      return translated;
+    } catch {
+      return value;
+    }
+  };
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, getPhoneNumber, getPhoneNumberWithPrefix, getWhatsAppNumber, getAddress, getCityName }}>
+    <LanguageContext.Provider value={{ language, setLanguage, getPhoneNumber, getPhoneNumberWithPrefix, getWhatsAppNumber, getAddress, getCityName, t, translateVehicleAttribute }}>
       {children}
     </LanguageContext.Provider>
   );

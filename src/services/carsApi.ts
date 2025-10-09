@@ -97,61 +97,6 @@ const API_BASE_URL = 'https://multipost-api.alx.test-cluster.alx.tech';
 const API_URL = `${API_BASE_URL}/api/public/inventory/profiles/${PROFILE_ID}`;
 export const CONTACT_FORM_API_URL = `${API_BASE_URL}/api/interactions/contact-form`;
 
-const TRANSMISSION_TRANSLATIONS: Record<string, string> = {
-  'Manual': 'Manual',
-  'Automatic': 'Automático',
-};
-
-const FUEL_TRANSLATIONS: Record<string, string> = {
-  'Diesel': 'Diésel',
-  'Petrol': 'Gasolina',
-  'Electricity': 'Eléctrico',
-  'Hydrogen': 'Hidrógeno',
-  'Biofuels': 'Biocombustibles',
-  'CNG': 'GNC',
-  'LPG': 'GLP',
-  'Hybrid': 'Híbrido',
-  'Other': 'Otro',
-};
-
-const COLOR_TRANSLATIONS: Record<string, string> = {
-  'White': 'Blanco',
-  'Black': 'Negro',
-  'Silver': 'Plateado',
-  'Grey': 'Gris',
-  'Gray': 'Gris',
-  'Red': 'Rojo',
-  'Blue': 'Azul',
-  'Green': 'Verde',
-  'Yellow': 'Amarillo',
-  'Orange': 'Naranja',
-  'Brown': 'Marrón',
-  'Beige': 'Beige',
-  'Gold': 'Dorado',
-  'Purple': 'Morado',
-  'Pink': 'Rosa',
-  'Other': 'Otro',
-};
-
-const BODY_TYPE_TRANSLATIONS: Record<string, string> = {
-  'Sedan': 'Sedán',
-  'Hatchback': 'Compacto',
-  'SUV': 'SUV',
-  'Coupe': 'Coupé',
-  'Convertible': 'Descapotable',
-  'Wagon': 'Familiar',
-  'Van': 'Furgoneta',
-  'Truck': 'Camioneta',
-  'Minivan': 'Monovolumen',
-  'Pickup': 'Pick-up',
-  'Crossover': 'Crossover',
-  'Sports Car': 'Deportivo',
-  'Luxury': 'Lujo',
-  'Compact': 'Compacto',
-  'Subcompact': 'Subcompacto',
-  'Other': 'Otro',
-};
-
 export const fetchCars = async (): Promise<CarsApiResponse> => {
   const response = await fetch(API_URL, {
     method: 'GET',
@@ -169,14 +114,14 @@ export const fetchCars = async (): Promise<CarsApiResponse> => {
 };
 
 export const transformApiCarToVehicle = (apiCar: CarApiResponse): Vehicle => {
-  const registrationYear = apiCar.registration_date 
-    ? new Date(apiCar.registration_date).getFullYear() 
+  const registrationYear = apiCar.registration_date
+    ? new Date(apiCar.registration_date).getFullYear()
     : new Date().getFullYear();
-  
+
   const badgeValue = apiCar.country_details?.environmental_badge;
-  
+
   console.log('API Car badge value:', badgeValue, 'for', apiCar.make, apiCar.model);
-    
+
   return {
     id: apiCar.id,
     images: apiCar.photo_urls?.length > 0 ? apiCar.photo_urls : ['/placeholder.svg'],
@@ -185,10 +130,10 @@ export const transformApiCarToVehicle = (apiCar: CarApiResponse): Vehicle => {
     year: registrationYear,
     price: apiCar.price_cents ? apiCar.price_cents / 100 : 0, // Convert from cents to euros
     mileage: apiCar.odometer?.value || 0,
-    fuel: FUEL_TRANSLATIONS[apiCar.fuel] || apiCar.fuel || 'Desconocido',
-    transmission: TRANSMISSION_TRANSLATIONS[apiCar.transmission] || apiCar.transmission || 'Desconocido',
-    type: BODY_TYPE_TRANSLATIONS[apiCar.body_type] || apiCar.body_type || 'Desconocido',
-    color: apiCar.color ? (COLOR_TRANSLATIONS[apiCar.color] || apiCar.color) : undefined,
+    fuel: apiCar.fuel || 'Unknown',
+    transmission: apiCar.transmission || 'Unknown',
+    type: apiCar.body_type || 'Unknown',
+    color: apiCar.color,
     doors: apiCar.num_doors,
     seats: apiCar.num_seats,
     engineSize: apiCar.engine_size,

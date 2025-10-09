@@ -1,0 +1,683 @@
+{
+  "common": {
+    "call_now": "Call now",
+    "contact": "Contact",
+    "services": "Services",
+    "more_information": "More information",
+    "search": "Search",
+    "send": "Send",
+    "sending": "Sending...",
+    "close": "Close"
+  },
+  "header": {
+    "vehicles": "Used Cars",
+    "sell_your_car": "Sell Your Car",
+    "financing": "Financing",
+    "services": "Services",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Premium Vehicles",
+    "subtitle": "in",
+    "description": "Your trusted dealership for used vehicles at the best price."
+  },
+  "search": {
+    "placeholder": "Search by brand, model..."
+  },
+  "services": {
+    "title": "Our services at INFINIT Cars",
+    "subtitle": "Commercialisation and import of custom premium vehicles, used and nearly new.",
+    "vip": {
+      "title": "VIP Service",
+      "description": "We take care of everything: pickup, delivery, cleaning and any other management you need. You'll only have to worry about getting behind the wheel of your new vehicle.",
+      "additional_info": "Delivery throughout Great Britain."
+    },
+    "warranty": {
+      "title": "Plus Warranty (Extendable to 3 years)",
+      "description": "Your used vehicle with a 12-month warranty (Extendable to 3 years).",
+      "additional_info": "For all types of vehicles such as: sedans, coupes, convertibles, sports cars, SUVs, 4x4s, etc."
+    },
+    "financing": {
+      "title": "Financing available",
+      "description": "We work with the best banks to offer you financing options that suit you."
+    }
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "subtitle": "We answer the most common questions about our services",
+    "questions": {
+      "reserve": {
+        "question": "I like a car, how can I reserve it?",
+        "answer": "Select the vehicle you like, click on the 'Reserve Vehicle' button and follow the steps. Easier than buying a pair of shoes!"
+      },
+      "warranty": {
+        "question": "What do our vehicle warranties cover?",
+        "answer": "The warranty we offer is for 1 year in compliance with current legislation. In addition, we offer the possibility of contracting a coverage extension of up to 3 years."
+      },
+      "schedule": {
+        "question": "What is our schedule?",
+        "answer": "We are open all year round from Monday to Friday from 10:00 to 14:00 and from 16:00 to 19:00. On Saturdays we serve by appointment and on Sundays we are closed."
+      },
+      "quality": {
+        "question": "What quality control do our vehicles undergo?",
+        "answer": "At INFINIT Cars, each vehicle undergoes a thorough quality control to guarantee its reliability and safety. This process includes: Complete Mechanical Inspection, Aesthetic and Functional Review, Road Performance Tests and Final Quality Control."
+      },
+      "trade_in": {
+        "question": "Do you accept vehicles as part payment?",
+        "answer": "Yes, at INFINIT Cars we accept vehicles as part payment. To decide whether to accept a vehicle or not, we carry out a detailed evaluation of the car offered in part payment, considering factors such as year, mileage, general condition and maintenance history, thus ensuring a fair and transparent agreement for both parties. We invite you to visit our dealership with your current vehicle for a no-obligation valuation and discuss the options available to you."
+      }
+    }
+  },
+  "footer": {
+    "company_description": "Your trusted dealership for premium used vehicles in",
+    "contact_title": "Contact",
+    "services_title": "Services",
+    "services_list": {
+      "vehicle_sales": "Vehicle sales",
+      "vehicle_purchase": "Vehicle purchase",
+      "financing": "Financing",
+      "insurance": "Insurance",
+      "extended_warranty": "Extended warranty"
+    },
+    "hours_title": "Hours",
+    "hours": {
+      "weekday": "Mon-Fri: 10:00-14:00, 16:00-19:00",
+      "saturday": "Sat: By appointment",
+      "sunday": "Sun: Closed"
+    },
+    "legal": {
+      "legal_notice": "Legal Notice",
+      "privacy_policy": "Privacy Policy",
+      "terms_conditions": "Terms and Conditions",
+      "cookies": "Cookies"
+    },
+    "copyright": "© 2025 INFINIT Cars. Powered by"
+  },
+  "contact_page": {
+    "title": "Contact us",
+    "subtitle": "For any information about us or any vehicle, do not hesitate to contact us",
+    "form": {
+      "name": "Name",
+      "name_placeholder": "Name",
+      "surname": "Surname",
+      "surname_placeholder": "Surnames",
+      "email": "Email",
+      "email_placeholder": "email@example.com",
+      "phone": "Phone",
+      "phone_placeholder": "600 000 000",
+      "message": "Message",
+      "message_placeholder": "Write your message here...",
+      "accept_marketing": "I accept commercial communications and offers. I accept the",
+      "privacy_policy": "privacy policy",
+      "submit": "Send",
+      "submitting": "Sending..."
+    },
+    "success": {
+      "title": "Message sent successfully!",
+      "description": "Thank you for contacting us. We will get back to you soon.",
+      "send_another": "Send another message"
+    },
+    "errors": {
+      "privacy_required": "You must accept the privacy policy",
+      "submission_error": "There was a problem sending the message. Please try again."
+    },
+    "info": {
+      "call_us": {
+        "title": "Call us",
+        "description": "We are available at the following phone number:"
+      },
+      "write_us": {
+        "title": "Write to us",
+        "description": "Do not hesitate to contact us at the following email or if you prefer, you can fill out the form above."
+      },
+      "visit_us": {
+        "title": "Come visit us",
+        "description": "Find us at"
+      }
+    },
+    "location": {
+      "title": "Our location",
+      "address_title": "Address",
+      "hours_title": "Opening hours",
+      "hours": {
+        "weekday": "Monday to Friday: 10:00 - 14:00, 16:00 - 19:00",
+        "saturday": "Saturday: By appointment",
+        "sunday": "Sunday: Closed"
+      }
+    }
+  },
+  "vehicle_gallery": {
+    "title": "Discover our vehicles!",
+    "subtitle": "The best price and the best quality go hand in hand.",
+    "view_cars": "View cars",
+    "error_loading": "Could not load vehicles at this time. Please try again later."
+  },
+  "stock_page": {
+    "title": "Our Vehicle Stock",
+    "subtitle": "Explore our entire selection of quality vehicles.",
+    "results_count": "Vehicle",
+    "results_count_plural": "Vehicles",
+    "found": "found",
+    "sort_by": "Sort by:",
+    "sort_placeholder": "Select an option",
+    "sort_options": {
+      "updated_desc": "Most recent",
+      "updated_asc": "Oldest",
+      "price_asc": "Price: low to high",
+      "price_desc": "Price: high to low",
+      "year_desc": "Year: newest",
+      "year_asc": "Year: oldest",
+      "mileage_asc": "Mileage: low to high",
+      "mileage_desc": "Mileage: high to low",
+      "brand_asc": "Brand: A-Z"
+    },
+    "no_results": "No vehicles found with the selected filters",
+    "clear_filters": "Clear filters and see all vehicles"
+  },
+  "reviews": {
+    "title": "What our customers say about us",
+    "google_review": "Google Review",
+    "testimonials": [
+      {
+        "name": "María S.",
+        "rating": 5,
+        "review": "Impeccable experience from start to finish. The vehicle we purchased was in perfect condition and the team was very professional throughout. The transparency in the process and attention to detail gave us complete confidence. Without a doubt, a very successful purchase."
+      },
+      {
+        "name": "Carlos M.",
+        "rating": 5,
+        "review": "I bought a nearly new premium SUV and was delighted with the service. The entire process was smooth and clear, with detailed vehicle information. Financing was handled quickly and the price was very competitive. Totally recommended."
+      },
+      {
+        "name": "María Jiménez",
+        "rating": 5,
+        "review": "I had been looking for the perfect car for months and finally found it thanks to INFINIT Cars. From the first contact, the treatment was exceptional. They advised me without pressure, patiently answered all my questions and helped me find exactly what I was looking for within my budget. The vehicle arrived in impeccable condition, better than expected. Financing was quick and transparent, with no surprises. Plus, the after-sales service is exceptional - they called to make sure everything was perfect. I will definitely return when I need to change cars and I recommend it to everyone. A purchasing experience that exceeded all my expectations."
+      },
+      {
+        "name": "Laura P.",
+        "rating": 5,
+        "review": "We were looking for a high-end used car and found exactly what we needed. The advice was excellent, they explained all the options and helped us choose the ideal model for us. The condition of the vehicle exceeded our expectations."
+      },
+      {
+        "name": "David R.",
+        "rating": 4,
+        "review": "Professional purchasing process. They kept me informed at all times and the car arrived in good condition. Good experience overall."
+      },
+      {
+        "name": "Ana T.",
+        "rating": 5,
+        "review": "Very satisfied with my purchase. The team took the time to understand my needs and presented me with options that perfectly fit my budget. After-sales service has also been exceptional. A 5-star experience."
+      }
+    ]
+  },
+  "legal": {
+    "legal_notice": {
+      "title": "Legal Notice",
+      "section_1_1": {
+        "title": "1.1 Identification of the Owner",
+        "content": "In compliance with Law 34/2002, of July 11, on Information Society Services and Electronic Commerce (LSSICE), we inform you that this website infinit.com is owned by:",
+        "owner": "Owner",
+        "tax_id": "TAX ID",
+        "address": "Registered office",
+        "phone": "Phone",
+        "email": "Email"
+      },
+      "section_1_2": {
+        "title": "1.2 Terms of Use",
+        "content": "Access to and use of the website confers the status of user and implies acceptance of the following conditions:",
+        "items": [
+          "The user agrees to use the site lawfully and in accordance with current regulations.",
+          "The company may modify the content and conditions of the site at any time without prior notice.",
+          "The permanent availability of the site or the absence of errors is not guaranteed."
+        ]
+      },
+      "section_1_3": {
+        "title": "1.3 Intellectual and Industrial Property",
+        "content": "All content on the website (texts, images, logos, designs, etc.) is the property of INFINIT Cars or authorised third parties. Its reproduction, distribution or modification is prohibited without express authorisation."
+      },
+      "section_1_4": {
+        "title": "1.4 Liability",
+        "content": "We are not responsible for the improper use of the website or for third-party links that may appear on it."
+      },
+      "section_1_5": {
+        "title": "1.5 Legislation and Jurisdiction",
+        "content_prefix": "This legal notice is governed by Spanish law. For any dispute, the parties submit to the courts of",
+        "content_suffix": "."
+      }
+    },
+    "privacy_policy": {
+      "title": "Privacy Policy",
+      "section_2_1": {
+        "title": "2.1 Data Processing Controller",
+        "company_name": "Company name",
+        "address": "Address",
+        "email": "Email",
+        "phone": "Phone"
+      },
+      "section_2_2": {
+        "title": "2.2 Data We Collect",
+        "intro": "We may collect the following personal data:",
+        "items": [
+          "Name and surnames",
+          "TAX ID or tax identification number",
+          "Email and phone",
+          "Postal address",
+          "Browsing data through cookies (see our Cookie Policy)"
+        ]
+      },
+      "section_2_3": {
+        "title": "2.3 Purpose of Processing",
+        "intro": "We use your data to:",
+        "items": [
+          "Manage the purchase and sale of vehicles",
+          "Manage warranties, insurance and financing",
+          "Comply with legal obligations"
+        ]
+      },
+      "section_2_4": {
+        "title": "2.4 User Rights",
+        "content": "You have the right to access, rectify, delete or limit the processing of your data by sending an email to:"
+      }
+    },
+    "terms_conditions": {
+      "title": "Terms and Conditions",
+      "section_4_1": {
+        "title": "4.1 Services Offered",
+        "intro": "Through this website, we offer:",
+        "items": [
+          "Purchase and sale of vehicles.",
+          "Financing and warranty services.",
+          "Advice on administrative procedures."
+        ]
+      },
+      "section_4_2": {
+        "title": "4.2 Terms of Use",
+        "items": [
+          "The user agrees to use the site legally and responsibly.",
+          "We reserve the right to modify content and conditions without prior notice.",
+          "We do not guarantee the accuracy or permanent updating of information."
+        ]
+      },
+      "section_4_3": {
+        "title": "4.3 Registration and User Data",
+        "content": "To access certain services, the user may need to register and provide personal data. This data will be processed in accordance with our Privacy Policy."
+      },
+      "section_4_4": {
+        "title": "4.4 Prices and Payments",
+        "content": "The prices of vehicles and services shown on the website may be subject to change and do not constitute a binding offer."
+      },
+      "section_4_5": {
+        "title": "4.5 Right of Withdrawal",
+        "content": "The user may exercise their right of withdrawal within 14 days after the purchase, in accordance with current regulations."
+      },
+      "section_4_6": {
+        "title": "4.6 Applicable Law and Jurisdiction",
+        "content_prefix": "These terms are governed by Spanish law. Any dispute will be resolved in the courts of",
+        "content_suffix": "."
+      }
+    },
+    "cookies": {
+      "title": "Cookie Policy",
+      "section_3_1": {
+        "title": "3.1 What are cookies?",
+        "content": "Cookies are files that are stored on your device when you visit our website. They allow us to improve your experience and offer relevant advertising."
+      },
+      "section_3_2": {
+        "title": "3.2 Types of cookies we use",
+        "items": [
+          {
+            "type": "Strictly necessary:",
+            "description": "Allow the website to function."
+          },
+          {
+            "type": "Personalisation:",
+            "description": "Remember your preferences."
+          },
+          {
+            "type": "Analytics:",
+            "description": "Help us improve the site."
+          },
+          {
+            "type": "Advertising:",
+            "description": "Show ads tailored to your interests."
+          }
+        ]
+      },
+      "section_3_3": {
+        "title": "3.3 Cookie Management",
+        "content": "You can accept, reject or configure cookies from the cookie banner or from your browser settings."
+      }
+    }
+  },
+  "sell_page": {
+    "hero": {
+      "title": "Get your valuation easily",
+      "subtitle": "Get the best market offer."
+    },
+    "benefits": {
+      "best_price": {
+        "title": "Best price",
+        "description": "We offer you the best market valuation"
+      },
+      "fast_process": {
+        "title": "Fast process",
+        "description": "Valuation within 24 hours"
+      },
+      "no_commitment": {
+        "title": "No commitment",
+        "description": "Free valuation with no obligation"
+      },
+      "any_vehicle": {
+        "title": "Any vehicle",
+        "description": "We buy all types of vehicles"
+      }
+    },
+    "form": {
+      "step1": {
+        "title": "Get your valuation",
+        "subtitle": "Complete your vehicle details"
+      },
+      "step2": {
+        "title": "Get your valuation",
+        "subtitle": "Complete your details"
+      },
+      "vehicle_type": "Vehicle type",
+      "vehicle_type_tourism": "Passenger car",
+      "vehicle_type_industrial": "Commercial",
+      "brand": "Brand",
+      "brand_placeholder": "Select brand",
+      "model": "Model",
+      "model_placeholder": "E.g.: Focus, Corolla...",
+      "version": "Version",
+      "version_placeholder": "E.g.: GTI, Sport...",
+      "body_type": "Body type",
+      "body_type_placeholder": "Select body type",
+      "body_types": {
+        "berlina": "Sedan",
+        "coupe": "Coupe",
+        "cabrio": "Convertible",
+        "familiar": "Estate",
+        "monovolumen": "MPV",
+        "suv": "SUV",
+        "pickup": "Pick Up",
+        "otro": "Other"
+      },
+      "transmission": "Transmission",
+      "transmission_placeholder": "Select type",
+      "transmission_types": {
+        "manual": "Manual",
+        "automatico": "Automatic"
+      },
+      "fuel": "Fuel type",
+      "fuel_placeholder": "Select fuel",
+      "fuel_types": {
+        "gasolina": "Gasoline",
+        "diesel": "Diesel",
+        "hibrido": "Hybrid",
+        "hibrido_enchufable": "Plug-in Hybrid",
+        "electrico": "Electric",
+        "gas": "Gas (LPG/CNG)"
+      },
+      "year": "Year",
+      "year_placeholder": "Select year",
+      "color": "Color",
+      "color_placeholder": "E.g.: White, Black...",
+      "mileage": "Mileage",
+      "mileage_placeholder": "50000",
+      "license_plate": "License plate (optional)",
+      "license_plate_placeholder": "1234 ABC",
+      "when_to_sell": "When do you plan to sell it?",
+      "when_to_sell_placeholder": "Select an option",
+      "when_to_sell_options": {
+        "asap": "As soon as possible",
+        "4_weeks": "Within the next 4 weeks",
+        "4_months": "Within the next 4 months",
+        "not_decided": "I haven't decided yet"
+      },
+      "interested_trade": "Are you interested in buying a car in exchange?",
+      "interested_trade_placeholder": "Select an option",
+      "yes": "Yes",
+      "no": "No",
+      "first_name": "Name",
+      "first_name_placeholder": "Name",
+      "last_name": "Surname",
+      "last_name_placeholder": "Surnames",
+      "email": "Email",
+      "email_placeholder": "email@example.com",
+      "phone": "Phone",
+      "phone_placeholder": "600 000 000",
+      "accept_privacy": "I accept commercial communications and offers. I accept the",
+      "privacy_policy": "privacy policy",
+      "continue": "Continue",
+      "validate": "Submit",
+      "validating": "Sending...",
+      "cancel": "Cancel",
+      "required_field": "Required field",
+      "required": "*"
+    },
+    "success": {
+      "title": "Thank you for your request!",
+      "description": "We have received your vehicle information. Our team is reviewing it and will contact you within the next",
+      "hours": "24 hours",
+      "description_suffix": "with your personalised valuation.",
+      "back_home": "Back to home"
+    },
+    "errors": {
+      "privacy_required": "You must accept the privacy policy",
+      "submission_error": "There was a problem sending the message. Please try again."
+    },
+    "privacy_modal": {
+      "title": "Privacy Policy"
+    }
+  },
+  "services_page": {
+    "hero": {
+      "title": "Services at INFINIT Cars",
+      "subtitle": "We commercialise and import custom premium vehicles, used and nearly new in"
+    },
+    "main_services": {
+      "vip": {
+        "title": "VIP Service",
+        "description": "We take care of everything: pickup, delivery, cleaning and any other management you need. You'll only have to worry about getting behind the wheel of your new vehicle."
+      },
+      "warranty": {
+        "title": "Plus Warranty up to 3 years",
+        "description": "Your used vehicle with a 12-month warranty and up to 3 years. For all types of vehicles such as: sedans, coupes, convertibles, sports cars, SUVs, 4x4s, etc."
+      },
+      "shipping": {
+        "title": "Delivery throughout Great Britain",
+        "description": "If you can't come to pick up the vehicle, don't worry. We take care of everything necessary for you to receive it at your doorstep."
+      },
+      "financing": {
+        "title": "Financing available",
+        "description": "We work with the best banks to offer you financing options that suit you."
+      }
+    },
+    "sell_section": {
+      "title": "Sell your car hassle-free",
+      "description": "We advise and accompany the customer during the purchase/sale process of their vehicle, informing them of the ideal time to change before it depreciates, choice of new model, equipment and everything necessary to make their experience with us a success.",
+      "button": "Get my vehicle valuation"
+    },
+    "alt_texts": {
+      "hero": "White BMW with INFINIT Cars logo",
+      "sell": "Grey Porsche sports car on track - Premium vehicle valuation services"
+    }
+  },
+  "vehicle_attributes": {
+    "fuel": {
+      "Diesel": "Diesel",
+      "Petrol": "Petrol",
+      "Electricity": "Electric",
+      "Hydrogen": "Hydrogen",
+      "Biofuels": "Biofuels",
+      "CNG": "CNG",
+      "LPG": "LPG",
+      "Hybrid": "Hybrid",
+      "Other": "Other"
+    },
+    "transmission": {
+      "Manual": "Manual",
+      "Automatic": "Automatic"
+    },
+    "body_type": {
+      "Sedan": "Sedan",
+      "Hatchback": "Hatchback",
+      "SUV": "SUV",
+      "Coupe": "Coupe",
+      "Convertible": "Convertible",
+      "Wagon": "Estate",
+      "Van": "Van",
+      "Truck": "Truck",
+      "Minivan": "MPV",
+      "Pickup": "Pickup",
+      "Crossover": "Crossover",
+      "Sports Car": "Sports Car",
+      "Luxury": "Luxury",
+      "Compact": "Compact",
+      "Subcompact": "Subcompact",
+      "Other": "Other"
+    },
+    "color": {
+      "White": "White",
+      "Black": "Black",
+      "Silver": "Silver",
+      "Grey": "Grey",
+      "Gray": "Grey",
+      "Red": "Red",
+      "Blue": "Blue",
+      "Green": "Green",
+      "Yellow": "Yellow",
+      "Orange": "Orange",
+      "Brown": "Brown",
+      "Beige": "Beige",
+      "Gold": "Gold",
+      "Purple": "Purple",
+      "Pink": "Pink",
+      "Other": "Other"
+    }
+  },
+  "financing_page": {
+    "hero": {
+      "title": "Financing tailored to you",
+      "subtitle": "Get the car you want with the best financing terms on the market."
+    },
+    "benefits": {
+      "reduced_payments": {
+        "title": "Reduced installments",
+        "description": "Up to 120 months with competitive rates"
+      },
+      "fast_approval": {
+        "title": "Fast approval",
+        "description": "Response in less than 24 hours"
+      },
+      "no_surprises": {
+        "title": "No surprises",
+        "description": "Clear and transparent terms"
+      }
+    },
+    "form": {
+      "step1": {
+        "title": "Request your financing",
+        "subtitle": "Select the vehicle you want to finance"
+      },
+      "step2": {
+        "title": "Financing details",
+        "subtitle": "Tell us about your payment plan"
+      },
+      "step3": {
+        "title": "Personal information",
+        "subtitle": "Complete your personal information"
+      },
+      "step4": {
+        "title": "Employment and financial situation",
+        "subtitle": "Information about your financial situation"
+      },
+      "step5": {
+        "title": "Contact details",
+        "subtitle": "Tell us how to contact you"
+      },
+      "vehicle_select": "Select a vehicle",
+      "vehicle_select_placeholder": "Select the vehicle you're interested in",
+      "loading_vehicles": "Loading available vehicles...",
+      "down_payment": "Down payment",
+      "amount_to_finance": "Amount to finance",
+      "payment_term": "Payment term (months)",
+      "payment_term_placeholder": "Select term",
+      "payment_term_months": "months",
+      "dni_nie": "ID Number",
+      "dni_nie_placeholder": "AB123456C",
+      "first_name": "First name",
+      "first_name_placeholder": "Your first name",
+      "last_name": "Last name",
+      "last_name_placeholder": "Your last name",
+      "date_of_birth": "Date of birth",
+      "marital_status": "Marital status",
+      "marital_status_placeholder": "Select marital status",
+      "marital_status_options": {
+        "single": "Single",
+        "married": "Married",
+        "divorced": "Divorced",
+        "widowed": "Widowed",
+        "separated": "Separated",
+        "other": "Other"
+      },
+      "number_of_children": "Number of children",
+      "nationality": "Nationality",
+      "nationality_placeholder": "Spanish",
+      "employment_status": "Employment status",
+      "employment_status_placeholder": "Select employment status",
+      "employment_status_options": {
+        "employee": "Employee",
+        "self_employed": "Self-employed",
+        "civil_servant": "Civil servant",
+        "retired": "Retired",
+        "unemployed": "Unemployed",
+        "student": "Student",
+        "other": "Other"
+      },
+      "employment_duration": "Time in current job (years)",
+      "company_name": "Company you work for",
+      "company_name_placeholder": "Company name",
+      "monthly_net_income": "Monthly net income",
+      "monthly_net_income_placeholder": "2000",
+      "mortgage_rent_expenses": "Monthly mortgage/rent expenses",
+      "mortgage_rent_expenses_placeholder": "800",
+      "email": "Email",
+      "email_placeholder": "your@email.com",
+      "phone": "Phone",
+      "phone_placeholder": "600 000 000",
+      "address": "Address",
+      "address_placeholder": "Street, number, floor, door",
+      "postal_code": "Postal code",
+      "postal_code_placeholder": "28001",
+      "city": "City",
+      "city_placeholder": "Madrid",
+      "accept_privacy": "I accept commercial communications and offers. I accept the",
+      "privacy_policy": "privacy policy",
+      "continue": "Continue",
+      "validate": "Submit",
+      "validating": "Sending...",
+      "cancel": "Cancel",
+      "required_field": "Required field",
+      "positive_amount": "The down payment must be positive",
+      "invalid_email": "Invalid email",
+      "not_specified": "Not specified",
+      "price": "Price",
+      "financing": "Financing"
+    },
+    "success": {
+      "title": "Application submitted successfully!",
+      "description": "We have received your financing application. Our team is reviewing it and will contact you within the next",
+      "hours": "24 hours",
+      "description_suffix": "with a personalised proposal.",
+      "back_home": "Back to home"
+    },
+    "errors": {
+      "privacy_required": "You must accept the privacy policy",
+      "submission_error": "There was a problem sending the message. Please try again."
+    },
+    "privacy_modal": {
+      "title": "Privacy Policy"
+    }
+  }
+}

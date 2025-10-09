@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Eye, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "@/contexts/LanguageContext";
 import dgtB from "@/assets/dgt-b.png";
 import dgtC from "@/assets/dgt-c.png";
 import dgtCero from "@/assets/dgt-cero.png";
@@ -23,22 +24,23 @@ interface VehicleCardProps {
   environmentalBadge?: string;
 }
 
-const VehicleCard = ({ 
+const VehicleCard = ({
   id,
-  images = [], 
-  brand, 
-  model, 
-  year, 
-  price, 
-  mileage, 
-  fuel, 
-  transmission, 
+  images = [],
+  brand,
+  model,
+  year,
+  price,
+  mileage,
+  fuel,
+  transmission,
   type,
   environmentalBadge
 }: VehicleCardProps) => {
+  const { translateVehicleAttribute } = useLanguage();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [imagesLoaded, setImagesLoaded] = useState<boolean[]>([]);
-  
+
   console.log('VehicleCard - environmentalBadge:', environmentalBadge, 'for', brand, model);
   
   // Preload all images
@@ -135,19 +137,19 @@ const VehicleCard = ({
         <div className="flex justify-between items-start mb-2">
           <div>
             <h3 className="font-bold text-lg text-foreground">{brand} {model}</h3>
-            <p className="text-muted-foreground text-sm">{year} • {type}</p>
+            <p className="text-muted-foreground text-sm">{year} • {translateVehicleAttribute('body_type', type)}</p>
           </div>
           <div className="text-right">
-            <p className="text-2xl font-bold text-primary">€{price.toLocaleString()}</p>
+            <p className="text-2xl font-bold text-primary">£{price.toLocaleString()}</p>
           </div>
         </div>
         
         <div className="mt-auto">
           <div className="flex items-end justify-between gap-4 mb-4">
             <div className="grid grid-cols-2 gap-2 text-sm text-muted-foreground flex-1">
-              <div>📏 {mileage.toLocaleString()} km</div>
-              <div>⛽ {fuel}</div>
-              <div>⚙️ {transmission}</div>
+              <div>📏 {mileage.toLocaleString()}</div>
+              <div>⛽ {translateVehicleAttribute('fuel', fuel)}</div>
+              <div>⚙️ {translateVehicleAttribute('transmission', transmission)}</div>
               <div>📅 {year}</div>
             </div>
             {badgeImage && (
