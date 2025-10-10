@@ -5,8 +5,10 @@ import { fetchCars, transformApiCarToVehicle, type Vehicle } from "@/services/ca
 import { Skeleton } from "@/components/ui/skeleton";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { AlertCircle } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const VehicleGallery = () => {
+  const { t } = useLanguage();
   const { 
     data: carsResponse, 
     isLoading, 
@@ -33,16 +35,16 @@ const VehicleGallery = () => {
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">¡Descubre nuestros vehículos!</h2>
+            <h2 className="text-4xl font-bold mb-4">{t('vehicle_gallery.title')}</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              El mejor precio y la mejor calidad van de la mano.
+              {t('vehicle_gallery.subtitle')}
             </p>
           </div>
-          
+
           <Alert className="max-w-md mx-auto">
             <AlertCircle className="h-4 w-4" />
             <AlertDescription>
-              No se pudieron cargar los vehículos en este momento. Por favor, inténtalo de nuevo más tarde.
+              {t('vehicle_gallery.error_loading')}
             </AlertDescription>
           </Alert>
         </div>
@@ -54,9 +56,9 @@ const VehicleGallery = () => {
     <section className="py-16 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold mb-4">¡Descubre nuestros vehículos!</h2>
+          <h2 className="text-4xl font-bold mb-4">{t('vehicle_gallery.title')}</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            El mejor precio y la mejor calidad van de la mano.
+            {t('vehicle_gallery.subtitle')}
           </p>
         </div>
         
@@ -81,11 +83,11 @@ const VehicleGallery = () => {
         
         {!isLoading && vehicles.length > 3 && (
           <div className="text-center mt-8">
-            <a 
-              href="/stock" 
+            <a
+              href="/stock"
               className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
             >
-              Ver coches
+              {t('vehicle_gallery.view_cars')}
             </a>
           </div>
         )}

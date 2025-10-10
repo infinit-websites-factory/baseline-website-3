@@ -1,24 +1,28 @@
 import { Car, Shield, CreditCard } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Services = () => {
+  const { t } = useLanguage();
+
   const services = [
     {
       icon: Car,
-      title: "Servicio VIP",
-      description: "Nos encargamos de todo: recogida, entrega, limpieza y otras gestiones que necesites. Solo tendrás que preocuparte por ponerte al volante de tu nuevo vehículo."
+      title: t('services.vip.title'),
+      description: t('services.vip.description'),
+      additionalInfo: t('services.vip.additional_info')
     },
     {
       icon: Shield,
-      title: "Garantía Plus (Ampliable a 3 años)",
-      description: "Tu vehículo de ocasión con garantía de 12 meses (Ampliable a 3 años).",
-      additionalInfo: "Para vehículos de todo tipo como: berlinas, coupés, descapotables, deportivos, SUV, 4×4, etc."
+      title: t('services.warranty.title'),
+      description: t('services.warranty.description'),
+      additionalInfo: t('services.warranty.additional_info')
     },
     {
       icon: CreditCard,
-      title: "Financiación disponible",
-      description: "Trabajamos con los mejores bancos para ofrecerte opciones de financiación que se adapten a ti."
+      title: t('services.financing.title'),
+      description: t('services.financing.description')
     }
   ];
 
@@ -27,10 +31,10 @@ const Services = () => {
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Nuestros servicios en INFINIT Cars
+            {t('services.title')}
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Comercialización e importación de vehículos premium a la carta, de ocasión, seminuevos y Km0.
+            {t('services.subtitle')}
           </p>
         </div>
 
@@ -65,12 +69,12 @@ const Services = () => {
         </div>
 
         <div className="text-center mt-12">
-          <Button 
+          <Button
             asChild
             className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3 text-lg"
           >
             <a href="/services">
-              Más información
+              {t('common.more_information')}
             </a>
           </Button>
         </div>

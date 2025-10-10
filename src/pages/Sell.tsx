@@ -21,8 +21,17 @@ import { CONTACT_FORM_API_URL, PROFILE_ID } from "@/services/carsApi";
 
 const Sell = () => {
   const { toast } = useToast();
-  const { getPhoneNumber, getAddress } = useLanguage();
+  const { language, getPhoneNumber, getAddress, t } = useLanguage();
   const address = getAddress();
+
+  const getFlag = () => {
+    switch (language) {
+      case "es": return "🇪🇸";
+      case "en": return "🇬🇧";
+      case "fr": return "🇫🇷";
+      default: return "🇪🇸";
+    }
+  };
   const [currentStep, setCurrentStep] = useState(1);
   const [openPrivacyModal, setOpenPrivacyModal] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -99,19 +108,19 @@ const Sell = () => {
 
     // Validate all required Step 1 fields
     if (!formData.marca) {
-      newErrors.marca = "Campo obligatorio";
+      newErrors.marca = t("sell_page.form.required_field");
     }
     if (!formData.ano) {
-      newErrors.ano = "Campo obligatorio";
+      newErrors.ano = t("sell_page.form.required_field");
     }
     if (!formData.combustible) {
-      newErrors.combustible = "Campo obligatorio";
+      newErrors.combustible = t("sell_page.form.required_field");
     }
     if (!formData.tipoCambio) {
-      newErrors.tipoCambio = "Campo obligatorio";
+      newErrors.tipoCambio = t("sell_page.form.required_field");
     }
     if (formData.tipoVehiculo === "turismo" && !formData.carroceria) {
-      newErrors.carroceria = "Campo obligatorio";
+      newErrors.carroceria = t("sell_page.form.required_field");
     }
 
     setErrors(newErrors);
@@ -135,10 +144,10 @@ const Sell = () => {
 
     // Validate Step 2 fields
     if (!formData.cuandoVender) {
-      newErrors.cuandoVender = "Campo obligatorio";
+      newErrors.cuandoVender = t("sell_page.form.required_field");
     }
     if (!formData.interesIntercambio) {
-      newErrors.interesIntercambio = "Campo obligatorio";
+      newErrors.interesIntercambio = t("sell_page.form.required_field");
     }
 
     setErrors(newErrors);
@@ -147,7 +156,7 @@ const Sell = () => {
     if (!formData.acceptPrivacy) {
       toast({
         title: "Error",
-        description: "Debes aceptar la política de privacidad",
+        description: t("sell_page.errors.privacy_required"),
         variant: "destructive"
       });
       return;
@@ -226,7 +235,7 @@ Kilometraje: ${formData.kilometraje} km`;
       console.error('Error submitting form:', error);
       toast({
         title: "Error",
-        description: "Hubo un problema al enviar el mensaje. Por favor, inténtalo de nuevo.",
+        description: t("sell_page.errors.submission_error"),
         variant: "destructive"
       });
     } finally {
@@ -246,10 +255,10 @@ Kilometraje: ${formData.kilometraje} km`;
               <div className="lg:col-span-2 space-y-8">
                 <div className="space-y-4">
                   <h1 className="text-4xl md:text-5xl font-bold text-foreground">
-                    Tasa y vende fácilmente
+                    {t("sell_page.hero.title")}
                   </h1>
                   <p className="text-xl text-muted-foreground leading-relaxed">
-                    Consigue la mejor oferta del mercado.
+                    {t("sell_page.hero.subtitle")}
                   </p>
                 </div>
 
@@ -260,8 +269,8 @@ Kilometraje: ${formData.kilometraje} km`;
                       <CheckCircle2 className="w-4 h-4 text-primary-foreground" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-lg text-foreground mb-1">Mejor precio</h3>
-                      <p className="text-muted-foreground">Te ofrecemos la mejor valoración del mercado</p>
+                      <h3 className="font-bold text-lg text-foreground mb-1">{t("sell_page.benefits.best_price.title")}</h3>
+                      <p className="text-muted-foreground">{t("sell_page.benefits.best_price.description")}</p>
                     </div>
                   </div>
 
@@ -270,8 +279,8 @@ Kilometraje: ${formData.kilometraje} km`;
                       <CheckCircle2 className="w-4 h-4 text-primary-foreground" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-lg text-foreground mb-1">Proceso rápido</h3>
-                      <p className="text-muted-foreground">Valoración en 24 horas</p>
+                      <h3 className="font-bold text-lg text-foreground mb-1">{t("sell_page.benefits.fast_process.title")}</h3>
+                      <p className="text-muted-foreground">{t("sell_page.benefits.fast_process.description")}</p>
                     </div>
                   </div>
 
@@ -280,8 +289,8 @@ Kilometraje: ${formData.kilometraje} km`;
                       <CheckCircle2 className="w-4 h-4 text-primary-foreground" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-lg text-foreground mb-1">Sin compromiso</h3>
-                      <p className="text-muted-foreground">Valoración gratuita y sin obligación</p>
+                      <h3 className="font-bold text-lg text-foreground mb-1">{t("sell_page.benefits.no_commitment.title")}</h3>
+                      <p className="text-muted-foreground">{t("sell_page.benefits.no_commitment.description")}</p>
                     </div>
                   </div>
 
@@ -290,8 +299,8 @@ Kilometraje: ${formData.kilometraje} km`;
                       <CheckCircle2 className="w-4 h-4 text-primary-foreground" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-lg text-foreground mb-1">Cualquier vehículo</h3>
-                      <p className="text-muted-foreground">Compramos todo tipo de vehículos</p>
+                      <h3 className="font-bold text-lg text-foreground mb-1">{t("sell_page.benefits.any_vehicle.title")}</h3>
+                      <p className="text-muted-foreground">{t("sell_page.benefits.any_vehicle.description")}</p>
                     </div>
                   </div>
                 </div>
@@ -303,18 +312,18 @@ Kilometraje: ${formData.kilometraje} km`;
                   <CardHeader className="space-y-4">
                     {currentStep === 1 && (
                       <div className="space-y-2">
-                        <CardTitle className="text-2xl text-primary">Consigue tu tasación</CardTitle>
+                        <CardTitle className="text-2xl text-primary">{t("sell_page.form.step1.title")}</CardTitle>
                         <p className="text-sm text-muted-foreground">
-                          Completa los detalles de tu vehículo
+                          {t("sell_page.form.step1.subtitle")}
                         </p>
                       </div>
                     )}
 
                     {currentStep === 2 && (
                       <div className="space-y-2">
-                        <CardTitle className="text-2xl text-primary">Consigue tu tasación</CardTitle>
+                        <CardTitle className="text-2xl text-primary">{t("sell_page.form.step2.title")}</CardTitle>
                         <p className="text-sm text-muted-foreground">
-                          Completa tus datos
+                          {t("sell_page.form.step2.subtitle")}
                         </p>
                       </div>
                     )}
@@ -329,7 +338,7 @@ Kilometraje: ${formData.kilometraje} km`;
                       <div className="space-y-6 animate-fade-in">
                         {/* Vehicle Type Toggle Buttons */}
                         <div className="space-y-2">
-                          <Label className="text-gray-600">Tipo de vehículo *</Label>
+                          <Label className="text-gray-600">{t("sell_page.form.vehicle_type")} {t("sell_page.form.required")}</Label>
                           <div className="grid grid-cols-2 gap-3">
                             <Button
                               type="button"
@@ -337,7 +346,7 @@ Kilometraje: ${formData.kilometraje} km`;
                               className={`h-10 ${formData.tipoVehiculo === "turismo" ? "bg-gray-100 hover:bg-gray-100 hover:text-foreground border-gray-300 text-foreground" : "bg-white hover:bg-gray-50 hover:text-foreground border-gray-200 text-foreground"}`}
                               onClick={() => handleSelectChange("tipoVehiculo", "turismo")}
                             >
-                              Turismo
+                              {t("sell_page.form.vehicle_type_tourism")}
                             </Button>
                             <Button
                               type="button"
@@ -345,7 +354,7 @@ Kilometraje: ${formData.kilometraje} km`;
                               className={`h-10 ${formData.tipoVehiculo === "industrial" ? "bg-gray-100 hover:bg-gray-100 hover:text-foreground border-gray-300 text-foreground" : "bg-white hover:bg-gray-50 hover:text-foreground border-gray-200 text-foreground"}`}
                               onClick={() => handleSelectChange("tipoVehiculo", "industrial")}
                             >
-                              Industrial
+                              {t("sell_page.form.vehicle_type_industrial")}
                             </Button>
                           </div>
                         </div>
@@ -353,7 +362,7 @@ Kilometraje: ${formData.kilometraje} km`;
                         {/* Marca - Modelo */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div className="space-y-2">
-                            <Label htmlFor="marca" className="text-gray-600">Marca *</Label>
+                            <Label htmlFor="marca" className="text-gray-600">{t("sell_page.form.brand")} {t("sell_page.form.required")}</Label>
                             <Select
                               value={formData.marca}
                               onValueChange={(value) => {
@@ -364,7 +373,7 @@ Kilometraje: ${formData.kilometraje} km`;
                               disabled={!formData.tipoVehiculo}
                             >
                               <SelectTrigger className={`bg-gray-50 data-[placeholder]:text-muted-foreground ${errors.marca ? "border-red-500" : "border-gray-200"}`}>
-                                <SelectValue placeholder="Selecciona marca" />
+                                <SelectValue placeholder={t("sell_page.form.brand_placeholder")} />
                               </SelectTrigger>
                               <SelectContent>
                                 {(formData.tipoVehiculo === "turismo" ? marcasTurismo : marcasIndustrial).map((marca) => (
@@ -375,10 +384,10 @@ Kilometraje: ${formData.kilometraje} km`;
                             {errors.marca && <p className="text-sm text-red-500">{errors.marca}</p>}
                           </div>
                           <div className="space-y-2">
-                            <Label htmlFor="modelo" className="text-gray-600">Modelo *</Label>
+                            <Label htmlFor="modelo" className="text-gray-600">{t("sell_page.form.model")} {t("sell_page.form.required")}</Label>
                             <Input
                               id="modelo"
-                              placeholder="Ej: Focus, Corolla..."
+                              placeholder={t("sell_page.form.model_placeholder")}
                               value={formData.modelo}
                               onChange={handleInputChange}
                               required
@@ -391,10 +400,10 @@ Kilometraje: ${formData.kilometraje} km`;
                         {formData.tipoVehiculo === "turismo" ? (
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div className="space-y-2">
-                              <Label htmlFor="version" className="text-gray-600">Versión *</Label>
+                              <Label htmlFor="version" className="text-gray-600">{t("sell_page.form.version")} {t("sell_page.form.required")}</Label>
                               <Input
                                 id="version"
-                                placeholder="Ej: GTI, Sport..."
+                                placeholder={t("sell_page.form.version_placeholder")}
                                 value={formData.version}
                                 onChange={handleInputChange}
                                 required
@@ -402,7 +411,7 @@ Kilometraje: ${formData.kilometraje} km`;
                               />
                             </div>
                             <div className="space-y-2">
-                              <Label htmlFor="carroceria" className="text-gray-600">Carrocería *</Label>
+                              <Label htmlFor="carroceria" className="text-gray-600">{t("sell_page.form.body_type")} {t("sell_page.form.required")}</Label>
                               <Select
                                 value={formData.carroceria}
                                 onValueChange={(value) => {
@@ -412,17 +421,17 @@ Kilometraje: ${formData.kilometraje} km`;
                                 required
                               >
                                 <SelectTrigger className={`bg-gray-50 data-[placeholder]:text-muted-foreground ${errors.carroceria ? "border-red-500" : "border-gray-200"}`}>
-                                  <SelectValue placeholder="Selecciona carrocería" />
+                                  <SelectValue placeholder={t("sell_page.form.body_type_placeholder")} />
                                 </SelectTrigger>
                                 <SelectContent>
-                                  <SelectItem value="berlina">Berlina</SelectItem>
-                                  <SelectItem value="coupe">Coupé</SelectItem>
-                                  <SelectItem value="cabrio">Cabrio</SelectItem>
-                                  <SelectItem value="familiar">Familiar</SelectItem>
-                                  <SelectItem value="monovolumen">Monovolumen</SelectItem>
-                                  <SelectItem value="suv">SUV</SelectItem>
-                                  <SelectItem value="pickup">Pick Up</SelectItem>
-                                  <SelectItem value="otro">Otro</SelectItem>
+                                  <SelectItem value="berlina">{t("sell_page.form.body_types.berlina")}</SelectItem>
+                                  <SelectItem value="coupe">{t("sell_page.form.body_types.coupe")}</SelectItem>
+                                  <SelectItem value="cabrio">{t("sell_page.form.body_types.cabrio")}</SelectItem>
+                                  <SelectItem value="familiar">{t("sell_page.form.body_types.familiar")}</SelectItem>
+                                  <SelectItem value="monovolumen">{t("sell_page.form.body_types.monovolumen")}</SelectItem>
+                                  <SelectItem value="suv">{t("sell_page.form.body_types.suv")}</SelectItem>
+                                  <SelectItem value="pickup">{t("sell_page.form.body_types.pickup")}</SelectItem>
+                                  <SelectItem value="otro">{t("sell_page.form.body_types.otro")}</SelectItem>
                                 </SelectContent>
                               </Select>
                               {errors.carroceria && <p className="text-sm text-red-500">{errors.carroceria}</p>}
@@ -430,10 +439,10 @@ Kilometraje: ${formData.kilometraje} km`;
                           </div>
                         ) : (
                           <div className="space-y-2">
-                            <Label htmlFor="version" className="text-gray-600">Versión *</Label>
+                            <Label htmlFor="version" className="text-gray-600">{t("sell_page.form.version")} {t("sell_page.form.required")}</Label>
                             <Input
                               id="version"
-                              placeholder="Ej: GTI, Sport..."
+                              placeholder={t("sell_page.form.version_placeholder")}
                               value={formData.version}
                               onChange={handleInputChange}
                               required
@@ -445,7 +454,7 @@ Kilometraje: ${formData.kilometraje} km`;
                         {/* Tipo de cambio - Combustible */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div className="space-y-2">
-                            <Label htmlFor="tipoCambio" className="text-gray-600">Tipo de cambio *</Label>
+                            <Label htmlFor="tipoCambio" className="text-gray-600">{t("sell_page.form.transmission")} {t("sell_page.form.required")}</Label>
                             <Select
                               value={formData.tipoCambio}
                               onValueChange={(value) => {
@@ -455,17 +464,17 @@ Kilometraje: ${formData.kilometraje} km`;
                               required
                             >
                               <SelectTrigger className={`bg-gray-50 data-[placeholder]:text-muted-foreground ${errors.tipoCambio ? "border-red-500" : "border-gray-200"}`}>
-                                <SelectValue placeholder="Selecciona tipo" />
+                                <SelectValue placeholder={t("sell_page.form.transmission_placeholder")} />
                               </SelectTrigger>
                               <SelectContent>
-                                <SelectItem value="manual">Manual</SelectItem>
-                                <SelectItem value="automatico">Automático</SelectItem>
+                                <SelectItem value="manual">{t("sell_page.form.transmission_types.manual")}</SelectItem>
+                                <SelectItem value="automatico">{t("sell_page.form.transmission_types.automatico")}</SelectItem>
                               </SelectContent>
                             </Select>
                             {errors.tipoCambio && <p className="text-sm text-red-500">{errors.tipoCambio}</p>}
                           </div>
                           <div className="space-y-2">
-                            <Label htmlFor="combustible" className="text-gray-600">Combustible *</Label>
+                            <Label htmlFor="combustible" className="text-gray-600">{t("sell_page.form.fuel")} {t("sell_page.form.required")}</Label>
                             <Select
                               value={formData.combustible}
                               onValueChange={(value) => {
@@ -475,15 +484,15 @@ Kilometraje: ${formData.kilometraje} km`;
                               required
                             >
                               <SelectTrigger className={`bg-gray-50 data-[placeholder]:text-muted-foreground ${errors.combustible ? "border-red-500" : "border-gray-200"}`}>
-                                <SelectValue placeholder="Selecciona combustible" />
+                                <SelectValue placeholder={t("sell_page.form.fuel_placeholder")} />
                               </SelectTrigger>
                               <SelectContent>
-                                <SelectItem value="gasolina">Gasolina</SelectItem>
-                                <SelectItem value="diesel">Diésel</SelectItem>
-                                <SelectItem value="hibrido">Híbrido</SelectItem>
-                                <SelectItem value="hibrido-enchufable">Híbrido Enchufable</SelectItem>
-                                <SelectItem value="electrico">Eléctrico</SelectItem>
-                                <SelectItem value="gas">Gas (GLP/GNC)</SelectItem>
+                                <SelectItem value="gasolina">{t("sell_page.form.fuel_types.gasolina")}</SelectItem>
+                                <SelectItem value="diesel">{t("sell_page.form.fuel_types.diesel")}</SelectItem>
+                                <SelectItem value="hibrido">{t("sell_page.form.fuel_types.hibrido")}</SelectItem>
+                                <SelectItem value="hibrido-enchufable">{t("sell_page.form.fuel_types.hibrido_enchufable")}</SelectItem>
+                                <SelectItem value="electrico">{t("sell_page.form.fuel_types.electrico")}</SelectItem>
+                                <SelectItem value="gas">{t("sell_page.form.fuel_types.gas")}</SelectItem>
                               </SelectContent>
                             </Select>
                             {errors.combustible && <p className="text-sm text-red-500">{errors.combustible}</p>}
@@ -493,7 +502,7 @@ Kilometraje: ${formData.kilometraje} km`;
                         {/* Año - Color */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div className="space-y-2">
-                            <Label htmlFor="ano" className="text-gray-600">Año *</Label>
+                            <Label htmlFor="ano" className="text-gray-600">{t("sell_page.form.year")} {t("sell_page.form.required")}</Label>
                             <Select
                               value={formData.ano}
                               onValueChange={(value) => {
@@ -503,7 +512,7 @@ Kilometraje: ${formData.kilometraje} km`;
                               required
                             >
                               <SelectTrigger className={`bg-gray-50 data-[placeholder]:text-muted-foreground ${errors.ano ? "border-red-500" : "border-gray-200"}`}>
-                                <SelectValue placeholder="Selecciona año" />
+                                <SelectValue placeholder={t("sell_page.form.year_placeholder")} />
                               </SelectTrigger>
                               <SelectContent>
                                 {years.map((year) => (
@@ -514,10 +523,10 @@ Kilometraje: ${formData.kilometraje} km`;
                             {errors.ano && <p className="text-sm text-red-500">{errors.ano}</p>}
                           </div>
                           <div className="space-y-2">
-                            <Label htmlFor="color" className="text-gray-600">Color *</Label>
+                            <Label htmlFor="color" className="text-gray-600">{t("sell_page.form.color")} {t("sell_page.form.required")}</Label>
                             <Input
                               id="color"
-                              placeholder="Ej: Blanco, Negro..."
+                              placeholder={t("sell_page.form.color_placeholder")}
                               value={formData.color}
                               onChange={handleInputChange}
                               required
@@ -529,11 +538,11 @@ Kilometraje: ${formData.kilometraje} km`;
                         {/* Kilometraje - Matrícula */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div className="space-y-2">
-                            <Label htmlFor="kilometraje" className="text-gray-600">Kilometraje *</Label>
+                            <Label htmlFor="kilometraje" className="text-gray-600">{t("sell_page.form.mileage")} {t("sell_page.form.required")}</Label>
                             <Input
                               id="kilometraje"
                               type="number"
-                              placeholder="50000"
+                              placeholder={t("sell_page.form.mileage_placeholder")}
                               value={formData.kilometraje}
                               onChange={handleInputChange}
                               required
@@ -541,10 +550,10 @@ Kilometraje: ${formData.kilometraje} km`;
                             />
                           </div>
                           <div className="space-y-2">
-                            <Label htmlFor="matricula" className="text-gray-600">Matrícula (opcional)</Label>
+                            <Label htmlFor="matricula" className="text-gray-600">{t("sell_page.form.license_plate")}</Label>
                             <Input
                               id="matricula"
-                              placeholder="1234 ABC"
+                              placeholder={t("sell_page.form.license_plate_placeholder")}
                               value={formData.matricula}
                               onChange={handleInputChange}
                               className="bg-gray-50 border-gray-200"
@@ -557,7 +566,7 @@ Kilometraje: ${formData.kilometraje} km`;
                           className="w-full"
                           size="lg"
                         >
-                          Continuar
+                          {t("sell_page.form.continue")}
                         </Button>
                       </div>
                     </form>
@@ -568,7 +577,7 @@ Kilometraje: ${formData.kilometraje} km`;
                     <form onSubmit={handleSubmit} className="space-y-6">
                       <div className="space-y-6 animate-fade-in">
                         <div className="space-y-2">
-                          <Label htmlFor="cuandoVender" className="text-gray-600">¿Cuándo planeas venderlo? *</Label>
+                          <Label htmlFor="cuandoVender" className="text-gray-600">{t("sell_page.form.when_to_sell")} {t("sell_page.form.required")}</Label>
                           <Select
                             value={formData.cuandoVender}
                             onValueChange={(value) => {
@@ -578,20 +587,20 @@ Kilometraje: ${formData.kilometraje} km`;
                             required
                           >
                             <SelectTrigger className={`bg-gray-50 data-[placeholder]:text-muted-foreground ${errors.cuandoVender ? "border-red-500" : "border-gray-200"}`}>
-                              <SelectValue placeholder="Selecciona una opción" />
+                              <SelectValue placeholder={t("sell_page.form.when_to_sell_placeholder")} />
                             </SelectTrigger>
                             <SelectContent>
-                              <SelectItem value="lo-antes-posible">Lo antes posible</SelectItem>
-                              <SelectItem value="4-semanas">En las próximas 4 semanas</SelectItem>
-                              <SelectItem value="4-meses">En los próximos 4 meses</SelectItem>
-                              <SelectItem value="no-decidido">Aún no lo he decidido</SelectItem>
+                              <SelectItem value="lo-antes-posible">{t("sell_page.form.when_to_sell_options.asap")}</SelectItem>
+                              <SelectItem value="4-semanas">{t("sell_page.form.when_to_sell_options.4_weeks")}</SelectItem>
+                              <SelectItem value="4-meses">{t("sell_page.form.when_to_sell_options.4_months")}</SelectItem>
+                              <SelectItem value="no-decidido">{t("sell_page.form.when_to_sell_options.not_decided")}</SelectItem>
                             </SelectContent>
                           </Select>
                           {errors.cuandoVender && <p className="text-sm text-red-500">{errors.cuandoVender}</p>}
                         </div>
 
                         <div className="space-y-2">
-                          <Label htmlFor="interesIntercambio" className="text-gray-600">¿Estás interesado en comprar un coche a cambio? *</Label>
+                          <Label htmlFor="interesIntercambio" className="text-gray-600">{t("sell_page.form.interested_trade")} {t("sell_page.form.required")}</Label>
                           <Select
                             value={formData.interesIntercambio}
                             onValueChange={(value) => {
@@ -601,11 +610,11 @@ Kilometraje: ${formData.kilometraje} km`;
                             required
                           >
                             <SelectTrigger className={`bg-gray-50 data-[placeholder]:text-muted-foreground ${errors.interesIntercambio ? "border-red-500" : "border-gray-200"}`}>
-                              <SelectValue placeholder="Selecciona una opción" />
+                              <SelectValue placeholder={t("sell_page.form.interested_trade_placeholder")} />
                             </SelectTrigger>
                             <SelectContent>
-                              <SelectItem value="si">Sí</SelectItem>
-                              <SelectItem value="no">No</SelectItem>
+                              <SelectItem value="si">{t("sell_page.form.yes")}</SelectItem>
+                              <SelectItem value="no">{t("sell_page.form.no")}</SelectItem>
                             </SelectContent>
                           </Select>
                           {errors.interesIntercambio && <p className="text-sm text-red-500">{errors.interesIntercambio}</p>}
@@ -613,11 +622,11 @@ Kilometraje: ${formData.kilometraje} km`;
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div className="space-y-2">
-                            <Label htmlFor="nombre" className="text-gray-600">Nombre *</Label>
+                            <Label htmlFor="nombre" className="text-gray-600">{t("sell_page.form.first_name")} {t("sell_page.form.required")}</Label>
                             <Input
                               id="nombre"
                               name="nombre"
-                              placeholder="Nombre"
+                              placeholder={t("sell_page.form.first_name_placeholder")}
                               value={formData.nombre}
                               onChange={handleInputChange}
                               required
@@ -625,11 +634,11 @@ Kilometraje: ${formData.kilometraje} km`;
                             />
                           </div>
                           <div className="space-y-2">
-                            <Label htmlFor="apellido" className="text-gray-600">Apellido *</Label>
+                            <Label htmlFor="apellido" className="text-gray-600">{t("sell_page.form.last_name")} {t("sell_page.form.required")}</Label>
                             <Input
                               id="apellido"
                               name="apellido"
-                              placeholder="Apellidos"
+                              placeholder={t("sell_page.form.last_name_placeholder")}
                               value={formData.apellido}
                               onChange={handleInputChange}
                               required
@@ -640,12 +649,12 @@ Kilometraje: ${formData.kilometraje} km`;
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div className="space-y-2">
-                            <Label htmlFor="email" className="text-gray-600">Email *</Label>
+                            <Label htmlFor="email" className="text-gray-600">{t("sell_page.form.email")} {t("sell_page.form.required")}</Label>
                             <Input
                               id="email"
                               name="email"
                               type="email"
-                              placeholder="email@ejemplo.com"
+                              placeholder={t("sell_page.form.email_placeholder")}
                               value={formData.email}
                               onChange={handleInputChange}
                               required
@@ -653,16 +662,16 @@ Kilometraje: ${formData.kilometraje} km`;
                             />
                           </div>
                           <div className="space-y-2">
-                            <Label htmlFor="telefono" className="text-gray-600">Teléfono *</Label>
+                            <Label htmlFor="telefono" className="text-gray-600">{t("sell_page.form.phone")} {t("sell_page.form.required")}</Label>
                             <div className="flex">
                               <div className="flex items-center px-3 bg-gray-50 border border-r-0 border-gray-200 rounded-l-md">
-                                <span className="text-sm text-red-600 font-semibold">🇪🇸</span>
+                                <span className="text-sm text-red-600 font-semibold">{getFlag()}</span>
                               </div>
                               <Input
                                 id="telefono"
                                 name="telefono"
                                 type="tel"
-                                placeholder="600 000 000"
+                                placeholder={t("sell_page.form.phone_placeholder")}
                                 value={formData.telefono}
                                 onChange={handleInputChange}
                                 required
@@ -682,13 +691,13 @@ Kilometraje: ${formData.kilometraje} km`;
                               }
                             />
                             <Label htmlFor="acceptPrivacy" className="text-sm text-gray-600">
-                              Acepto las comunicaciones comerciales y de ofertas. Acepto la{" "}
+                              {t("sell_page.form.accept_privacy")}{" "}
                               <button
                                 type="button"
                                 onClick={() => setOpenPrivacyModal(true)}
                                 className="text-primary hover:text-primary/80 underline"
                               >
-                                política de privacidad
+                                {t("sell_page.form.privacy_policy")}
                               </button>.
                             </Label>
                           </div>
@@ -701,7 +710,7 @@ Kilometraje: ${formData.kilometraje} km`;
                             size="lg"
                             disabled={isSubmitting}
                           >
-                            {isSubmitting ? "Enviando..." : "Validar"}
+                            {isSubmitting ? t("sell_page.form.validating") : t("sell_page.form.validate")}
                           </Button>
                           <button
                             type="button"
@@ -730,7 +739,7 @@ Kilometraje: ${formData.kilometraje} km`;
                             }}
                             className="w-full text-center text-sm text-muted-foreground hover:text-foreground underline"
                           >
-                            Cancelar
+                            {t("sell_page.form.cancel")}
                           </button>
                         </div>
                       </div>
@@ -747,12 +756,10 @@ Kilometraje: ${formData.kilometraje} km`;
 
                         <div className="space-y-3">
                           <h3 className="text-2xl font-bold text-foreground">
-                            ¡Gracias por tu solicitud!
+                            {t("sell_page.success.title")}
                           </h3>
                           <p className="text-muted-foreground max-w-md mx-auto">
-                            Hemos recibido la información de tu vehículo. Nuestro equipo la está revisando
-                            y te contactaremos en las próximas <span className="font-semibold text-foreground">24 horas</span> con
-                            tu valoración personalizada.
+                            {t("sell_page.success.description")} <span className="font-semibold text-foreground">{t("sell_page.success.hours")}</span> {t("sell_page.success.description_suffix")}
                           </p>
                         </div>
 
@@ -784,7 +791,7 @@ Kilometraje: ${formData.kilometraje} km`;
                           variant="outline"
                           size="lg"
                         >
-                          Volver al inicio
+                          {t("sell_page.success.back_home")}
                         </Button>
                       </div>
                     </div>
@@ -805,38 +812,36 @@ Kilometraje: ${formData.kilometraje} km`;
       <Dialog open={openPrivacyModal} onOpenChange={setOpenPrivacyModal}>
         <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle className="text-xl font-bold">Política de Privacidad</DialogTitle>
+            <DialogTitle className="text-xl font-bold">{t('legal.privacy_policy.title')}</DialogTitle>
           </DialogHeader>
           <div className="mt-4 text-sm text-muted-foreground">
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold">2.1 Responsable del Tratamiento de Datos</h3>
+              <h3 className="text-lg font-semibold">{t('legal.privacy_policy.section_2_1.title')}</h3>
               <div className="bg-muted/50 p-4 rounded-lg">
-                <p><strong>Nombre de la empresa:</strong> INFINIT Cars</p>
-                <p><strong>Dirección:</strong> {address.full}</p>
-                <p><strong>Correo electrónico:</strong> contact@infinit.com</p>
-                <p><strong>Teléfono:</strong> {getPhoneNumber()}</p>
+                <p><strong>{t('legal.privacy_policy.section_2_1.company_name')}:</strong> INFINIT Cars</p>
+                <p><strong>{t('legal.privacy_policy.section_2_1.address')}:</strong> {address.full}</p>
+                <p><strong>{t('legal.privacy_policy.section_2_1.email')}:</strong> contact@infinit.com</p>
+                <p><strong>{t('legal.privacy_policy.section_2_1.phone')}:</strong> {getPhoneNumber()}</p>
               </div>
 
-              <h3 className="text-lg font-semibold">2.2 Datos que Recopilamos</h3>
-              <p>Podemos recopilar los siguientes datos personales:</p>
+              <h3 className="text-lg font-semibold">{t('legal.privacy_policy.section_2_2.title')}</h3>
+              <p>{t('legal.privacy_policy.section_2_2.intro')}</p>
               <ul className="list-disc pl-6 space-y-1">
-                <li>Nombre y apellidos</li>
-                <li>CIF/NIF o número de identificación fiscal</li>
-                <li>Correo electrónico y teléfono</li>
-                <li>Dirección postal</li>
-                <li>Datos de navegación mediante cookies (ver nuestra Política de Cookies)</li>
+                {t('legal.privacy_policy.section_2_2.items', { returnObjects: true }).map((item: string, index: number) => (
+                  <li key={index}>{item}</li>
+                ))}
               </ul>
 
-              <h3 className="text-lg font-semibold">2.3 Finalidad del Tratamiento</h3>
-              <p>Usamos sus datos para:</p>
+              <h3 className="text-lg font-semibold">{t('legal.privacy_policy.section_2_3.title')}</h3>
+              <p>{t('legal.privacy_policy.section_2_3.intro')}</p>
               <ul className="list-disc pl-6 space-y-1">
-                <li>Gestionar la compra y venta de vehículos</li>
-                <li>Gestionar garantías, seguros y financiación</li>
-                <li>Cumplir con obligaciones legales</li>
+                {t('legal.privacy_policy.section_2_3.items', { returnObjects: true }).map((item: string, index: number) => (
+                  <li key={index}>{item}</li>
+                ))}
               </ul>
 
-              <h3 className="text-lg font-semibold">2.4 Derechos del Usuario</h3>
-              <p>Tiene derecho a acceder, rectificar, suprimir o limitar el tratamiento de sus datos enviando un correo a: <strong>contact@infinit.com</strong></p>
+              <h3 className="text-lg font-semibold">{t('legal.privacy_policy.section_2_4.title')}</h3>
+              <p>{t('legal.privacy_policy.section_2_4.content')} <strong>contact@infinit.com</strong></p>
             </div>
           </div>
         </DialogContent>

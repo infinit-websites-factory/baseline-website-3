@@ -4,28 +4,31 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const FAQ = () => {
+  const { t } = useLanguage();
+
   const faqs = [
     {
-      question: "Me gusta un coche, ¿Cómo lo puedo reservar?",
-      answer: "Selecciona el vehículo que te gusta, pulsa en el botón \"Reservar Vehículo\" y sigue los pasos. ¡Más sencillo que comprarse unos zapatos!"
+      question: t('faq.questions.reserve.question'),
+      answer: t('faq.questions.reserve.answer')
     },
     {
-      question: "¿Qué cubren las garantías de nuestros vehículos?",
-      answer: "La garantía que ofrecemos es de 1 año respetando la legislación actual. Además, ofrecemos la posibilidad de contratar una ampliación de coberturas de hasta 3 años."
+      question: t('faq.questions.warranty.question'),
+      answer: t('faq.questions.warranty.answer')
     },
     {
-      question: "¿Cuál es nuestro horario?",
-      answer: "Estamos abiertos todo el año de Lunes a Viernes de 10:00 a 14:00 y de 16:00 a 19:00. Los Sábados atendemos con cita previa y los Domingos permanecemos cerrados."
+      question: t('faq.questions.schedule.question'),
+      answer: t('faq.questions.schedule.answer')
     },
     {
-      question: "¿Qué control de calidad pasan nuestros vehículos?",
-      answer: "En INFINIT Cars, cada vehículo es sometido a un exhaustivo control de calidad para garantizar su fiabilidad y seguridad. Este proceso incluye: Inspección Mecánica Completa, Revisión Estética y Funcional, Pruebas de Rendimiento en Carretera y Control de Calidad Final."
+      question: t('faq.questions.quality.question'),
+      answer: t('faq.questions.quality.answer')
     },
     {
-      question: "¿Aceptáis vehículos como parte de pago?",
-      answer: "Sí, en INFINIT Cars aceptamos vehículos como parte de pago. Para decidir si aceptamos un vehículo o no, realizamos una evaluación detallada del coche que se ofrece en parte de pago, considerando factores como el año, el kilometraje, el estado general y el historial de mantenimiento, asegurando así un acuerdo justo y transparente para ambas partes. Te invitamos a visitar nuestro concesionario con tu vehículo actual para una valoración sin compromiso y discutir las opciones disponibles para ti."
+      question: t('faq.questions.trade_in.question'),
+      answer: t('faq.questions.trade_in.answer')
     }
   ];
 
@@ -34,10 +37,10 @@ const FAQ = () => {
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Preguntas frecuentes
+            {t('faq.title')}
           </h2>
           <p className="text-lg text-muted-foreground">
-            Resolvemos las dudas más comunes sobre nuestros servicios
+            {t('faq.subtitle')}
           </p>
         </div>
 

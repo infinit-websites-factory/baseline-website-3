@@ -12,129 +12,125 @@ import LanguageSelector from "./LanguageSelector";
 
 const Footer = () => {
   const [openModal, setOpenModal] = useState<string | null>(null);
-  const { getPhoneNumber, getAddress, getCityName } = useLanguage();
+  const { getPhoneNumber, getAddress, getCityName, t } = useLanguage();
   const address = getAddress();
   const cityName = getCityName();
 
   const legalContent = {
     privacy: {
-      title: "Política de Privacidad",
+      title: t('legal.privacy_policy.title'),
       content: (
         <div className="space-y-4">
-          <h3 className="text-lg font-semibold">2.1 Responsable del Tratamiento de Datos</h3>
+          <h3 className="text-lg font-semibold">{t('legal.privacy_policy.section_2_1.title')}</h3>
           <div className="bg-muted/50 p-4 rounded-lg">
-            <p><strong>Nombre de la empresa:</strong> INFINIT Cars</p>
-            <p><strong>Dirección:</strong> {address.full}</p>
-            <p><strong>Correo electrónico:</strong> contact@infinit.com</p>
-            <p><strong>Teléfono:</strong> {getPhoneNumber()}</p>
+            <p><strong>{t('legal.privacy_policy.section_2_1.company_name')}:</strong> INFINIT Cars</p>
+            <p><strong>{t('legal.privacy_policy.section_2_1.address')}:</strong> {address.full}</p>
+            <p><strong>{t('legal.privacy_policy.section_2_1.email')}:</strong> contact@infinit.com</p>
+            <p><strong>{t('legal.privacy_policy.section_2_1.phone')}:</strong> {getPhoneNumber()}</p>
           </div>
-          
-          <h3 className="text-lg font-semibold">2.2 Datos que Recopilamos</h3>
-          <p>Podemos recopilar los siguientes datos personales:</p>
+
+          <h3 className="text-lg font-semibold">{t('legal.privacy_policy.section_2_2.title')}</h3>
+          <p>{t('legal.privacy_policy.section_2_2.intro')}</p>
           <ul className="list-disc pl-6 space-y-1">
-            <li>Nombre y apellidos</li>
-            <li>CIF/NIF o número de identificación fiscal</li>
-            <li>Correo electrónico y teléfono</li>
-            <li>Dirección postal</li>
-            <li>Datos de navegación mediante cookies (ver nuestra Política de Cookies)</li>
+            {t('legal.privacy_policy.section_2_2.items', { returnObjects: true }).map((item: string, index: number) => (
+              <li key={index}>{item}</li>
+            ))}
           </ul>
-          
-          <h3 className="text-lg font-semibold">2.3 Finalidad del Tratamiento</h3>
-          <p>Usamos sus datos para:</p>
+
+          <h3 className="text-lg font-semibold">{t('legal.privacy_policy.section_2_3.title')}</h3>
+          <p>{t('legal.privacy_policy.section_2_3.intro')}</p>
           <ul className="list-disc pl-6 space-y-1">
-            <li>Gestionar la compra y venta de vehículos</li>
-            <li>Gestionar garantías, seguros y financiación</li>
-            <li>Cumplir con obligaciones legales</li>
+            {t('legal.privacy_policy.section_2_3.items', { returnObjects: true }).map((item: string, index: number) => (
+              <li key={index}>{item}</li>
+            ))}
           </ul>
-          
-          <h3 className="text-lg font-semibold">2.4 Derechos del Usuario</h3>
-          <p>Tiene derecho a acceder, rectificar, suprimir o limitar el tratamiento de sus datos enviando un correo a: <strong>contact@infinit.com</strong></p>
+
+          <h3 className="text-lg font-semibold">{t('legal.privacy_policy.section_2_4.title')}</h3>
+          <p>{t('legal.privacy_policy.section_2_4.content')} <strong>contact@infinit.com</strong></p>
         </div>
       )
     },
     legal: {
-      title: "Aviso Legal",
+      title: t('legal.legal_notice.title'),
       content: (
         <div className="space-y-4">
-          <h3 className="text-lg font-semibold">1.1 Identificación del Titular</h3>
-          <p>En cumplimiento de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSICE), se informa que el presente sitio web infinit.com es propiedad de:</p>
+          <h3 className="text-lg font-semibold">{t('legal.legal_notice.section_1_1.title')}</h3>
+          <p>{t('legal.legal_notice.section_1_1.content')}</p>
           <div className="bg-muted/50 p-4 rounded-lg">
-            <p><strong>Titular:</strong> INFINIT Cars</p>
-            <p><strong>CIF/NIF:</strong> B44976579</p>
-            <p><strong>Domicilio social:</strong> {address.full}</p>
-            <p><strong>Teléfono:</strong> {getPhoneNumber()}</p>
-            <p><strong>Correo electrónico:</strong> contact@infinit.com</p>
+            <p><strong>{t('legal.legal_notice.section_1_1.owner')}:</strong> INFINIT Cars</p>
+            <p><strong>{t('legal.legal_notice.section_1_1.address')}:</strong> {address.full}</p>
+            <p><strong>{t('legal.legal_notice.section_1_1.phone')}:</strong> {getPhoneNumber()}</p>
+            <p><strong>{t('legal.legal_notice.section_1_1.email')}:</strong> contact@infinit.com</p>
           </div>
-          
-          <h3 className="text-lg font-semibold">1.2 Condiciones de Uso</h3>
-          <p>El acceso y uso del sitio web atribuyen la condición de usuario e implican la aceptación de las siguientes condiciones:</p>
+
+          <h3 className="text-lg font-semibold">{t('legal.legal_notice.section_1_2.title')}</h3>
+          <p>{t('legal.legal_notice.section_1_2.content')}</p>
           <ul className="list-disc pl-6 space-y-1">
-            <li>El usuario se compromete a utilizar el sitio de forma lícita y conforme a la normativa vigente.</li>
-            <li>La empresa puede modificar en cualquier momento los contenidos y condiciones del sitio sin previo aviso.</li>
-            <li>No se garantiza la disponibilidad permanente del sitio ni la ausencia de errores.</li>
+            {t('legal.legal_notice.section_1_2.items', { returnObjects: true }).map((item: string, index: number) => (
+              <li key={index}>{item}</li>
+            ))}
           </ul>
-          
-          <h3 className="text-lg font-semibold">1.3 Propiedad Intelectual e Industrial</h3>
-          <p>Todos los contenidos del sitio web (textos, imágenes, logotipos, diseños, etc.) son propiedad de INFINIT Cars o de terceros autorizados. Queda prohibida su reproducción, distribución o modificación sin autorización expresa.</p>
-          
-          <h3 className="text-lg font-semibold">1.4 Responsabilidad</h3>
-          <p>No nos hacemos responsables del uso indebido del sitio web ni de los enlaces de terceros que puedan aparecer en él.</p>
-          
-          <h3 className="text-lg font-semibold">1.5 Legislación y Jurisdicción</h3>
-          <p>Este aviso legal se rige por la legislación española. Para cualquier controversia, las partes se someten a los tribunales de {cityName}.</p>
+
+          <h3 className="text-lg font-semibold">{t('legal.legal_notice.section_1_3.title')}</h3>
+          <p>{t('legal.legal_notice.section_1_3.content')}</p>
+
+          <h3 className="text-lg font-semibold">{t('legal.legal_notice.section_1_4.title')}</h3>
+          <p>{t('legal.legal_notice.section_1_4.content')}</p>
+
+          <h3 className="text-lg font-semibold">{t('legal.legal_notice.section_1_5.title')}</h3>
+          <p>{t('legal.legal_notice.section_1_5.content_prefix')} {cityName}{t('legal.legal_notice.section_1_5.content_suffix')}</p>
         </div>
       )
     },
     terms: {
-      title: "Términos y Condiciones",
+      title: t('legal.terms_conditions.title'),
       content: (
         <div className="space-y-4">
-          <h3 className="text-lg font-semibold">4.1 Servicios Ofrecidos</h3>
-          <p>A través de este sitio web, ofrecemos:</p>
+          <h3 className="text-lg font-semibold">{t('legal.terms_conditions.section_4_1.title')}</h3>
+          <p>{t('legal.terms_conditions.section_4_1.intro')}</p>
           <ul className="list-disc pl-6 space-y-1">
-            <li>Compra y venta de vehículos.</li>
-            <li>Servicios de financiación y garantías.</li>
-            <li>Asesoramiento en trámites administrativos.</li>
+            {t('legal.terms_conditions.section_4_1.items', { returnObjects: true }).map((item: string, index: number) => (
+              <li key={index}>{item}</li>
+            ))}
           </ul>
-          
-          <h3 className="text-lg font-semibold">4.2 Condiciones de Uso</h3>
+
+          <h3 className="text-lg font-semibold">{t('legal.terms_conditions.section_4_2.title')}</h3>
           <ul className="list-disc pl-6 space-y-1">
-            <li>El usuario se compromete a utilizar el sitio de manera legal y responsable.</li>
-            <li>Nos reservamos el derecho a modificar contenido y condiciones sin previo aviso.</li>
-            <li>No garantizamos la exactitud o actualización permanente de la información.</li>
+            {t('legal.terms_conditions.section_4_2.items', { returnObjects: true }).map((item: string, index: number) => (
+              <li key={index}>{item}</li>
+            ))}
           </ul>
-          
-          <h3 className="text-lg font-semibold">4.3 Registro y Datos del Usuario</h3>
-          <p>Para acceder a ciertos servicios, el usuario puede necesitar registrarse y proporcionar datos personales. Estos datos se tratarán conforme a nuestra Política de Privacidad.</p>
-          
-          <h3 className="text-lg font-semibold">4.4 Precios y Pagos</h3>
-          <p>Los precios de los vehículos y servicios mostrados en la web pueden estar sujetos a cambios y no constituyen una oferta vinculante.</p>
-          
-          <h3 className="text-lg font-semibold">4.5 Derecho de Desistimiento</h3>
-          <p>El usuario podrá ejercer su derecho de desistimiento dentro de los 14 días posteriores a la compra, conforme a la normativa vigente.</p>
-          
-          <h3 className="text-lg font-semibold">4.6 Legislación Aplicable y Jurisdicción</h3>
-          <p>Estos términos se rigen por la legislación española. Cualquier disputa será resuelta en los tribunales de {cityName}.</p>
+
+          <h3 className="text-lg font-semibold">{t('legal.terms_conditions.section_4_3.title')}</h3>
+          <p>{t('legal.terms_conditions.section_4_3.content')}</p>
+
+          <h3 className="text-lg font-semibold">{t('legal.terms_conditions.section_4_4.title')}</h3>
+          <p>{t('legal.terms_conditions.section_4_4.content')}</p>
+
+          <h3 className="text-lg font-semibold">{t('legal.terms_conditions.section_4_5.title')}</h3>
+          <p>{t('legal.terms_conditions.section_4_5.content')}</p>
+
+          <h3 className="text-lg font-semibold">{t('legal.terms_conditions.section_4_6.title')}</h3>
+          <p>{t('legal.terms_conditions.section_4_6.content_prefix')} {cityName}{t('legal.terms_conditions.section_4_6.content_suffix')}</p>
         </div>
       )
     },
     cookies: {
-      title: "Política de Cookies",
+      title: t('legal.cookies.title'),
       content: (
         <div className="space-y-4">
-          <h3 className="text-lg font-semibold">3.1 ¿Qué son las cookies?</h3>
-          <p>Las cookies son archivos que se almacenan en su dispositivo cuando visita nuestro sitio web. Nos permiten mejorar su experiencia y ofrecer publicidad relevante.</p>
-          
-          <h3 className="text-lg font-semibold">3.2 Tipos de cookies que usamos</h3>
+          <h3 className="text-lg font-semibold">{t('legal.cookies.section_3_1.title')}</h3>
+          <p>{t('legal.cookies.section_3_1.content')}</p>
+
+          <h3 className="text-lg font-semibold">{t('legal.cookies.section_3_2.title')}</h3>
           <ul className="list-disc pl-6 space-y-1">
-            <li><strong>Estrictamente necesarias:</strong> Permiten el funcionamiento del sitio web.</li>
-            <li><strong>De personalización:</strong> Recuerdan sus preferencias.</li>
-            <li><strong>Analíticas:</strong> Nos ayudan a mejorar el sitio.</li>
-            <li><strong>Publicitarias:</strong> Muestran anuncios adaptados a sus intereses.</li>
+            {t('legal.cookies.section_3_2.items', { returnObjects: true }).map((item: { type: string; description: string }, index: number) => (
+              <li key={index}><strong>{item.type}</strong> {item.description}</li>
+            ))}
           </ul>
-          
-          <h3 className="text-lg font-semibold">3.3 Gestión de cookies</h3>
-          <p>Puede aceptar, rechazar o configurar las cookies desde el banner de cookies o desde la configuración de su navegador.</p>
+
+          <h3 className="text-lg font-semibold">{t('legal.cookies.section_3_3.title')}</h3>
+          <p>{t('legal.cookies.section_3_3.content')}</p>
         </div>
       )
     }
@@ -155,14 +151,14 @@ const Footer = () => {
               <span className="text-xl font-bold">INFINIT Cars</span>
             </div>
             <p className="text-nav-muted mb-4">
-              Tu concesionario de confianza para vehículos premium de ocasión en {cityName}.
+              {t('footer.company_description')} {cityName}.
             </p>
             <LanguageSelector />
           </div>
 
           {/* Contact */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Contacto</h3>
+            <h3 className="text-lg font-semibold mb-4">{t('footer.contact_title')}</h3>
             <div className="space-y-3">
               <div className="flex items-center space-x-2">
                 <Phone size={16} className="text-primary" />
@@ -181,31 +177,31 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Servicios</h3>
+            <h3 className="text-lg font-semibold mb-4">{t('footer.services_title')}</h3>
             <ul className="space-y-2 text-nav-muted">
-              <li>Venta de vehículos</li>
-              <li>Compra de vehículos</li>
-              <li>Financiación</li>
-              <li>Seguros</li>
-              <li>Garantía extendida</li>
+              <li>{t('footer.services_list.vehicle_sales')}</li>
+              <li>{t('footer.services_list.vehicle_purchase')}</li>
+              <li>{t('footer.services_list.financing')}</li>
+              <li>{t('footer.services_list.insurance')}</li>
+              <li>{t('footer.services_list.extended_warranty')}</li>
             </ul>
           </div>
 
           {/* Hours */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Horarios</h3>
+            <h3 className="text-lg font-semibold mb-4">{t('footer.hours_title')}</h3>
             <div className="space-y-2 text-nav-muted">
               <div className="flex items-center space-x-2">
                 <Clock size={16} className="text-primary" />
-                <span>Lun-Vie: 10:00-14:00, 16:00-19:00</span>
+                <span>{t('footer.hours.weekday')}</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Clock size={16} className="text-primary" />
-                <span>Sáb: Con cita previa</span>
+                <span>{t('footer.hours.saturday')}</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Clock size={16} className="text-primary" />
-                <span>Dom: Cerrado</span>
+                <span>{t('footer.hours.sunday')}</span>
               </div>
             </div>
           </div>
@@ -214,7 +210,7 @@ const Footer = () => {
         <div className="border-t border-border/10 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-nav-muted">
-              © 2025 INFINIT Cars. Powered by <a href="https://infinit.com/" target="_blank" rel="noopener noreferrer" className="underline">INFINIT</a>
+              {t('footer.copyright')} <a href="https://infinit.com/" target="_blank" rel="noopener noreferrer" className="underline">INFINIT</a>
             </p>
 
             {/* Legal Links */}
@@ -223,28 +219,28 @@ const Footer = () => {
                 onClick={() => setOpenModal('legal')}
                 className="hover:text-primary transition-colors"
               >
-                Aviso Legal
+                {t('footer.legal.legal_notice')}
               </button>
               <span>•</span>
               <button
                 onClick={() => setOpenModal('privacy')}
                 className="hover:text-primary transition-colors"
               >
-                Política de Privacidad
+                {t('footer.legal.privacy_policy')}
               </button>
               <span>•</span>
               <button
                 onClick={() => setOpenModal('terms')}
                 className="hover:text-primary transition-colors"
               >
-                Términos y Condiciones
+                {t('footer.legal.terms_conditions')}
               </button>
               <span>•</span>
               <button
                 onClick={() => setOpenModal('cookies')}
                 className="hover:text-primary transition-colors"
               >
-                Cookies
+                {t('footer.legal.cookies')}
               </button>
             </div>
           </div>
@@ -253,9 +249,9 @@ const Footer = () => {
 
       {/* Legal Modals */}
       {Object.entries(legalContent).map(([key, content]) => (
-        <Dialog 
+        <Dialog
           key={key}
-          open={openModal === key} 
+          open={openModal === key}
           onOpenChange={() => setOpenModal(null)}
         >
           <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">

@@ -11,8 +11,10 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Stock = () => {
+  const { t } = useLanguage();
   const [searchParams, setSearchParams] = useSearchParams();
   const initialSearch = searchParams.get('search') || '';
 
@@ -52,15 +54,15 @@ const Stock = () => {
   }, [initialSearch, updateFilter, setSearchParams, searchParams]);
 
   const sortOptions = [
-    { value: 'updated_desc', label: 'Más recientes' },
-    { value: 'updated_asc', label: 'Más antiguos' },
-    { value: 'price_asc', label: 'Precio: menor a mayor' },
-    { value: 'price_desc', label: 'Precio: mayor a menor' },
-    { value: 'year_desc', label: 'Año: más reciente' },
-    { value: 'year_asc', label: 'Año: más antiguo' },
-    { value: 'mileage_asc', label: 'Kilómetros: menor a mayor' },
-    { value: 'mileage_desc', label: 'Kilómetros: mayor a menor' },
-    { value: 'brand_asc', label: 'Marca: A-Z' },
+    { value: 'updated_desc', label: t('stock_page.sort_options.updated_desc') },
+    { value: 'updated_asc', label: t('stock_page.sort_options.updated_asc') },
+    { value: 'price_asc', label: t('stock_page.sort_options.price_asc') },
+    { value: 'price_desc', label: t('stock_page.sort_options.price_desc') },
+    { value: 'year_desc', label: t('stock_page.sort_options.year_desc') },
+    { value: 'year_asc', label: t('stock_page.sort_options.year_asc') },
+    { value: 'mileage_asc', label: t('stock_page.sort_options.mileage_asc') },
+    { value: 'mileage_desc', label: t('stock_page.sort_options.mileage_desc') },
+    { value: 'brand_asc', label: t('stock_page.sort_options.brand_asc') },
   ];
 
   if (isError) {
@@ -70,18 +72,18 @@ const Stock = () => {
         <main>
           <div className="container mx-auto px-4 py-16">
             <div className="text-center mb-8">
-              <h1 className="text-4xl font-bold mb-4">Nuestro Stock de Vehículos</h1>
+              <h1 className="text-4xl font-bold mb-4">{t('stock_page.title')}</h1>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                Explora toda nuestra selección de vehículos de calidad.
+                {t('stock_page.subtitle')}
               </p>
             </div>
           </div>
-          
+
           <div className="container mx-auto px-4 pb-16">
             <Alert className="max-w-md mx-auto">
               <AlertCircle className="h-4 w-4" />
               <AlertDescription>
-                No se pudieron cargar los vehículos en este momento. Por favor, inténtalo de nuevo más tarde.
+                {t('vehicle_gallery.error_loading')}
               </AlertDescription>
             </Alert>
           </div>
@@ -97,9 +99,9 @@ const Stock = () => {
       <main>
         <div className="container mx-auto px-4 py-16">
           <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold mb-4">Nuestro Stock de Vehículos</h1>
+            <h1 className="text-4xl font-bold mb-4">{t('stock_page.title')}</h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Explora toda nuestra selección de vehículos de calidad.
+              {t('stock_page.subtitle')}
             </p>
           </div>
         </div>
@@ -142,15 +144,15 @@ const Stock = () => {
                 {/* Results Count and Sort Controls */}
                 <div className="flex justify-between items-center mb-6">
                   <h2 className="text-sm text-muted-foreground">
-                    {filteredVehicles.length} Vehículo{filteredVehicles.length !== 1 ? 's' : ''}
-                    {(filters.searchTerm || filters.selectedBrand || filters.selectedBodyType || filters.selectedTransmission || filters.selectedFuel) && ' encontrado' + (filteredVehicles.length !== 1 ? 's' : '')}
+                    {filteredVehicles.length} {filteredVehicles.length !== 1 ? t('stock_page.results_count_plural') : t('stock_page.results_count')}
+                    {(filters.searchTerm || filters.selectedBrand || filters.selectedBodyType || filters.selectedTransmission || filters.selectedFuel) && ' ' + t('stock_page.found')}
                   </h2>
-                  
+
                   <div className="flex items-center gap-2">
-                    <span className="text-sm text-muted-foreground">Ordenar por:</span>
+                    <span className="text-sm text-muted-foreground">{t('stock_page.sort_by')}</span>
                     <Select value={filters.sortBy} onValueChange={(value) => updateFilter('sortBy', value)}>
                       <SelectTrigger className="w-48">
-                        <SelectValue placeholder="Selecciona una opción" />
+                        <SelectValue placeholder={t('stock_page.sort_placeholder')} />
                       </SelectTrigger>
                       <SelectContent>
                         {sortOptions.map((option) => (
@@ -183,13 +185,13 @@ const Stock = () => {
                   ) : (
                     <div className="col-span-full text-center py-12">
                       <p className="text-lg text-muted-foreground mb-4">
-                        No se encontraron vehículos con los filtros seleccionados
+                        {t('stock_page.no_results')}
                       </p>
-                      <button 
+                      <button
                         onClick={clearFilters}
                         className="text-primary hover:underline"
                       >
-                        Limpiar filtros y ver todos los vehículos
+                        {t('stock_page.clear_filters')}
                       </button>
                     </div>
                   )}

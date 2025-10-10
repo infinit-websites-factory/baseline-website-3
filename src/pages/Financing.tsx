@@ -22,8 +22,17 @@ import { CONTACT_FORM_API_URL, PROFILE_ID, fetchCars, transformApiCarToVehicle, 
 
 const Financing = () => {
   const { toast } = useToast();
-  const { getPhoneNumber, getAddress } = useLanguage();
+  const { language, getPhoneNumber, getAddress, t } = useLanguage();
   const address = getAddress();
+
+  const getFlag = () => {
+    switch (language) {
+      case "es": return "🇪🇸";
+      case "en": return "🇬🇧";
+      case "fr": return "🇫🇷";
+      default: return "🇪🇸";
+    }
+  };
   const [currentStep, setCurrentStep] = useState(1);
   const [openPrivacyModal, setOpenPrivacyModal] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -122,7 +131,7 @@ const Financing = () => {
     const newErrors: Record<string, string> = {};
 
     if (!formData.vehiculoId) {
-      newErrors.vehiculoId = "Campo obligatorio";
+      newErrors.vehiculoId = t('financing_page.form.required_field');
     }
 
     setErrors(newErrors);
@@ -133,13 +142,13 @@ const Financing = () => {
     const newErrors: Record<string, string> = {};
 
     if (!formData.entradaInicial) {
-      newErrors.entradaInicial = "Campo obligatorio";
+      newErrors.entradaInicial = t('financing_page.form.required_field');
     } else if (parseFloat(formData.entradaInicial) < 0) {
-      newErrors.entradaInicial = "La entrada debe ser positiva";
+      newErrors.entradaInicial = t('financing_page.form.positive_amount');
     }
 
     if (!formData.plazoPago) {
-      newErrors.plazoPago = "Campo obligatorio";
+      newErrors.plazoPago = t('financing_page.form.required_field');
     }
 
     setErrors(newErrors);
@@ -150,22 +159,22 @@ const Financing = () => {
     const newErrors: Record<string, string> = {};
 
     if (!formData.dniNie) {
-      newErrors.dniNie = "Campo obligatorio";
+      newErrors.dniNie = t('financing_page.form.required_field');
     }
     if (!formData.nombre) {
-      newErrors.nombre = "Campo obligatorio";
+      newErrors.nombre = t('financing_page.form.required_field');
     }
     if (!formData.apellidos) {
-      newErrors.apellidos = "Campo obligatorio";
+      newErrors.apellidos = t('financing_page.form.required_field');
     }
     if (!formData.fechaNacimiento) {
-      newErrors.fechaNacimiento = "Campo obligatorio";
+      newErrors.fechaNacimiento = t('financing_page.form.required_field');
     }
     if (!formData.estadoCivil) {
-      newErrors.estadoCivil = "Campo obligatorio";
+      newErrors.estadoCivil = t('financing_page.form.required_field');
     }
     if (!formData.nacionalidad) {
-      newErrors.nacionalidad = "Campo obligatorio";
+      newErrors.nacionalidad = t('financing_page.form.required_field');
     }
 
     setErrors(newErrors);
@@ -176,10 +185,10 @@ const Financing = () => {
     const newErrors: Record<string, string> = {};
 
     if (!formData.situacionEmpleo) {
-      newErrors.situacionEmpleo = "Campo obligatorio";
+      newErrors.situacionEmpleo = t('financing_page.form.required_field');
     }
     if (!formData.ingresoNetoMensual) {
-      newErrors.ingresoNetoMensual = "Campo obligatorio";
+      newErrors.ingresoNetoMensual = t('financing_page.form.required_field');
     }
 
     setErrors(newErrors);
@@ -212,22 +221,22 @@ const Financing = () => {
     const newErrors: Record<string, string> = {};
 
     if (!formData.email) {
-      newErrors.email = "Campo obligatorio";
+      newErrors.email = t('financing_page.form.required_field');
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "Email inválido";
+      newErrors.email = t('financing_page.form.invalid_email');
     }
 
     if (!formData.telefono) {
-      newErrors.telefono = "Campo obligatorio";
+      newErrors.telefono = t('financing_page.form.required_field');
     }
     if (!formData.direccion) {
-      newErrors.direccion = "Campo obligatorio";
+      newErrors.direccion = t('financing_page.form.required_field');
     }
     if (!formData.codigoPostal) {
-      newErrors.codigoPostal = "Campo obligatorio";
+      newErrors.codigoPostal = t('financing_page.form.required_field');
     }
     if (!formData.poblacion) {
-      newErrors.poblacion = "Campo obligatorio";
+      newErrors.poblacion = t('financing_page.form.required_field');
     }
 
     setErrors(newErrors);
@@ -235,7 +244,7 @@ const Financing = () => {
     if (!formData.acceptPrivacy) {
       toast({
         title: "Error",
-        description: "Debes aceptar la política de privacidad",
+        description: t('financing_page.errors.privacy_required'),
         variant: "destructive"
       });
       return;
@@ -250,12 +259,12 @@ const Financing = () => {
     try {
       const selectedVehicle = vehicles.find(v => v.id === formData.vehiculoId);
 
-      let vehicleInfo = 'No especificado';
+      let vehicleInfo = t('financing_page.form.not_specified');
       let priceInfo = '';
 
       if (selectedVehicle) {
         vehicleInfo = `${selectedVehicle.brand} ${selectedVehicle.model} (${selectedVehicle.year})`;
-        priceInfo = `Precio: ${selectedVehicle.price.toLocaleString('es-ES')}€`;
+        priceInfo = `Precio: £${selectedVehicle.price.toLocaleString('en-GB')}`;
       }
 
       const message = `SOLICITUD DE FINANCIACIÓN
@@ -265,7 +274,7 @@ ${vehicleInfo}
 ${priceInfo}
 
 === DETALLES DE FINANCIACIÓN ===
-Entrada inicial: ${formData.entradaInicial}€
+Entrada inicial: £${formData.entradaInicial}
 Plazo de pago: ${formData.plazoPago} meses
 
 === DATOS PERSONALES ===
@@ -274,7 +283,7 @@ Nombre: ${formData.nombre}
 Apellidos: ${formData.apellidos}
 Fecha de nacimiento: ${formData.fechaNacimiento}
 Estado civil: ${formData.estadoCivil}
-Número de hijos: ${formData.numeroHijos || 'No especificado'}
+Número de hijos: ${formData.numeroHijos || t('financing_page.form.not_specified')}
 Nacionalidad: ${formData.nacionalidad}
 
 === DATOS DE CONTACTO ===
@@ -286,10 +295,10 @@ Población: ${formData.poblacion}
 
 === SITUACIÓN FINANCIERA Y LABORAL ===
 Situación de empleo: ${formData.situacionEmpleo}
-Antigüedad en empleo: ${formData.antiguedadEmpleo || 'No especificado'}
-Empresa: ${formData.empresaTrabajo || 'No especificado'}
-Ingreso neto mensual: ${formData.ingresoNetoMensual}€
-Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No especificado'}€`;
+Antigüedad en empleo: ${formData.antiguedadEmpleo || t('financing_page.form.not_specified')}
+Empresa: ${formData.empresaTrabajo || t('financing_page.form.not_specified')}
+Ingreso neto mensual: £${formData.ingresoNetoMensual}
+Gastos hipoteca/alquiler mensual: £${formData.gastosHipotecaAlquiler || t('financing_page.form.not_specified')}`;
 
       const payload = {
         profile_id: PROFILE_ID,
@@ -317,7 +326,7 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
       console.error('Error submitting form:', error);
       toast({
         title: "Error",
-        description: "Hubo un problema al enviar el mensaje. Por favor, inténtalo de nuevo.",
+        description: t('financing_page.errors.submission_error'),
         variant: "destructive"
       });
     } finally {
@@ -338,10 +347,10 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
               <div className="lg:col-span-2 space-y-8">
                 <div className="space-y-4">
                   <h1 className="text-4xl md:text-5xl font-bold text-foreground">
-                    Financiación a tu medida
+                    {t('financing_page.hero.title')}
                   </h1>
                   <p className="text-xl text-muted-foreground leading-relaxed">
-                    Consigue el coche que deseas con las mejores condiciones de financiación del mercado.
+                    {t('financing_page.hero.subtitle')}
                   </p>
                 </div>
 
@@ -352,8 +361,8 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
                       <CheckCircle2 className="w-4 h-4 text-primary-foreground" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-lg text-foreground mb-1">Cuotas reducidas</h3>
-                      <p className="text-muted-foreground">Hasta 120 meses con tipos competitivos</p>
+                      <h3 className="font-bold text-lg text-foreground mb-1">{t('financing_page.benefits.reduced_payments.title')}</h3>
+                      <p className="text-muted-foreground">{t('financing_page.benefits.reduced_payments.description')}</p>
                     </div>
                   </div>
 
@@ -362,8 +371,8 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
                       <CheckCircle2 className="w-4 h-4 text-primary-foreground" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-lg text-foreground mb-1">Aprobación rápida</h3>
-                      <p className="text-muted-foreground">Respuesta en menos de 24 horas</p>
+                      <h3 className="font-bold text-lg text-foreground mb-1">{t('financing_page.benefits.fast_approval.title')}</h3>
+                      <p className="text-muted-foreground">{t('financing_page.benefits.fast_approval.description')}</p>
                     </div>
                   </div>
 
@@ -372,8 +381,8 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
                       <CheckCircle2 className="w-4 h-4 text-primary-foreground" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-lg text-foreground mb-1">Sin sorpresas</h3>
-                      <p className="text-muted-foreground">Condiciones claras y transparentes</p>
+                      <h3 className="font-bold text-lg text-foreground mb-1">{t('financing_page.benefits.no_surprises.title')}</h3>
+                      <p className="text-muted-foreground">{t('financing_page.benefits.no_surprises.description')}</p>
                     </div>
                   </div>
                 </div>
@@ -385,45 +394,45 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
                   <CardHeader className="space-y-4">
                     {currentStep === 1 && (
                       <div className="space-y-2">
-                        <CardTitle className="text-2xl text-primary">Solicita tu financiación</CardTitle>
+                        <CardTitle className="text-2xl text-primary">{t('financing_page.form.step1.title')}</CardTitle>
                         <p className="text-sm text-muted-foreground">
-                          Selecciona el vehículo que deseas financiar
+                          {t('financing_page.form.step1.subtitle')}
                         </p>
                       </div>
                     )}
 
                     {currentStep === 2 && (
                       <div className="space-y-2">
-                        <CardTitle className="text-2xl text-primary">Detalles de financiación</CardTitle>
+                        <CardTitle className="text-2xl text-primary">{t('financing_page.form.step2.title')}</CardTitle>
                         <p className="text-sm text-muted-foreground">
-                          Cuéntanos sobre tu plan de pago
+                          {t('financing_page.form.step2.subtitle')}
                         </p>
                       </div>
                     )}
 
                     {currentStep === 3 && (
                       <div className="space-y-2">
-                        <CardTitle className="text-2xl text-primary">Datos personales</CardTitle>
+                        <CardTitle className="text-2xl text-primary">{t('financing_page.form.step3.title')}</CardTitle>
                         <p className="text-sm text-muted-foreground">
-                          Completa tu información personal
+                          {t('financing_page.form.step3.subtitle')}
                         </p>
                       </div>
                     )}
 
                     {currentStep === 4 && (
                       <div className="space-y-2">
-                        <CardTitle className="text-2xl text-primary">Situación laboral y financiera</CardTitle>
+                        <CardTitle className="text-2xl text-primary">{t('financing_page.form.step4.title')}</CardTitle>
                         <p className="text-sm text-muted-foreground">
-                          Información sobre tu situación económica
+                          {t('financing_page.form.step4.subtitle')}
                         </p>
                       </div>
                     )}
 
                     {currentStep === 5 && (
                       <div className="space-y-2">
-                        <CardTitle className="text-2xl text-primary">Datos de contacto</CardTitle>
+                        <CardTitle className="text-2xl text-primary">{t('financing_page.form.step5.title')}</CardTitle>
                         <p className="text-sm text-muted-foreground">
-                          Indícanos cómo contactarte
+                          {t('financing_page.form.step5.subtitle')}
                         </p>
                       </div>
                     )}
@@ -437,10 +446,10 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
                       <form onSubmit={handleNext} className="space-y-6">
                         <div className="space-y-6 animate-fade-in">
                           <div className="space-y-2">
-                            <Label htmlFor="vehiculoId" className="text-gray-600">Selecciona un vehículo *</Label>
+                            <Label htmlFor="vehiculoId" className="text-gray-600">{t('financing_page.form.vehicle_select')} *</Label>
                             {loadingVehicles ? (
                               <div className="text-center py-8 text-muted-foreground">
-                                Cargando vehículos disponibles...
+                                {t('financing_page.form.loading_vehicles')}
                               </div>
                             ) : (
                               <Select
@@ -452,12 +461,12 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
                                 required
                               >
                                 <SelectTrigger className={`bg-gray-50 data-[placeholder]:text-muted-foreground ${errors.vehiculoId ? "border-red-500" : "border-gray-200"}`}>
-                                  <SelectValue placeholder="Selecciona el vehículo que te interesa" />
+                                  <SelectValue placeholder={t('financing_page.form.vehicle_select_placeholder')} />
                                 </SelectTrigger>
                                 <SelectContent className="max-h-[300px]">
                                   {vehicles.map((vehicle) => (
                                     <SelectItem key={vehicle.id} value={vehicle.id}>
-                                      {vehicle.brand} {vehicle.model} ({vehicle.year}) - {vehicle.price.toLocaleString('es-ES')}€
+                                      {vehicle.brand} {vehicle.model} ({vehicle.year}) - £{vehicle.price.toLocaleString('en-GB')}
                                     </SelectItem>
                                   ))}
                                 </SelectContent>
@@ -478,10 +487,10 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
                                       {vehicle.brand} {vehicle.model} ({vehicle.year})
                                     </h4>
                                     <div className="grid grid-cols-2 gap-2 text-sm text-muted-foreground">
-                                      <div>Precio: <span className="font-semibold text-foreground">{vehicle.price.toLocaleString('es-ES')}€</span></div>
-                                      <div>Kilometraje: {vehicle.mileage.toLocaleString('es-ES')} km</div>
-                                      <div>Combustible: {vehicle.fuel}</div>
-                                      <div>Transmisión: {vehicle.transmission}</div>
+                                      <div>{t('financing_page.form.price')}: <span className="font-semibold text-foreground">£{vehicle.price.toLocaleString('en-GB')}</span></div>
+                                      <div>{t('stock_page.results_count')}: {vehicle.mileage.toLocaleString('en-GB')}</div>
+                                      <div>{t('sell_page.form.fuel')}: {vehicle.fuel}</div>
+                                      <div>{t('sell_page.form.transmission')}: {vehicle.transmission}</div>
                                     </div>
                                   </div>
                                 );
@@ -495,7 +504,7 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
                             size="lg"
                             disabled={loadingVehicles}
                           >
-                            Continuar
+                            {t('financing_page.form.continue')}
                           </Button>
                         </div>
                       </form>
@@ -516,7 +525,7 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
                               <div className="p-3 bg-orange-50 rounded-lg border border-orange-200">
                                 <div className="flex justify-between items-center text-sm">
                                   <span className="text-muted-foreground">
-                                    {selectedVehicle.brand} {selectedVehicle.model} · {vehiclePrice.toLocaleString('es-ES')}€
+                                    {selectedVehicle.brand} {selectedVehicle.model} · £{vehiclePrice.toLocaleString('en-GB')}
                                   </span>
                                 </div>
                               </div>
@@ -536,9 +545,9 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
                               <div className="space-y-4">
                                 <div className="space-y-3">
                                   <div className="flex justify-between items-center">
-                                    <Label className="text-gray-600">Entrada inicial (€) *</Label>
+                                    <Label className="text-gray-600">{t('financing_page.form.down_payment')} *</Label>
                                     <span className="text-lg font-semibold text-primary">
-                                      {downPayment.toLocaleString('es-ES')}€
+                                      £{downPayment.toLocaleString('en-GB')}
                                     </span>
                                   </div>
                                   <Slider
@@ -553,8 +562,8 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
                                     className="w-full"
                                   />
                                   <div className="flex justify-between text-xs text-muted-foreground">
-                                    <span>0€</span>
-                                    <span>{maxDownPayment.toLocaleString('es-ES')}€</span>
+                                    <span>£0</span>
+                                    <span>£{maxDownPayment.toLocaleString('en-GB')}</span>
                                   </div>
                                 </div>
 
@@ -574,10 +583,10 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
 
                               return (
                                 <div className="space-y-2">
-                                  <Label className="text-gray-600">Importe a financiar</Label>
+                                  <Label className="text-gray-600">{t('financing_page.form.amount_to_finance')}</Label>
                                   <div className="h-10 px-3 py-2 bg-gray-50 border border-gray-200 rounded-md flex items-center">
                                     <span className="font-bold text-foreground">
-                                      {loanAmount.toLocaleString('es-ES')}€
+                                      £{loanAmount.toLocaleString('en-GB')}
                                     </span>
                                   </div>
                                 </div>
@@ -585,7 +594,7 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
                             })()}
 
                             <div className="space-y-2">
-                              <Label htmlFor="plazoPago" className="text-gray-600">Plazo de pago (meses) *</Label>
+                              <Label htmlFor="plazoPago" className="text-gray-600">{t('financing_page.form.payment_term')} *</Label>
                               <Select
                                 value={formData.plazoPago}
                                 onValueChange={(value) => {
@@ -595,11 +604,11 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
                                 required
                               >
                                 <SelectTrigger className={`bg-gray-50 data-[placeholder]:text-muted-foreground ${errors.plazoPago ? "border-red-500" : "border-gray-200"}`}>
-                                  <SelectValue placeholder="Selecciona el plazo" />
+                                  <SelectValue placeholder={t('financing_page.form.payment_term_placeholder')} />
                                 </SelectTrigger>
                                 <SelectContent>
                                   {plazoPagoOptions.map((plazo) => (
-                                    <SelectItem key={plazo} value={plazo}>{plazo} meses</SelectItem>
+                                    <SelectItem key={plazo} value={plazo}>{plazo} {t('financing_page.form.payment_term_months')}</SelectItem>
                                   ))}
                                 </SelectContent>
                               </Select>
@@ -612,7 +621,7 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
                             className="w-full"
                             size="lg"
                           >
-                            Continuar
+                            {t('financing_page.form.continue')}
                           </Button>
                         </div>
                       </form>
@@ -635,11 +644,11 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
                               <div className="p-3 bg-orange-50 rounded-lg border border-orange-200">
                                 <div className="flex justify-between items-center text-sm">
                                   <span className="text-muted-foreground">
-                                    {selectedVehicle.brand} {selectedVehicle.model} · {vehiclePrice.toLocaleString('es-ES')}€
+                                    {selectedVehicle.brand} {selectedVehicle.model} · £{vehiclePrice.toLocaleString('en-GB')}
                                   </span>
                                   {formData.entradaInicial && (
                                     <span className="font-semibold text-primary">
-                                      Financiación: {loanAmount.toLocaleString('es-ES')}€
+                                      {t('financing_page.form.financing')}: £{loanAmount.toLocaleString('en-GB')}
                                     </span>
                                   )}
                                 </div>
@@ -648,10 +657,10 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
                           })()}
 
                           <div className="space-y-2">
-                            <Label htmlFor="dniNie" className="text-gray-600">DNI/NIE *</Label>
+                            <Label htmlFor="dniNie" className="text-gray-600">{t('financing_page.form.dni_nie')} *</Label>
                             <Input
                               id="dniNie"
-                              placeholder="12345678A"
+                              placeholder={t('financing_page.form.dni_nie_placeholder')}
                               value={formData.dniNie}
                               onChange={(e) => {
                                 handleInputChange(e);
@@ -665,10 +674,10 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
 
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div className="space-y-2">
-                              <Label htmlFor="nombre" className="text-gray-600">Nombre *</Label>
+                              <Label htmlFor="nombre" className="text-gray-600">{t('financing_page.form.first_name')} *</Label>
                               <Input
                                 id="nombre"
-                                placeholder="Tu nombre"
+                                placeholder={t('financing_page.form.first_name_placeholder')}
                                 value={formData.nombre}
                                 onChange={(e) => {
                                   handleInputChange(e);
@@ -680,10 +689,10 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
                               {errors.nombre && <p className="text-sm text-red-500">{errors.nombre}</p>}
                             </div>
                             <div className="space-y-2">
-                              <Label htmlFor="apellidos" className="text-gray-600">Apellidos *</Label>
+                              <Label htmlFor="apellidos" className="text-gray-600">{t('financing_page.form.last_name')} *</Label>
                               <Input
                                 id="apellidos"
-                                placeholder="Tus apellidos"
+                                placeholder={t('financing_page.form.last_name_placeholder')}
                                 value={formData.apellidos}
                                 onChange={(e) => {
                                   handleInputChange(e);
@@ -698,7 +707,7 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
 
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div className="space-y-2">
-                              <Label htmlFor="fechaNacimiento" className="text-gray-600">Fecha de nacimiento *</Label>
+                              <Label htmlFor="fechaNacimiento" className="text-gray-600">{t('financing_page.form.date_of_birth')} *</Label>
                               <Input
                                 id="fechaNacimiento"
                                 type="date"
@@ -713,7 +722,7 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
                               {errors.fechaNacimiento && <p className="text-sm text-red-500">{errors.fechaNacimiento}</p>}
                             </div>
                             <div className="space-y-2">
-                              <Label htmlFor="estadoCivil" className="text-gray-600">Estado civil *</Label>
+                              <Label htmlFor="estadoCivil" className="text-gray-600">{t('financing_page.form.marital_status')} *</Label>
                               <Select
                                 value={formData.estadoCivil}
                                 onValueChange={(value) => {
@@ -723,15 +732,15 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
                                 required
                               >
                                 <SelectTrigger className={`bg-gray-50 data-[placeholder]:text-muted-foreground ${errors.estadoCivil ? "border-red-500" : "border-gray-200"}`}>
-                                  <SelectValue placeholder="Selecciona estado civil" />
+                                  <SelectValue placeholder={t('financing_page.form.marital_status_placeholder')} />
                                 </SelectTrigger>
                                 <SelectContent>
-                                  <SelectItem value="soltero">Soltero/a</SelectItem>
-                                  <SelectItem value="casado">Casado/a</SelectItem>
-                                  <SelectItem value="divorciado">Divorciado/a</SelectItem>
-                                  <SelectItem value="viudo">Viudo/a</SelectItem>
-                                  <SelectItem value="separado">Separado/a</SelectItem>
-                                  <SelectItem value="otro">Otro</SelectItem>
+                                  <SelectItem value="soltero">{t('financing_page.form.marital_status_options.single')}</SelectItem>
+                                  <SelectItem value="casado">{t('financing_page.form.marital_status_options.married')}</SelectItem>
+                                  <SelectItem value="divorciado">{t('financing_page.form.marital_status_options.divorced')}</SelectItem>
+                                  <SelectItem value="viudo">{t('financing_page.form.marital_status_options.widowed')}</SelectItem>
+                                  <SelectItem value="separado">{t('financing_page.form.marital_status_options.separated')}</SelectItem>
+                                  <SelectItem value="otro">{t('financing_page.form.marital_status_options.other')}</SelectItem>
                                 </SelectContent>
                               </Select>
                               {errors.estadoCivil && <p className="text-sm text-red-500">{errors.estadoCivil}</p>}
@@ -740,7 +749,7 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
 
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div className="space-y-2">
-                              <Label htmlFor="numeroHijos" className="text-gray-600">Número de hijos</Label>
+                              <Label htmlFor="numeroHijos" className="text-gray-600">{t('financing_page.form.number_of_children')}</Label>
                               <Input
                                 id="numeroHijos"
                                 type="number"
@@ -752,10 +761,10 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
                               />
                             </div>
                             <div className="space-y-2">
-                              <Label htmlFor="nacionalidad" className="text-gray-600">Nacionalidad *</Label>
+                              <Label htmlFor="nacionalidad" className="text-gray-600">{t('financing_page.form.nationality')} *</Label>
                               <Input
                                 id="nacionalidad"
-                                placeholder="Española"
+                                placeholder={t('financing_page.form.nationality_placeholder')}
                                 value={formData.nacionalidad}
                                 onChange={(e) => {
                                   handleInputChange(e);
@@ -773,7 +782,7 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
                             className="w-full"
                             size="lg"
                           >
-                            Continuar
+                            {t('financing_page.form.continue')}
                           </Button>
                         </div>
                       </form>
@@ -796,11 +805,11 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
                               <div className="p-3 bg-orange-50 rounded-lg border border-orange-200">
                                 <div className="flex justify-between items-center text-sm">
                                   <span className="text-muted-foreground">
-                                    {selectedVehicle.brand} {selectedVehicle.model} · {vehiclePrice.toLocaleString('es-ES')}€
+                                    {selectedVehicle.brand} {selectedVehicle.model} · £{vehiclePrice.toLocaleString('en-GB')}
                                   </span>
                                   {formData.entradaInicial && (
                                     <span className="font-semibold text-primary">
-                                      Financiación: {loanAmount.toLocaleString('es-ES')}€
+                                      {t('financing_page.form.financing')}: £{loanAmount.toLocaleString('en-GB')}
                                     </span>
                                   )}
                                 </div>
@@ -809,7 +818,7 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
                           })()}
 
                           <div className="space-y-2">
-                            <Label htmlFor="situacionEmpleo" className="text-gray-600">Situación de empleo *</Label>
+                            <Label htmlFor="situacionEmpleo" className="text-gray-600">{t('financing_page.form.employment_status')} *</Label>
                             <Select
                               value={formData.situacionEmpleo}
                               onValueChange={(value) => {
@@ -819,16 +828,16 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
                               required
                             >
                               <SelectTrigger className={`bg-gray-50 data-[placeholder]:text-muted-foreground ${errors.situacionEmpleo ? "border-red-500" : "border-gray-200"}`}>
-                                <SelectValue placeholder="Selecciona situación de empleo" />
+                                <SelectValue placeholder={t('financing_page.form.employment_status_placeholder')} />
                               </SelectTrigger>
                               <SelectContent>
-                                <SelectItem value="empleado-cuenta-ajena">Empleado por cuenta ajena</SelectItem>
-                                <SelectItem value="autonomo">Autónomo</SelectItem>
-                                <SelectItem value="funcionario">Funcionario</SelectItem>
-                                <SelectItem value="jubilado">Jubilado</SelectItem>
-                                <SelectItem value="desempleado">Desempleado</SelectItem>
-                                <SelectItem value="estudiante">Estudiante</SelectItem>
-                                <SelectItem value="otro">Otro</SelectItem>
+                                <SelectItem value="empleado-cuenta-ajena">{t('financing_page.form.employment_status_options.employee')}</SelectItem>
+                                <SelectItem value="autonomo">{t('financing_page.form.employment_status_options.self_employed')}</SelectItem>
+                                <SelectItem value="funcionario">{t('financing_page.form.employment_status_options.civil_servant')}</SelectItem>
+                                <SelectItem value="jubilado">{t('financing_page.form.employment_status_options.retired')}</SelectItem>
+                                <SelectItem value="desempleado">{t('financing_page.form.employment_status_options.unemployed')}</SelectItem>
+                                <SelectItem value="estudiante">{t('financing_page.form.employment_status_options.student')}</SelectItem>
+                                <SelectItem value="otro">{t('financing_page.form.employment_status_options.other')}</SelectItem>
                               </SelectContent>
                             </Select>
                             {errors.situacionEmpleo && <p className="text-sm text-red-500">{errors.situacionEmpleo}</p>}
@@ -836,7 +845,7 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
 
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div className="space-y-2">
-                              <Label htmlFor="antiguedadEmpleo" className="text-gray-600">Antigüedad en empleo (años)</Label>
+                              <Label htmlFor="antiguedadEmpleo" className="text-gray-600">{t('financing_page.form.employment_duration')}</Label>
                               <Input
                                 id="antiguedadEmpleo"
                                 type="number"
@@ -849,10 +858,10 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
                               />
                             </div>
                             <div className="space-y-2">
-                              <Label htmlFor="empresaTrabajo" className="text-gray-600">Empresa en la que trabajas</Label>
+                              <Label htmlFor="empresaTrabajo" className="text-gray-600">{t('financing_page.form.company_name')}</Label>
                               <Input
                                 id="empresaTrabajo"
-                                placeholder="Nombre de la empresa"
+                                placeholder={t('financing_page.form.company_name_placeholder')}
                                 value={formData.empresaTrabajo}
                                 onChange={handleInputChange}
                                 className="bg-gray-50 border-gray-200"
@@ -862,11 +871,11 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
 
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div className="space-y-2">
-                              <Label htmlFor="ingresoNetoMensual" className="text-gray-600">Ingreso neto mensual (€) *</Label>
+                              <Label htmlFor="ingresoNetoMensual" className="text-gray-600">{t('financing_page.form.monthly_net_income')} *</Label>
                               <Input
                                 id="ingresoNetoMensual"
                                 type="number"
-                                placeholder="2000"
+                                placeholder={t('financing_page.form.monthly_net_income_placeholder')}
                                 value={formData.ingresoNetoMensual}
                                 onChange={(e) => {
                                   handleInputChange(e);
@@ -880,11 +889,11 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
                               {errors.ingresoNetoMensual && <p className="text-sm text-red-500">{errors.ingresoNetoMensual}</p>}
                             </div>
                             <div className="space-y-2">
-                              <Label htmlFor="gastosHipotecaAlquiler" className="text-gray-600">Gastos hipoteca/alquiler mensual (€)</Label>
+                              <Label htmlFor="gastosHipotecaAlquiler" className="text-gray-600">{t('financing_page.form.mortgage_rent_expenses')}</Label>
                               <Input
                                 id="gastosHipotecaAlquiler"
                                 type="number"
-                                placeholder="800"
+                                placeholder={t('financing_page.form.mortgage_rent_expenses_placeholder')}
                                 value={formData.gastosHipotecaAlquiler}
                                 onChange={handleInputChange}
                                 min="0"
@@ -899,7 +908,7 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
                             className="w-full"
                             size="lg"
                           >
-                            Continuar
+                            {t('financing_page.form.continue')}
                           </Button>
                         </div>
                       </form>
@@ -922,11 +931,11 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
                               <div className="p-3 bg-orange-50 rounded-lg border border-orange-200">
                                 <div className="flex justify-between items-center text-sm">
                                   <span className="text-muted-foreground">
-                                    {selectedVehicle.brand} {selectedVehicle.model} · {vehiclePrice.toLocaleString('es-ES')}€
+                                    {selectedVehicle.brand} {selectedVehicle.model} · £{vehiclePrice.toLocaleString('en-GB')}
                                   </span>
                                   {formData.entradaInicial && (
                                     <span className="font-semibold text-primary">
-                                      Financiación: {loanAmount.toLocaleString('es-ES')}€
+                                      {t('financing_page.form.financing')}: £{loanAmount.toLocaleString('en-GB')}
                                     </span>
                                   )}
                                 </div>
@@ -936,11 +945,11 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
 
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div className="space-y-2">
-                              <Label htmlFor="email" className="text-gray-600">Email *</Label>
+                              <Label htmlFor="email" className="text-gray-600">{t('financing_page.form.email')} *</Label>
                               <Input
                                 id="email"
                                 type="email"
-                                placeholder="tu@email.com"
+                                placeholder={t('financing_page.form.email_placeholder')}
                                 value={formData.email}
                                 onChange={(e) => {
                                   handleInputChange(e);
@@ -952,15 +961,15 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
                               {errors.email && <p className="text-sm text-red-500">{errors.email}</p>}
                             </div>
                             <div className="space-y-2">
-                              <Label htmlFor="telefono" className="text-gray-600">Teléfono *</Label>
+                              <Label htmlFor="telefono" className="text-gray-600">{t('financing_page.form.phone')} *</Label>
                               <div className="flex">
                                 <div className="flex items-center px-3 bg-gray-50 border border-r-0 border-gray-200 rounded-l-md">
-                                  <span className="text-sm text-red-600 font-semibold">🇪🇸</span>
+                                  <span className="text-sm text-red-600 font-semibold">{getFlag()}</span>
                                 </div>
                                 <Input
                                   id="telefono"
                                   type="tel"
-                                  placeholder="600 000 000"
+                                  placeholder={t('financing_page.form.phone_placeholder')}
                                   value={formData.telefono}
                                   onChange={(e) => {
                                     handleInputChange(e);
@@ -975,10 +984,10 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
                           </div>
 
                           <div className="space-y-2">
-                            <Label htmlFor="direccion" className="text-gray-600">Dirección *</Label>
+                            <Label htmlFor="direccion" className="text-gray-600">{t('financing_page.form.address')} *</Label>
                             <Input
                               id="direccion"
-                              placeholder="Calle, número, piso, puerta"
+                              placeholder={t('financing_page.form.address_placeholder')}
                               value={formData.direccion}
                               onChange={(e) => {
                                 handleInputChange(e);
@@ -992,10 +1001,10 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
 
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div className="space-y-2">
-                              <Label htmlFor="codigoPostal" className="text-gray-600">Código postal *</Label>
+                              <Label htmlFor="codigoPostal" className="text-gray-600">{t('financing_page.form.postal_code')} *</Label>
                               <Input
                                 id="codigoPostal"
-                                placeholder="28001"
+                                placeholder={t('financing_page.form.postal_code_placeholder')}
                                 value={formData.codigoPostal}
                                 onChange={(e) => {
                                   handleInputChange(e);
@@ -1007,10 +1016,10 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
                               {errors.codigoPostal && <p className="text-sm text-red-500">{errors.codigoPostal}</p>}
                             </div>
                             <div className="space-y-2">
-                              <Label htmlFor="poblacion" className="text-gray-600">Población *</Label>
+                              <Label htmlFor="poblacion" className="text-gray-600">{t('financing_page.form.city')} *</Label>
                               <Input
                                 id="poblacion"
-                                placeholder="Madrid"
+                                placeholder={t('financing_page.form.city_placeholder')}
                                 value={formData.poblacion}
                                 onChange={(e) => {
                                   handleInputChange(e);
@@ -1033,13 +1042,13 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
                                 }
                               />
                               <Label htmlFor="acceptPrivacy" className="text-sm text-gray-600">
-                                Acepto las comunicaciones comerciales y de ofertas. Acepto la{" "}
+                                {t('financing_page.form.accept_privacy')}{" "}
                                 <button
                                   type="button"
                                   onClick={() => setOpenPrivacyModal(true)}
                                   className="text-primary hover:text-primary/80 underline"
                                 >
-                                  política de privacidad
+                                  {t('financing_page.form.privacy_policy')}
                                 </button>.
                               </Label>
                             </div>
@@ -1052,7 +1061,7 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
                               size="lg"
                               disabled={isSubmitting}
                             >
-                              {isSubmitting ? "Enviando..." : "Validar"}
+                              {isSubmitting ? t('financing_page.form.validating') : t('financing_page.form.validate')}
                             </Button>
                             <button
                               type="button"
@@ -1084,7 +1093,7 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
                               }}
                               className="w-full text-center text-sm text-muted-foreground hover:text-foreground underline"
                             >
-                              Cancelar
+                              {t('financing_page.form.cancel')}
                             </button>
                           </div>
                         </div>
@@ -1101,12 +1110,10 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
 
                           <div className="space-y-3">
                             <h3 className="text-2xl font-bold text-foreground">
-                              ¡Solicitud enviada con éxito!
+                              {t('financing_page.success.title')}
                             </h3>
                             <p className="text-muted-foreground max-w-md mx-auto">
-                              Hemos recibido tu solicitud de financiación. Nuestro equipo la está revisando
-                              y te contactaremos en las próximas <span className="font-semibold text-foreground">24 horas</span> con
-                              una propuesta personalizada.
+                              {t('financing_page.success.description')} <span className="font-semibold text-foreground">{t('financing_page.success.hours')}</span> {t('financing_page.success.description_suffix')}
                             </p>
                           </div>
 
@@ -1141,7 +1148,7 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
                             variant="outline"
                             size="lg"
                           >
-                            Volver al inicio
+                            {t('financing_page.success.back_home')}
                           </Button>
                         </div>
                       </div>
@@ -1162,38 +1169,36 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler || 'No espec
       <Dialog open={openPrivacyModal} onOpenChange={setOpenPrivacyModal}>
         <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle className="text-xl font-bold">Política de Privacidad</DialogTitle>
+            <DialogTitle className="text-xl font-bold">{t('legal.privacy_policy.title')}</DialogTitle>
           </DialogHeader>
           <div className="mt-4 text-sm text-muted-foreground">
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold">2.1 Responsable del Tratamiento de Datos</h3>
+              <h3 className="text-lg font-semibold">{t('legal.privacy_policy.section_2_1.title')}</h3>
               <div className="bg-muted/50 p-4 rounded-lg">
-                <p><strong>Nombre de la empresa:</strong> INFINIT Cars</p>
-                <p><strong>Dirección:</strong> {address.full}</p>
-                <p><strong>Correo electrónico:</strong> contact@infinit.com</p>
-                <p><strong>Teléfono:</strong> {getPhoneNumber()}</p>
+                <p><strong>{t('legal.privacy_policy.section_2_1.company_name')}:</strong> INFINIT Cars</p>
+                <p><strong>{t('legal.privacy_policy.section_2_1.address')}:</strong> {address.full}</p>
+                <p><strong>{t('legal.privacy_policy.section_2_1.email')}:</strong> contact@infinit.com</p>
+                <p><strong>{t('legal.privacy_policy.section_2_1.phone')}:</strong> {getPhoneNumber()}</p>
               </div>
 
-              <h3 className="text-lg font-semibold">2.2 Datos que Recopilamos</h3>
-              <p>Podemos recopilar los siguientes datos personales:</p>
+              <h3 className="text-lg font-semibold">{t('legal.privacy_policy.section_2_2.title')}</h3>
+              <p>{t('legal.privacy_policy.section_2_2.intro')}</p>
               <ul className="list-disc pl-6 space-y-1">
-                <li>Nombre y apellidos</li>
-                <li>CIF/NIF o número de identificación fiscal</li>
-                <li>Correo electrónico y teléfono</li>
-                <li>Dirección postal</li>
-                <li>Datos de navegación mediante cookies (ver nuestra Política de Cookies)</li>
+                {t('legal.privacy_policy.section_2_2.items', { returnObjects: true }).map((item: string, index: number) => (
+                  <li key={index}>{item}</li>
+                ))}
               </ul>
 
-              <h3 className="text-lg font-semibold">2.3 Finalidad del Tratamiento</h3>
-              <p>Usamos sus datos para:</p>
+              <h3 className="text-lg font-semibold">{t('legal.privacy_policy.section_2_3.title')}</h3>
+              <p>{t('legal.privacy_policy.section_2_3.intro')}</p>
               <ul className="list-disc pl-6 space-y-1">
-                <li>Gestionar la compra y venta de vehículos</li>
-                <li>Gestionar garantías, seguros y financiación</li>
-                <li>Cumplir con obligaciones legales</li>
+                {t('legal.privacy_policy.section_2_3.items', { returnObjects: true }).map((item: string, index: number) => (
+                  <li key={index}>{item}</li>
+                ))}
               </ul>
 
-              <h3 className="text-lg font-semibold">2.4 Derechos del Usuario</h3>
-              <p>Tiene derecho a acceder, rectificar, suprimir o limitar el tratamiento de sus datos enviando un correo a: <strong>contact@infinit.com</strong></p>
+              <h3 className="text-lg font-semibold">{t('legal.privacy_policy.section_2_4.title')}</h3>
+              <p>{t('legal.privacy_policy.section_2_4.content')} <strong>contact@infinit.com</strong></p>
             </div>
           </div>
         </DialogContent>

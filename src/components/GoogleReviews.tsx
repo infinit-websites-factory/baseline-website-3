@@ -2,47 +2,23 @@ import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import googleLogo from "@/assets/google-logo.jpeg";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { translations } from "@/translations";
+import { useMemo } from "react";
 
 const GoogleReviews = () => {
-  const reviews = [
-    {
-      name: "María S.",
-      rating: 5,
-      review: "Experiencia impecable de principio a fin. El vehículo que adquirimos estaba en perfectas condiciones y el equipo fue muy profesional en todo momento. La transparencia en el proceso y la atención al detalle nos dieron total confianza. Sin duda, una compra muy acertada."
-    },
-    {
-      name: "Carlos M.",
-      rating: 5,
-      review: "Compré un SUV premium seminuevo y quedé encantado con el servicio. Todo el proceso fue ágil y claro, con información detallada del vehículo. La financiación se gestionó rápidamente y el precio fue muy competitivo. Totalmente recomendable."
-    },
-    {
-      name: "María Jiménez",
-      rating: 5,
-      review: "Llevaba meses buscando el coche perfecto y finalmente lo encontré gracias a INFINIT Cars. Desde el primer contacto, el trato fue excepcional. Me asesoraron sin presiones, respondieron todas mis dudas con paciencia y me ayudaron a encontrar exactamente lo que buscaba dentro de mi presupuesto. El vehículo llegó en condiciones impecables, mejor de lo esperado. La financiación fue rápida y transparente, sin sorpresas. Además, el servicio post-venta es excepcional - me llamaron para asegurarse de que todo estaba perfecto. Sin duda, volveré cuando necesite cambiar de coche y lo recomiendo a todo el mundo. Una experiencia de compra que superó todas mis expectativas."
-    },
-    {
-      name: "Laura P.",
-      rating: 5,
-      review: "Buscábamos un coche de alta gama de ocasión y encontramos exactamente lo que necesitábamos. El asesoramiento fue excelente, nos explicaron todas las opciones y nos ayudaron a elegir el modelo ideal para nosotros. El estado del vehículo superó nuestras expectativas."
-    },
-    {
-      name: "David R.",
-      rating: 4,
-      review: "Proceso de compra profesional. Me mantuvieron informado en todo momento y el coche llegó en buenas condiciones. Buena experiencia en general."
-    },
-    {
-      name: "Ana T.",
-      rating: 5,
-      review: "Muy satisfecha con mi compra. El equipo se tomó el tiempo de entender mis necesidades y me presentaron opciones que se ajustaban perfectamente a mi presupuesto. La atención post-venta también ha sido excepcional. Una experiencia 5 estrellas."
-    }
-  ];
+  const { t, language } = useLanguage();
+
+  const reviews = useMemo(() => {
+    return translations[language].reviews.testimonials;
+  }, [language]);
 
   return (
     <section className="py-16 px-4 bg-muted">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-            Lo que dicen nuestros clientes de nosotros
+            {t('reviews.title')}
           </h2>
           
           {/* Google Rating Display */}
@@ -104,7 +80,7 @@ const GoogleReviews = () => {
                         "{review.review}"
                       </p>
                       <p className="text-xs text-muted-foreground mt-3 font-medium">
-                        Reseña de Google
+                        {t('reviews.google_review')}
                       </p>
                     </CardContent>
                   </Card>

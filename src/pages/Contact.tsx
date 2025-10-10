@@ -22,8 +22,17 @@ import { CONTACT_FORM_API_URL, PROFILE_ID } from "@/services/carsApi";
 
 const Contact = () => {
   const { toast } = useToast();
-  const { getPhoneNumber, getAddress } = useLanguage();
+  const { language, getPhoneNumber, getAddress, t } = useLanguage();
   const address = getAddress();
+
+  const getFlag = () => {
+    switch (language) {
+      case "es": return "🇪🇸";
+      case "en": return "🇬🇧";
+      case "fr": return "🇫🇷";
+      default: return "🇪🇸";
+    }
+  };
   const [openPrivacyModal, setOpenPrivacyModal] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -42,7 +51,7 @@ const Contact = () => {
     if (!formData.acceptMarketing) {
       toast({
         title: "Error",
-        description: "Debes aceptar la política de privacidad",
+        description: t('contact_page.errors.privacy_required'),
         variant: "destructive"
       });
       return;
@@ -77,7 +86,7 @@ const Contact = () => {
       console.error('Error submitting form:', error);
       toast({
         title: "Error",
-        description: "Hubo un problema al enviar el mensaje. Por favor, inténtalo de nuevo.",
+        description: t('contact_page.errors.submission_error'),
         variant: "destructive"
       });
     } finally {
@@ -97,22 +106,22 @@ const Contact = () => {
   const contactInfo = [
     {
       icon: Phone,
-      title: "Llámanos",
-      description: "Estamos disponible en el siguiente teléfono:",
+      title: t('contact_page.info.call_us.title'),
+      description: t('contact_page.info.call_us.description'),
       contact: phoneNumber,
       href: `tel:${phoneNumber}`
     },
     {
       icon: Mail,
-      title: "Escríbenos",
-      description: "No dudes en contactar con nosotros en el siguiente correo o si lo prefieres, puedes rellenar el anterior formulario.",
+      title: t('contact_page.info.write_us.title'),
+      description: t('contact_page.info.write_us.description'),
       contact: "contact@infinit.com",
       href: "mailto:contact@infinit.com"
     },
     {
       icon: MapPin,
-      title: "Ven a visitarnos",
-      description: `Encuéntranos en ${address.full}`,
+      title: t('contact_page.info.visit_us.title'),
+      description: `${t('contact_page.info.visit_us.description')} ${address.full}`,
       contact: address.full,
       href: address.mapsUrl
     }
@@ -134,10 +143,10 @@ const Contact = () => {
       >
         <div className="px-4 lg:pt-12 pt-6 pb-32 lg:pb-40 mx-auto max-w-screen-sm text-center lg:px-6">
           <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-white">
-            Contacta con nosotros
+            {t('contact_page.title')}
           </h2>
           <p className="mb-8 font-light text-white sm:text-xl pb-5 md:pb-0">
-            Para cualquier información sobre nosotros o culquier vehículo no dude en contactarnos
+            {t('contact_page.subtitle')}
           </p>
         </div>
       </div>
@@ -155,10 +164,10 @@ const Contact = () => {
                     </svg>
                   </div>
                   <h3 className="text-2xl font-bold text-foreground mb-4">
-                    ¡Mensaje enviado con éxito!
+                    {t('contact_page.success.title')}
                   </h3>
                   <p className="text-muted-foreground mb-6">
-                    Gracias por contactarnos. Nos pondremos en contacto contigo pronto.
+                    {t('contact_page.success.description')}
                   </p>
                   <Button
                     onClick={() => {
@@ -175,14 +184,14 @@ const Contact = () => {
                     }}
                     className="bg-primary hover:bg-primary/90 text-primary-foreground"
                   >
-                    Enviar otro mensaje
+                    {t('contact_page.success.send_another')}
                   </Button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="nombre" className="text-gray-600">Nombre</Label>
+                      <Label htmlFor="nombre" className="text-gray-600">{t('contact_page.form.name')}</Label>
                       <Input
                         id="nombre"
                         name="nombre"
@@ -190,11 +199,11 @@ const Contact = () => {
                         onChange={handleInputChange}
                         required
                         className="bg-gray-50 border-gray-200"
-                        placeholder="Nombre"
+                        placeholder={t('contact_page.form.name_placeholder')}
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="apellido" className="text-gray-600">Apellido</Label>
+                      <Label htmlFor="apellido" className="text-gray-600">{t('contact_page.form.surname')}</Label>
                       <Input
                         id="apellido"
                         name="apellido"
@@ -202,14 +211,14 @@ const Contact = () => {
                         onChange={handleInputChange}
                         required
                         className="bg-gray-50 border-gray-200"
-                        placeholder="Apellidos"
+                        placeholder={t('contact_page.form.surname_placeholder')}
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="email" className="text-gray-600">Email</Label>
+                      <Label htmlFor="email" className="text-gray-600">{t('contact_page.form.email')}</Label>
                       <Input
                         id="email"
                         name="email"
@@ -218,14 +227,14 @@ const Contact = () => {
                         onChange={handleInputChange}
                         required
                         className="bg-gray-50 border-gray-200"
-                        placeholder="email@ejemplo.com"
+                        placeholder={t('contact_page.form.email_placeholder')}
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="telefono" className="text-gray-600">Teléfono</Label>
+                      <Label htmlFor="telefono" className="text-gray-600">{t('contact_page.form.phone')}</Label>
                       <div className="flex">
                         <div className="flex items-center px-3 bg-gray-50 border border-r-0 border-gray-200 rounded-l-md">
-                          <span className="text-sm text-red-600 font-semibold">🇪🇸</span>
+                          <span className="text-sm text-red-600 font-semibold">{getFlag()}</span>
                         </div>
                         <Input
                           id="telefono"
@@ -235,14 +244,14 @@ const Contact = () => {
                           onChange={handleInputChange}
                           required
                           className="bg-gray-50 border-gray-200 rounded-l-none"
-                          placeholder="600 000 000"
+                          placeholder={t('contact_page.form.phone_placeholder')}
                         />
                       </div>
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="mensaje" className="text-gray-600">Mensaje</Label>
+                    <Label htmlFor="mensaje" className="text-gray-600">{t('contact_page.form.message')}</Label>
                     <Textarea
                       id="mensaje"
                       name="mensaje"
@@ -250,7 +259,7 @@ const Contact = () => {
                       onChange={handleInputChange}
                       required
                       rows={5}
-                      placeholder="Escribe tu mensaje aquí..."
+                      placeholder={t('contact_page.form.message_placeholder')}
                       className="bg-gray-50 border-gray-200"
                     />
                   </div>
@@ -265,13 +274,13 @@ const Contact = () => {
                         }
                       />
                       <Label htmlFor="acceptMarketing" className="text-sm text-gray-600">
-                        Acepto las comunicaciones comerciales y de ofertas. Acepto la{" "}
-                        <button 
+                        {t('contact_page.form.accept_marketing')}{" "}
+                        <button
                           type="button"
                           onClick={() => setOpenPrivacyModal(true)}
                           className="text-primary hover:text-primary/80 underline"
                         >
-                          política de privacidad
+                          {t('contact_page.form.privacy_policy')}
                         </button>.
                       </Label>
                     </div>
@@ -282,7 +291,7 @@ const Contact = () => {
                     disabled={isSubmitting}
                     className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium py-3"
                   >
-                    {isSubmitting ? "Enviando..." : "Enviar"}
+                    {isSubmitting ? t('contact_page.form.submitting') : t('contact_page.form.submit')}
                   </Button>
                 </form>
               )}
@@ -336,15 +345,15 @@ const Contact = () => {
             {/* Address Information */}
             <div className="space-y-8">
               <h2 className="text-3xl font-bold text-foreground">
-                Nuestra ubicación
+                {t('contact_page.location.title')}
               </h2>
-              
+
               <div className="space-y-6">
                 <div className="flex items-start space-x-3">
                   <MapPin className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
                   <div>
                     <h3 className="text-lg font-semibold text-foreground mb-2">
-                      Dirección
+                      {t('contact_page.location.address_title')}
                     </h3>
                     <p className="text-muted-foreground leading-relaxed">
                       {address.street}<br />
@@ -357,12 +366,12 @@ const Contact = () => {
                   <Clock className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
                   <div>
                     <h3 className="text-lg font-semibold text-foreground mb-2">
-                      Horarios de atención
+                      {t('contact_page.location.hours_title')}
                     </h3>
                     <div className="space-y-1 text-muted-foreground">
-                      <p>Lunes a Viernes: 10:00 - 14:00, 16:00 - 19:00</p>
-                      <p>Sábado: Con cita previa</p>
-                      <p>Domingo: Cerrado</p>
+                      <p>{t('contact_page.location.hours.weekday')}</p>
+                      <p>{t('contact_page.location.hours.saturday')}</p>
+                      <p>{t('contact_page.location.hours.sunday')}</p>
                     </div>
                   </div>
                 </div>
@@ -396,38 +405,36 @@ const Contact = () => {
       <Dialog open={openPrivacyModal} onOpenChange={setOpenPrivacyModal}>
         <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle className="text-xl font-bold">Política de Privacidad</DialogTitle>
+            <DialogTitle className="text-xl font-bold">{t('legal.privacy_policy.title')}</DialogTitle>
           </DialogHeader>
           <div className="mt-4 text-sm text-muted-foreground">
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold">2.1 Responsable del Tratamiento de Datos</h3>
+              <h3 className="text-lg font-semibold">{t('legal.privacy_policy.section_2_1.title')}</h3>
               <div className="bg-muted/50 p-4 rounded-lg">
-                <p><strong>Nombre de la empresa:</strong> INFINIT Cars</p>
-                <p><strong>Dirección:</strong> {address.full}</p>
-                <p><strong>Correo electrónico:</strong> contact@infinit.com</p>
-                <p><strong>Teléfono:</strong> {getPhoneNumber()}</p>
+                <p><strong>{t('legal.privacy_policy.section_2_1.company_name')}:</strong> INFINIT Cars</p>
+                <p><strong>{t('legal.privacy_policy.section_2_1.address')}:</strong> {address.full}</p>
+                <p><strong>{t('legal.privacy_policy.section_2_1.email')}:</strong> contact@infinit.com</p>
+                <p><strong>{t('legal.privacy_policy.section_2_1.phone')}:</strong> {getPhoneNumber()}</p>
               </div>
-              
-              <h3 className="text-lg font-semibold">2.2 Datos que Recopilamos</h3>
-              <p>Podemos recopilar los siguientes datos personales:</p>
+
+              <h3 className="text-lg font-semibold">{t('legal.privacy_policy.section_2_2.title')}</h3>
+              <p>{t('legal.privacy_policy.section_2_2.intro')}</p>
               <ul className="list-disc pl-6 space-y-1">
-                <li>Nombre y apellidos</li>
-                <li>CIF/NIF o número de identificación fiscal</li>
-                <li>Correo electrónico y teléfono</li>
-                <li>Dirección postal</li>
-                <li>Datos de navegación mediante cookies (ver nuestra Política de Cookies)</li>
+                {t('legal.privacy_policy.section_2_2.items', { returnObjects: true }).map((item: string, index: number) => (
+                  <li key={index}>{item}</li>
+                ))}
               </ul>
-              
-              <h3 className="text-lg font-semibold">2.3 Finalidad del Tratamiento</h3>
-              <p>Usamos sus datos para:</p>
+
+              <h3 className="text-lg font-semibold">{t('legal.privacy_policy.section_2_3.title')}</h3>
+              <p>{t('legal.privacy_policy.section_2_3.intro')}</p>
               <ul className="list-disc pl-6 space-y-1">
-                <li>Gestionar la compra y venta de vehículos</li>
-                <li>Gestionar garantías, seguros y financiación</li>
-                <li>Cumplir con obligaciones legales</li>
+                {t('legal.privacy_policy.section_2_3.items', { returnObjects: true }).map((item: string, index: number) => (
+                  <li key={index}>{item}</li>
+                ))}
               </ul>
-              
-              <h3 className="text-lg font-semibold">2.4 Derechos del Usuario</h3>
-              <p>Tiene derecho a acceder, rectificar, suprimir o limitar el tratamiento de sus datos enviando un correo a: <strong>contact@infinit.com</strong></p>
+
+              <h3 className="text-lg font-semibold">{t('legal.privacy_policy.section_2_4.title')}</h3>
+              <p>{t('legal.privacy_policy.section_2_4.content')} <strong>contact@infinit.com</strong></p>
             </div>
           </div>
         </DialogContent>

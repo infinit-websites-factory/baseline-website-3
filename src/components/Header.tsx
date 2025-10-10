@@ -4,7 +4,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import infinitCarsLogo from "@/assets/infinit-cars-logo.png";
 
 const Header = () => {
-  const { getPhoneNumber } = useLanguage();
+  const { getPhoneNumber, t } = useLanguage();
 
   return (
     <header className="bg-nav-background text-nav-foreground border-b border-border/10">
@@ -25,19 +25,19 @@ const Header = () => {
           {/* Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <a href="/stock" className="text-nav-foreground hover:text-primary transition-colors">
-              Vehículos de ocasión
+              {t('header.vehicles')}
             </a>
             <a href="/sell" className="text-nav-foreground hover:text-primary transition-colors">
-              Vende tu coche
+              {t('header.sell_your_car')}
             </a>
             <a href="/financing" className="text-nav-foreground hover:text-primary transition-colors">
-              Financiación
+              {t('header.financing')}
             </a>
             <a href="/services" className="text-nav-foreground hover:text-primary transition-colors">
-              Servicios
+              {t('header.services')}
             </a>
             <a href="/contact" className="text-nav-foreground hover:text-primary transition-colors">
-              Contacto
+              {t('header.contact')}
             </a>
           </nav>
 
@@ -45,7 +45,7 @@ const Header = () => {
           <Button variant="premium" className="hidden md:flex items-center gap-2" asChild>
             <a href={`tel:${getPhoneNumber()}`}>
               <Phone size={16} />
-              Llama ahora
+              {t('common.call_now')}
             </a>
           </Button>
         </div>

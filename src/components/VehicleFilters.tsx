@@ -176,8 +176,8 @@ const VehicleFilters = ({
                     className="w-full"
                   />
                   <div className="flex justify-between text-xs text-muted-foreground mt-1">
-                    <span>{safePriceRange[0]?.toLocaleString() || '0'}€</span>
-                    <span>{safePriceRange[1] >= 100000 ? '100.000€+' : `${safePriceRange[1]?.toLocaleString() || '0'}€`}</span>
+                    <span>£{safePriceRange[0]?.toLocaleString() || '0'}</span>
+                    <span>{safePriceRange[1] >= 100000 ? '£100,000+' : `£${safePriceRange[1]?.toLocaleString() || '0'}`}</span>
                   </div>
                 </div>
               </div>
@@ -194,8 +194,8 @@ const VehicleFilters = ({
                     className="w-full"
                   />
                   <div className="flex justify-between text-xs text-muted-foreground mt-1">
-                    <span>{safeMileageRange[0]?.toLocaleString() || '0'} km</span>
-                    <span>{safeMileageRange[1] >= 300000 ? '300.000+ km' : `${safeMileageRange[1]?.toLocaleString() || '0'} km`}</span>
+                    <span>{safeMileageRange[0]?.toLocaleString() || '0'}</span>
+                    <span>{safeMileageRange[1] >= 300000 ? '300,000+' : `${safeMileageRange[1]?.toLocaleString() || '0'}`}</span>
                   </div>
                 </div>
               </div>

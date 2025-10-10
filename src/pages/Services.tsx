@@ -9,28 +9,28 @@ import heroImage from "@/assets/servicios-hero.png";
 import servicios2Image from "@/assets/servicios-2.png";
 
 const Services = () => {
-  const { getCityName } = useLanguage();
+  const { getCityName, t } = useLanguage();
   const cityName = getCityName();
   const mainServices = [
     {
       icon: Car,
-      title: "Servicio VIP",
-      description: "Nos encargamos de todo: recogida, entrega, limpieza y otras gestiones que necesites. Solo tendrás que preocuparte por ponerte al volante de tu nuevo vehículo."
+      title: t('services_page.main_services.vip.title'),
+      description: t('services_page.main_services.vip.description')
     },
     {
       icon: Shield,
-      title: "Garantía Plus hasta 3 años",
-      description: "Tu vehículo de ocasión con garantía de 12 meses y hasta 3 años. Para vehículos de todo tipo como: berlinas, coupés, descapotables, deportivos, SUV, 4×4, etc."
+      title: t('services_page.main_services.warranty.title'),
+      description: t('services_page.main_services.warranty.description')
     },
     {
       icon: Truck,
-      title: "Envío a toda España",
-      description: "Si no puedes venir a recoger el vehículo, no te preocupes. Nos encargamos de todo lo necesario para que lo recibas en la puerta de tu casa."
+      title: t('services_page.main_services.shipping.title'),
+      description: t('services_page.main_services.shipping.description')
     },
     {
       icon: CreditCard,
-      title: "Financiación disponible",
-      description: "Trabajamos con los mejores bancos para ofrecerte opciones de financiación que se adapten a ti."
+      title: t('services_page.main_services.financing.title'),
+      description: t('services_page.main_services.financing.description')
     }
   ];
 
@@ -44,16 +44,16 @@ const Services = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <h1 className="text-4xl md:text-5xl font-bold text-foreground">
-                Servicios en INFINIT Cars
+                {t('services_page.hero.title')}
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                Comercializamos e importamos vehículos premium a la carta, de ocasión, seminuevos y de KM 0 en {cityName}.
+                {t('services_page.hero.subtitle')} {cityName}.
               </p>
             </div>
             <div className="flex justify-center">
-              <img 
-                src={heroImage} 
-                alt="BMW blanco con logo de INFINIT Cars"
+              <img
+                src={heroImage}
+                alt={t('services_page.alt_texts.hero')}
                 className="w-full max-w-lg h-auto rounded-lg shadow-lg"
               />
             </div>
@@ -97,12 +97,10 @@ const Services = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-                Vende tu coche sin problemas
+                {t('services_page.sell_section.title')}
               </h2>
               <p className="text-lg text-muted-foreground mb-8">
-                Asesoramos y acompañamos al cliente durante el proceso de compra/venta de su vehículo, 
-                informándolo del momento idóneo para cambiar antes de que se devalúe, elección de nuevo modelo, 
-                equipamiento y todo lo necesario para que su experiencia con nosotros sea un éxito.
+                {t('services_page.sell_section.description')}
               </p>
               <Button
                 size="lg"
@@ -110,14 +108,14 @@ const Services = () => {
                 asChild
               >
                 <a href="/sell">
-                  Tasar mi vehículo
+                  {t('services_page.sell_section.button')}
                 </a>
               </Button>
             </div>
             <div className="flex justify-center">
-              <img 
-                src={servicios2Image} 
-                alt="Porsche deportivo gris en pista - Servicios de tasación de vehículos premium"
+              <img
+                src={servicios2Image}
+                alt={t('services_page.alt_texts.sell')}
                 className="w-full max-w-lg h-auto rounded-lg shadow-lg"
               />
             </div>
