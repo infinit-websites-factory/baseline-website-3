@@ -25,7 +25,7 @@ const VehicleGallery = () => {
     ? carsResponse.map(transformApiCarToVehicle)
     : [];
 
-  // Sort by status (Published first), then by most recent (createdAt), and take first 3
+  // Sort by status (Published first), then by most recent (createdAt), and take first 4
   const recentVehicles = [...vehicles]
     .sort((a, b) => {
       // First, sort by status (Published vehicles first)
@@ -36,7 +36,7 @@ const VehicleGallery = () => {
       // Then sort by most recent
       return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
     })
-    .slice(0, 3);
+    .slice(0, 4);
 
   if (isError) {
     return (
@@ -70,9 +70,9 @@ const VehicleGallery = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 xs:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
           {isLoading ? (
-            Array.from({ length: 3 }).map((_, index) => (
+            Array.from({ length: 4 }).map((_, index) => (
               <div key={index} className="space-y-3">
                 <Skeleton className="h-48 w-full rounded-lg" />
                 <div className="space-y-2">
@@ -89,7 +89,7 @@ const VehicleGallery = () => {
           )}
         </div>
         
-        {!isLoading && vehicles.length > 3 && (
+        {!isLoading && vehicles.length > 4 && (
           <div className="text-center mt-8">
             <a
               href="/stock"

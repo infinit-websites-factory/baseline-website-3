@@ -28,12 +28,12 @@ const Services = () => {
 
   return (
     <section className="py-16 px-4 bg-background">
-      <div className="container mx-auto max-w-6xl">
+      <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             {t('services.title')}
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg text-muted-foreground mx-auto whitespace-nowrap">
             {t('services.subtitle')}
           </p>
         </div>
@@ -44,9 +44,10 @@ const Services = () => {
             return (
               <Card key={index} className="text-center bg-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover-scale overflow-hidden">
                 <CardContent className="p-0">
-                  <div className="bg-gray-100 p-6 h-40 flex flex-col justify-center">
-                    <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
-                      <IconComponent className="w-8 h-8 text-primary" />
+                  <div className="relative bg-gray-100 p-6 h-40 flex flex-col justify-center">
+                    <div className="absolute top-0 left-0 right-0 h-1 bg-primary"></div>
+                    <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary flex items-center justify-center">
+                      <IconComponent className="w-8 h-8 text-black" />
                     </div>
                     <h3 className="text-xl font-bold text-foreground text-center leading-tight">
                       {service.title}

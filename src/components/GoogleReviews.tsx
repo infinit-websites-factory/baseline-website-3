@@ -15,7 +15,7 @@ const GoogleReviews = () => {
 
   return (
     <section className="py-16 px-4 bg-muted">
-      <div className="container mx-auto max-w-6xl">
+      <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
             {t('reviews.title')}
@@ -55,7 +55,7 @@ const GoogleReviews = () => {
           >
             <CarouselContent className="-ml-2 md:-ml-4">
               {reviews.map((review, index) => (
-                <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/4">
                   <Card className="border border-border/50 shadow-sm hover:shadow-md transition-all duration-300 hover-scale h-full">
                     <CardContent className="p-6">
                       <div className="flex items-start gap-3 mb-4">

@@ -17,26 +17,26 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 9%;
 
-    /* INFINIT Cars brand color - Deep Navy Blue */
-    --primary: 220 55% 40%;
-    --primary-foreground: 0 0% 98%;
-    --primary-hover: 220 55% 35%;
+    /* INFINIT Cars brand color - Bright Yellow #FFDD32 */
+    --primary: 50 100% 60%;
+    --primary-foreground: 0 0% 9%;
+    --primary-hover: 50 100% 55%;
 
-    --secondary: 0 0% 96%;
+    --secondary: 0 0% 93%;
     --secondary-foreground: 0 0% 9%;
 
-    --muted: 0 0% 96%;
+    --muted: 0 0% 93%;
     --muted-foreground: 0 0% 45%;
 
-    --accent: 220 55% 40%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 50 100% 60%;
+    --accent-foreground: 0 0% 9%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
     --border: 0 0% 91%;
     --input: 0 0% 91%;
-    --ring: 220 55% 40%;
+    --ring: 50 100% 60%;
 
     /* Navigation colors */
     --nav-background: 0 0% 9%;
@@ -44,7 +44,7 @@ All colors MUST be HSL.
     --nav-muted: 0 0% 70%;
 
     /* Premium gradients with new brand color */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(220 60% 50%));
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(50 100% 70%));
     --gradient-hero: linear-gradient(135deg, hsl(0 0% 9%), hsl(0 0% 15%));
     
     /* Shadows */
@@ -80,9 +80,9 @@ All colors MUST be HSL.
     --popover: 0 0% 9%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 220 60% 55%;
-    --primary-foreground: 0 0% 98%;
-    --primary-hover: 220 60% 60%;
+    --primary: 50 100% 60%;
+    --primary-foreground: 0 0% 9%;
+    --primary-hover: 50 100% 65%;
 
     --secondary: 0 0% 15%;
     --secondary-foreground: 0 0% 98%;
@@ -90,15 +90,15 @@ All colors MUST be HSL.
     --muted: 0 0% 15%;
     --muted-foreground: 0 0% 65%;
 
-    --accent: 220 60% 55%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 50 100% 60%;
+    --accent-foreground: 0 0% 9%;
 
     --destructive: 0 75% 55%;
     --destructive-foreground: 0 0% 98%;
 
     --border: 0 0% 15%;
     --input: 0 0% 15%;
-    --ring: 220 60% 55%;
+    --ring: 50 100% 60%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;

@@ -11,11 +11,15 @@
     "view_details": "View details"
   },
   "header": {
+    "home": "Home",
     "vehicles": "Used Cars",
     "sell_your_car": "Sell Your Car",
     "financing": "Financing",
     "services": "Services",
-    "contact": "Contact"
+    "contact": "Contact",
+    "address": "Address",
+    "hours": "Opening Hours",
+    "phone": "Phone"
   },
   "hero": {
     "title": "Premium Vehicles",

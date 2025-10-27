@@ -11,11 +11,15 @@
     "view_details": "Voir les détails"
   },
   "header": {
+    "home": "Accueil",
     "vehicles": "Véhicules d'occasion",
     "sell_your_car": "Vendez votre voiture",
     "financing": "Financement",
     "services": "Services",
-    "contact": "Contact"
+    "contact": "Contact",
+    "address": "Adresse",
+    "hours": "Horaires",
+    "phone": "Téléphone"
   },
   "hero": {
     "title": "Véhicules Premium",

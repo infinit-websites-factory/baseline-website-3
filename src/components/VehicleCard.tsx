@@ -148,7 +148,9 @@ const VehicleCard = ({
             <p className="text-muted-foreground text-sm">{year} • {translateVehicleAttribute('body_type', type)}</p>
           </div>
           <div className="text-right">
-            <p className="text-2xl font-bold text-primary">{formatPrice(price)}</p>
+            <div className="bg-[#111] px-2 py-0.5 rounded inline-block">
+              <p className="text-lg font-bold text-white">{formatPrice(price)}</p>
+            </div>
           </div>
         </div>
         
@@ -167,7 +169,7 @@ const VehicleCard = ({
             )}
           </div>
           <Button
-            className="w-full"
+            className="w-full bg-gray-100 hover:bg-primary/15 text-foreground border border-gray-300"
             variant="secondary"
           >
             <Eye size={16} className="mr-2" />

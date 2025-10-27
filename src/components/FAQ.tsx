@@ -34,7 +34,7 @@ const FAQ = () => {
 
   return (
     <section className="py-16 px-4 bg-background">
-      <div className="container mx-auto max-w-6xl">
+      <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             {t('faq.title')}
@@ -51,7 +51,7 @@ const FAQ = () => {
               value={`item-${index}`}
               className="border border-border rounded-lg px-6 bg-card"
             >
-              <AccordionTrigger className="text-left text-lg font-semibold text-foreground hover:text-primary">
+              <AccordionTrigger className="text-left text-lg font-semibold text-foreground hover:text-gray-600">
                 {faq.question}
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground pt-2 pb-4 leading-relaxed">

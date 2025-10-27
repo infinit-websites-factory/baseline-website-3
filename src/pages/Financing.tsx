@@ -341,7 +341,7 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler ? formatPric
       <main className="flex-1">
         {/* Hero Section with Form */}
         <section className="py-16 px-4 bg-muted">
-          <div className="container mx-auto max-w-6xl">
+          <div className="container mx-auto max-w-7xl">
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
               {/* Left side - Title, subtitle, and benefits */}
               <div className="lg:col-span-2 space-y-8">
@@ -1046,7 +1046,7 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler ? formatPric
                                 <button
                                   type="button"
                                   onClick={() => setOpenPrivacyModal(true)}
-                                  className="text-primary hover:text-primary/80 underline"
+                                  className="text-primary hover:text-gray-600 underline"
                                 >
                                   {t('financing_page.form.privacy_policy')}
                                 </button>.

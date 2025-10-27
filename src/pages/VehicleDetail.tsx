@@ -449,8 +449,10 @@ const VehicleDetail = () => {
             {/* Pricing */}
             <div>
               <div className="text-sm text-muted-foreground mb-2">{t('vehicle_detail.pricing.label')}</div>
-              <div className="text-3xl font-bold text-primary mb-4">
-                {formatPrice(vehicle.price)}
+              <div className="bg-[#111] px-3 py-1 rounded inline-block mb-4">
+                <div className="text-2xl font-bold text-white">
+                  {formatPrice(vehicle.price)}
+                </div>
               </div>
             </div>
 
@@ -557,7 +559,7 @@ const VehicleDetail = () => {
                         />
                         <Label htmlFor="reservationTerms" className="text-sm text-gray-600">
                           {t('vehicle_detail.form.accept_terms')}{" "}
-                          <button type="button" onClick={() => setOpenPrivacyModal(true)} className="text-primary hover:text-primary/80 underline cursor-pointer">
+                          <button type="button" onClick={() => setOpenPrivacyModal(true)} className="text-primary hover:text-gray-600 underline cursor-pointer">
                             {t('vehicle_detail.form.privacy_policy')}
                           </button>.
                         </Label>
@@ -716,7 +718,7 @@ const VehicleDetail = () => {
                       />
                       <Label htmlFor="appointmentTerms" className="text-sm text-gray-600">
                         {t('vehicle_detail.form.accept_terms')}{" "}
-                        <button type="button" onClick={() => setOpenPrivacyModal(true)} className="text-primary hover:text-primary/80 underline cursor-pointer">
+                        <button type="button" onClick={() => setOpenPrivacyModal(true)} className="text-primary hover:text-gray-600 underline cursor-pointer">
                           {t('vehicle_detail.form.privacy_policy')}
                         </button>.
                       </Label>

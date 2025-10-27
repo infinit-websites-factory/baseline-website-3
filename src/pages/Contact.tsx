@@ -278,7 +278,7 @@ const Contact = () => {
                         <button
                           type="button"
                           onClick={() => setOpenPrivacyModal(true)}
-                          className="text-primary hover:text-primary/80 underline"
+                          className="text-primary hover:text-gray-600 underline"
                         >
                           {t('contact_page.form.privacy_policy')}
                         </button>.
@@ -302,16 +302,17 @@ const Contact = () => {
 
       {/* Contact Information */}
       <section className="py-16 px-4 bg-background">
-        <div className="container mx-auto max-w-6xl">
+        <div className="container mx-auto max-w-7xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {contactInfo.map((info, index) => {
               const IconComponent = info.icon;
               return (
                 <Card key={index} className="text-center bg-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
                   <CardContent className="p-0">
-                    <div className="bg-gray-100 p-6">
-                      <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
-                        <IconComponent className="w-8 h-8 text-primary" />
+                    <div className="relative bg-gray-100 p-6">
+                      <div className="absolute top-0 left-0 right-0 h-1 bg-primary"></div>
+                      <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary flex items-center justify-center">
+                        <IconComponent className="w-8 h-8 text-black" />
                       </div>
                       <h3 className="text-xl font-bold text-foreground mb-2">
                         {info.title}
@@ -321,9 +322,9 @@ const Contact = () => {
                       <p className="text-muted-foreground mb-4 leading-relaxed text-sm">
                         {info.description}
                       </p>
-                      <a 
+                      <a
                         href={info.href}
-                        className="text-primary hover:text-primary/80 font-semibold transition-colors text-lg"
+                        className="text-foreground hover:text-gray-600 font-semibold transition-colors text-lg"
                         target={info.icon === MapPin ? "_blank" : undefined}
                         rel={info.icon === MapPin ? "noopener noreferrer" : undefined}
                       >
@@ -339,8 +340,8 @@ const Contact = () => {
       </section>
 
       {/* Location Section */}
-      <section className="py-16 px-4 bg-gray-50">
-        <div className="container mx-auto max-w-6xl">
+      <section className="py-16 px-4 bg-muted">
+        <div className="container mx-auto max-w-7xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
             {/* Address Information */}
             <div className="space-y-8">
@@ -350,7 +351,9 @@ const Contact = () => {
 
               <div className="space-y-6">
                 <div className="flex items-start space-x-3">
-                  <MapPin className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
+                  <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-6 h-6 text-black" />
+                  </div>
                   <div>
                     <h3 className="text-lg font-semibold text-foreground mb-2">
                       {t('contact_page.location.address_title')}
@@ -363,7 +366,9 @@ const Contact = () => {
                 </div>
 
                 <div className="flex items-start space-x-3">
-                  <Clock className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
+                  <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+                    <Clock className="w-6 h-6 text-black" />
+                  </div>
                   <div>
                     <h3 className="text-lg font-semibold text-foreground mb-2">
                       {t('contact_page.location.hours_title')}

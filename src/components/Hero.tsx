@@ -22,9 +22,9 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative h-[600px] flex items-center justify-center overflow-hidden">
+    <section className="relative h-[680px] flex items-center overflow-hidden">
       {/* Background Image */}
-      <div 
+      <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroBanner})` }}
       >
@@ -32,17 +32,17 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 text-center text-white max-w-6xl mx-auto px-4">
+      <div className="relative z-10 text-left text-white container mx-auto px-4 w-full">
         <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
           {t('hero.title')}
           <span className="block text-primary"> {t('hero.subtitle')} {cityName}</span>
         </h1>
-        <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto">
+        <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl">
           {t('hero.description')}
         </p>
 
         {/* Search Bar */}
-        <form onSubmit={handleSearch} className="max-w-lg mx-auto mt-8">
+        <form onSubmit={handleSearch} className="max-w-lg mt-8">
           <div className="flex gap-2">
             <div className="flex-1 relative">
               <Input

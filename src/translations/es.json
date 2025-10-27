@@ -11,11 +11,15 @@
     "view_details": "Ver detalles"
   },
   "header": {
+    "home": "Inicio",
     "vehicles": "Vehículos de ocasión",
     "sell_your_car": "Vende tu coche",
     "financing": "Financiación",
     "services": "Servicios",
-    "contact": "Contacto"
+    "contact": "Contacto",
+    "address": "Dirección",
+    "hours": "Horarios",
+    "phone": "Teléfono"
   },
   "hero": {
     "title": "Vehículos de Alta Gama",
