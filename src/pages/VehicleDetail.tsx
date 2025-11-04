@@ -123,10 +123,11 @@ const VehicleDetail = () => {
   const getBadgeImage = (badge?: string) => {
     if (!badge) return null;
     const badgeLower = badge.toLowerCase();
-    if (badgeLower.includes('b')) return dgtB;
-    if (badgeLower.includes('c') && !badgeLower.includes('eco')) return dgtC;
-    if (badgeLower.includes('0') || badgeLower.includes('cero')) return dgtCero;
+    // Check more specific patterns first to avoid incorrect matches
+    if (badgeLower.includes('cero') || badgeLower.includes('0')) return dgtCero;
     if (badgeLower.includes('eco')) return dgtEco;
+    if (badgeLower.includes('c')) return dgtC;
+    if (badgeLower.includes('b')) return dgtB;
     return null;
   };
 
