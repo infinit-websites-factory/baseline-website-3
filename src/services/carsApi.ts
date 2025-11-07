@@ -19,6 +19,7 @@ export interface CarApiResponse {
   num_doors: number;
   num_seats: number;
   engine_size: number | null;
+  engine_size_unit?: string;
   engine_power: number;
   photo_urls: string[];
   created_at: string;
@@ -53,10 +54,12 @@ export interface Vehicle {
   transmission: string;
   type: string;
   status: string;
+  description?: string;
   color?: string;
   doors?: number;
   seats?: number;
   engineSize?: number | null;
+  engineSizeUnit?: string;
   enginePower?: number;
   createdAt: string;
   updatedAt: string;
@@ -145,10 +148,12 @@ export const transformApiCarToVehicle = (apiCar: CarApiResponse): Vehicle => {
     transmission: apiCar.transmission || 'Unknown',
     type: apiCar.body_type || 'Unknown',
     status: apiCar.status || 'Published',
+    description: apiCar.ad_description,
     color: apiCar.color,
     doors: apiCar.num_doors,
     seats: apiCar.num_seats,
     engineSize: apiCar.engine_size,
+    engineSizeUnit: apiCar.engine_size_unit || 'cc',
     enginePower: apiCar.engine_power,
     createdAt: apiCar.created_at,
     updatedAt: apiCar.updated_at,

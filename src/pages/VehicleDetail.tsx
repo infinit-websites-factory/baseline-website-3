@@ -376,14 +376,20 @@ const VehicleDetail = () => {
                 <CardTitle>{t('vehicle_detail.details.title')}</CardTitle>
               </CardHeader>
               <CardContent className="pt-6">
-                <div className="space-y-3 text-sm">
-                  <p><strong>{vehicle.brand} {vehicle.model}</strong></p>
-                  <p>{t('vehicle_detail.details.financing')}</p>
-                  <p>{t('vehicle_detail.details.warranty')}</p>
-                  <p>{t('vehicle_detail.details.transfer_costs')} {formatPrice(260)}.</p>
-                  <p>{t('vehicle_detail.details.trade_in')}</p>
-                  <p>{t('vehicle_detail.details.delivery')}</p>
-                </div>
+                {vehicle.description ? (
+                  <div className="text-sm whitespace-pre-line">
+                    {vehicle.description}
+                  </div>
+                ) : (
+                  <div className="space-y-3 text-sm">
+                    <p><strong>{vehicle.brand} {vehicle.model}</strong></p>
+                    <p>{t('vehicle_detail.details.financing')}</p>
+                    <p>{t('vehicle_detail.details.warranty')}</p>
+                    <p>{t('vehicle_detail.details.transfer_costs')} {formatPrice(260)}.</p>
+                    <p>{t('vehicle_detail.details.trade_in')}</p>
+                    <p>{t('vehicle_detail.details.delivery')}</p>
+                  </div>
+                )}
               </CardContent>
             </Card>
 
@@ -428,7 +434,7 @@ const VehicleDetail = () => {
                     </div>}
                   {vehicle.engineSize && <div>
                       <div className="text-muted-foreground mb-1">{t('vehicle_detail.specifications.engine_size')}</div>
-                      <div className="font-semibold">{vehicle.engineSize} cc</div>
+                      <div className="font-semibold">{vehicle.engineSize} {vehicle.engineSizeUnit}</div>
                     </div>}
                   {vehicle.enginePower && <div>
                       <div className="text-muted-foreground mb-1">{t('vehicle_detail.specifications.engine_power')}</div>
