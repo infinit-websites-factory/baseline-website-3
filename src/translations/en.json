@@ -340,33 +340,16 @@
     "cookies": {
       "title": "Cookie Policy",
       "section_3_1": {
-        "title": "3.1 What are cookies?",
-        "content": "Cookies are files that are stored on your device when you visit our website. They allow us to improve your experience and offer relevant advertising."
+        "title": "3.1 Do we use cookies?",
+        "content": "No. This website does not use cookies or similar technologies (such as pixels, local storage, or tracking identifiers)."
       },
       "section_3_2": {
-        "title": "3.2 Types of cookies we use",
-        "items": [
-          {
-            "type": "Strictly necessary:",
-            "description": "Allow the website to function."
-          },
-          {
-            "type": "Personalisation:",
-            "description": "Remember your preferences."
-          },
-          {
-            "type": "Analytics:",
-            "description": "Help us improve the site."
-          },
-          {
-            "type": "Advertising:",
-            "description": "Show ads tailored to your interests."
-          }
-        ]
+        "title": "3.2 What this means",
+        "content": "Your browsing on this site does not generate any tracking, and no personal or behavioural information is collected through cookies."
       },
       "section_3_3": {
-        "title": "3.3 Cookie Management",
-        "content": "You can accept, reject or configure cookies from the cookie banner or from your browser settings."
+        "title": "3.3 Transparency and privacy",
+        "content": "We are committed to providing you with a fully transparent and privacy-respectful experience. If, in the future, we implement strictly necessary or other types of cookies, we will update this policy and request your consent in accordance with the General Data Protection Regulation (GDPR)."
       }
     }
   },

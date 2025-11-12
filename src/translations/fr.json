@@ -340,33 +340,16 @@
     "cookies": {
       "title": "Politique de cookies",
       "section_3_1": {
-        "title": "3.1 Qu'est-ce que les cookies ?",
-        "content": "Les cookies sont des fichiers stockés sur votre appareil lorsque vous visitez notre site Web. Ils nous permettent d'améliorer votre expérience et de proposer des publicités pertinentes."
+        "title": "3.1 Utilisons-nous des cookies ?",
+        "content": "Non. Ce site web n'utilise pas de cookies ni de technologies similaires (telles que les pixels, le stockage local ou les identifiants de suivi)."
       },
       "section_3_2": {
-        "title": "3.2 Types de cookies que nous utilisons",
-        "items": [
-          {
-            "type": "Strictement nécessaires :",
-            "description": "Permettent le fonctionnement du site Web."
-          },
-          {
-            "type": "De personnalisation :",
-            "description": "Mémorisent vos préférences."
-          },
-          {
-            "type": "Analytiques :",
-            "description": "Nous aident à améliorer le site."
-          },
-          {
-            "type": "Publicitaires :",
-            "description": "Affichent des publicités adaptées à vos intérêts."
-          }
-        ]
+        "title": "3.2 Ce que cela signifie",
+        "content": "Votre navigation sur ce site ne génère aucun suivi et aucune information personnelle ou comportementale n'est collectée au moyen de cookies."
       },
       "section_3_3": {
-        "title": "3.3 Gestion des cookies",
-        "content": "Vous pouvez accepter, refuser ou configurer les cookies depuis la bannière de cookies ou depuis les paramètres de votre navigateur."
+        "title": "3.3 Transparence et confidentialité",
+        "content": "Nous nous engageons à vous offrir une expérience totalement transparente et respectueuse de votre vie privée. Si, à l'avenir, nous mettons en place des cookies strictement nécessaires ou d'autres types de cookies, nous mettrons à jour cette politique et demanderons votre consentement conformément au Règlement Général sur la Protection des Données (RGPD)."
       }
     }
   },

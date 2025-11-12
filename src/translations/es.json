@@ -340,33 +340,16 @@
     "cookies": {
       "title": "Política de Cookies",
       "section_3_1": {
-        "title": "3.1 ¿Qué son las cookies?",
-        "content": "Las cookies son archivos que se almacenan en su dispositivo cuando visita nuestro sitio web. Nos permiten mejorar su experiencia y ofrecer publicidad relevante."
+        "title": "3.1 ¿Usamos cookies?",
+        "content": "No. Este sitio web no utiliza cookies ni tecnologías similares (como píxeles, almacenamiento local o identificadores de seguimiento)."
       },
       "section_3_2": {
-        "title": "3.2 Tipos de cookies que usamos",
-        "items": [
-          {
-            "type": "Estrictamente necesarias:",
-            "description": "Permiten el funcionamiento del sitio web."
-          },
-          {
-            "type": "De personalización:",
-            "description": "Recuerdan sus preferencias."
-          },
-          {
-            "type": "Analíticas:",
-            "description": "Nos ayudan a mejorar el sitio."
-          },
-          {
-            "type": "Publicitarias:",
-            "description": "Muestran anuncios adaptados a sus intereses."
-          }
-        ]
+        "title": "3.2 Qué significa esto",
+        "content": "Su navegación en este sitio no genera ningún tipo de seguimiento ni se recopila información personal o de comportamiento mediante cookies."
       },
       "section_3_3": {
-        "title": "3.3 Gestión de cookies",
-        "content": "Puede aceptar, rechazar o configurar las cookies desde el banner de cookies o desde la configuración de su navegador."
+        "title": "3.3 Transparencia y privacidad",
+        "content": "Nos comprometemos a ofrecerle una experiencia completamente transparente y respetuosa con su privacidad. En caso de que en el futuro implementemos cookies estrictamente necesarias o de otro tipo, actualizaremos esta política y solicitaremos su consentimiento conforme al Reglamento General de Protección de Datos (RGPD)."
       }
     }
   },
