@@ -123,11 +123,7 @@ const Footer = () => {
           <p>{t('legal.cookies.section_3_1.content')}</p>
 
           <h3 className="text-lg font-semibold">{t('legal.cookies.section_3_2.title')}</h3>
-          <ul className="list-disc pl-6 space-y-1">
-            {t('legal.cookies.section_3_2.items', { returnObjects: true }).map((item: { type: string; description: string }, index: number) => (
-              <li key={index}><strong>{item.type}</strong> {item.description}</li>
-            ))}
-          </ul>
+          <p>{t('legal.cookies.section_3_2.content')}</p>
 
           <h3 className="text-lg font-semibold">{t('legal.cookies.section_3_3.title')}</h3>
           <p>{t('legal.cookies.section_3_3.content')}</p>
