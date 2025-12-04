@@ -68,8 +68,8 @@ const Financing = () => {
   useEffect(() => {
     const loadVehicles = async () => {
       try {
-        const apiCars = await fetchCars();
-        const transformedVehicles = apiCars.map(transformApiCarToVehicle);
+        const apiResponse = await fetchCars();
+        const transformedVehicles = apiResponse.items.map(transformApiCarToVehicle);
 
         // If no vehicles available, add placeholder option with dummy data
         if (transformedVehicles.length === 0) {
