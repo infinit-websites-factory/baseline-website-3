@@ -1,4 +1,4 @@
-name: Notify Make
+name: Notify Deploy Bot via Make
 on:
   push:
     branches:
