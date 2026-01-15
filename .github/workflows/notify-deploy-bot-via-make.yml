@@ -7,6 +7,16 @@ jobs:
   notify:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Add deploy commit
+        run: |
+          git config user.email "alexis.petrement@infinit.com"
+          git config user.name "apetrementinfinit"
+          git commit --allow-empty -m "[skip ci] Trigger deploy to Vercel"
+          git push
+      
       - name: Send commit info to Make
         run: |
           curl -X POST "https://hook.eu1.make.com/xvyuaszs86fhwsinzd8szuvxqobcfari" \
@@ -14,5 +24,5 @@ jobs:
             -d "{
               \"repo\": \"${{ github.repository }}\",
               \"branch\": \"${{ github.ref_name }}\",
-              \"commit\": \"${{ github.sha }}\"
+              \"commit\": \"$(git rev-parse HEAD)\"
             }"
