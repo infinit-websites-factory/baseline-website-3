@@ -112,7 +112,7 @@
       },
       "schedule": {
         "question": "What are your opening hours?",
-        "answer": "We are available Monday to Friday from 10:00 to 14:00 and 16:00 to 19:00. Saturdays are by appointment only for a more personalised experience. You can also reach us via WhatsApp or email outside business hours."
+        "answer": "We are available Monday to Saturday from 10:00 to 14:00 and 16:00 to 20:00. You can also reach us via WhatsApp or email outside business hours."
       },
       "test_drive": {
         "question": "Can I arrange a test drive?",
@@ -133,8 +133,8 @@
     },
     "hours_title": "Hours",
     "hours": {
-      "weekday": "Mon-Fri: 10:00-14:00, 16:00-19:00",
-      "saturday": "Sat: By appointment",
+      "weekday": "Mon-Sat: 10:00-14:00, 16:00-20:00",
+      "saturday": "",
       "sunday": "Sun: Closed"
     },
     "legal": {
@@ -192,8 +192,8 @@
       "address_title": "Address",
       "hours_title": "Opening hours",
       "hours": {
-        "weekday": "Monday to Friday: 10:00 - 14:00, 16:00 - 19:00",
-        "saturday": "Saturday: By appointment",
+        "weekday": "Monday to Saturday: 10:00 - 14:00, 16:00 - 20:00",
+        "saturday": "",
         "sunday": "Sunday: Closed"
       }
     }
