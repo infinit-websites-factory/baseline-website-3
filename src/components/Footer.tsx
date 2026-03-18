@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Phone, MapPin, Clock, MessageCircle } from "lucide-react";
+import { Phone, MapPin, Clock } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -11,7 +11,7 @@ import luxuryCarLogo from "@/assets/logoo.webp";
 
 const Footer = () => {
   const [openModal, setOpenModal] = useState<string | null>(null);
-  const { getPhoneNumber, getWhatsAppNumber, getAddress, getCityName, language, t } = useLanguage();
+  const { getPhoneNumber, getAddress, getCityName, t } = useLanguage();
   const address = getAddress();
   const cityName = getCityName();
 
@@ -175,37 +175,20 @@ const Footer = () => {
           </div>
 
           {/* Hours */}
-          <div className="flex flex-col justify-between h-full">
-            <div>
-              <h3 className="text-lg font-semibold mb-4 text-white">{t('footer.hours_title')}</h3>
-              <div className="space-y-2 text-white/70">
-                <div className="flex items-center space-x-2">
-                  <Clock size={16} className="text-primary" />
-                  <span>{t('footer.hours.weekday')}</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Clock size={16} className="text-primary" />
-                  <span>{t('footer.hours.saturday')}</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Clock size={16} className="text-primary" />
-                  <span>{t('footer.hours.sunday')}</span>
-                </div>
+          <div>
+            <h3 className="text-lg font-semibold mb-4 text-white">{t('footer.hours_title')}</h3>
+            <div className="space-y-2 text-white/70">
+              <div className="flex items-center space-x-2">
+                <Clock size={16} className="text-primary" />
+                <span>{t('footer.hours.weekday')}</span>
               </div>
-            </div>
-
-            {/* Social Media - WhatsApp only */}
-            <div className="mt-8">
-              <div className="flex items-center space-x-4">
-                <a
-                  href={`https://wa.me/${getWhatsAppNumber()}?text=${encodeURIComponent(language === 'fr' ? 'Bonjour Luxury Car' : language === 'en' ? 'Hello Luxury Car' : 'Hola Luxury Car')}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary/80 hover:text-primary transition-colors"
-                  aria-label="WhatsApp"
-                >
-                  <MessageCircle size={24} />
-                </a>
+              <div className="flex items-center space-x-2">
+                <Clock size={16} className="text-primary" />
+                <span>{t('footer.hours.saturday')}</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Clock size={16} className="text-primary" />
+                <span>{t('footer.hours.sunday')}</span>
               </div>
             </div>
           </div>
