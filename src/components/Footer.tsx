@@ -184,10 +184,6 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <Clock size={16} className="text-primary" />
-                <span>{t('footer.hours.saturday')}</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Clock size={16} className="text-primary" />
                 <span>{t('footer.hours.sunday')}</span>
               </div>
             </div>
