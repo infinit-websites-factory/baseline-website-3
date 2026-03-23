@@ -126,34 +126,26 @@ const Contact = () => {
       <SEO page="contact" />
       <Header />
 
-      {/* Hero Section with Form */}
-      <div
-        className="relative bg-gray-700 pt-36"
-        style={{
-          backgroundImage: `url(${contactBackground})`,
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center center'
-        }}
-      >
-        <div className="px-4 lg:pt-12 pt-6 pb-32 lg:pb-40 mx-auto max-w-screen-sm text-center lg:px-6">
-          <h1 className="mb-4 text-4xl tracking-tight font-extrabold text-white">
+      {/* Hero Section */}
+      <section className="py-16 px-4 bg-white">
+        <div className="container mx-auto max-w-2xl text-center">
+          <h1 className="mb-4 text-4xl tracking-tight font-bold text-foreground">
             {t('contact_page.title')}
           </h1>
-          <p className="mb-8 font-light text-white sm:text-xl pb-5 md:pb-0">
+          <p className="text-lg text-muted-foreground">
             {t('contact_page.subtitle')}
           </p>
         </div>
-      </div>
+      </section>
 
       {/* Contact Form Section */}
       <section className="py-8 px-4 bg-background">
         <div className="container mx-auto max-w-2xl">
-          <Card className="bg-white shadow-xl border-0 -mt-48 relative z-10">
+          <Card className="bg-white shadow-sm border border-gray-100 rounded-xl">
             <CardContent className="p-8">
               {isSubmitted ? (
                 <div className="text-center py-12">
-                  <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-green-100 flex items-center justify-center">
+                  <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-green-50 flex items-center justify-center">
                     <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
@@ -193,7 +185,7 @@ const Contact = () => {
                         value={formData.nombre}
                         onChange={handleInputChange}
                         required
-                        className="bg-gray-50 border-gray-200"
+                        className="bg-white border-gray-200"
                         placeholder={t('contact_page.form.name_placeholder')}
                       />
                     </div>
@@ -205,7 +197,7 @@ const Contact = () => {
                         value={formData.apellido}
                         onChange={handleInputChange}
                         required
-                        className="bg-gray-50 border-gray-200"
+                        className="bg-white border-gray-200"
                         placeholder={t('contact_page.form.surname_placeholder')}
                       />
                     </div>
@@ -221,7 +213,7 @@ const Contact = () => {
                         value={formData.email}
                         onChange={handleInputChange}
                         required
-                        className="bg-gray-50 border-gray-200"
+                        className="bg-white border-gray-200"
                         placeholder={t('contact_page.form.email_placeholder')}
                       />
                     </div>
@@ -238,7 +230,7 @@ const Contact = () => {
                           value={formData.telefono}
                           onChange={handleInputChange}
                           required
-                          className="bg-gray-50 border-gray-200 rounded-l-none"
+                          className="bg-white border-gray-200 rounded-l-none"
                           placeholder={t('contact_page.form.phone_placeholder')}
                         />
                       </div>
@@ -255,7 +247,7 @@ const Contact = () => {
                       required
                       rows={5}
                       placeholder={t('contact_page.form.message_placeholder')}
-                      className="bg-gray-50 border-gray-200"
+                      className="bg-white border-gray-200"
                     />
                   </div>
 
@@ -296,18 +288,9 @@ const Contact = () => {
       </section>
 
       {/* Contact Information */}
-      <section
-        className="relative py-20 px-4"
-        style={{
-          backgroundImage: `url(${contactBackground})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundAttachment: 'fixed',
-        }}
-      >
-        <div className="absolute inset-0 bg-black/70" />
-        <div className="container mx-auto max-w-5xl relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <section className="py-20 px-4 bg-white">
+        <div className="container mx-auto max-w-5xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {contactInfo.map((info, index) => {
               const IconComponent = info.icon;
               return (
@@ -318,20 +301,20 @@ const Contact = () => {
                   rel={info.icon === MapPin ? "noopener noreferrer" : undefined}
                   className="group block"
                 >
-                  <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl p-8 hover:bg-white/15 hover:border-white/30 transition-all duration-300 hover:-translate-y-1 h-full">
-                    <div className="flex items-start gap-6">
-                      <div className="w-14 h-14 shrink-0 rounded-xl bg-primary flex items-center justify-center shadow-lg shadow-primary/30">
-                        <IconComponent className="w-7 h-7 text-black" />
+                  <div className="bg-gray-50 border border-gray-100 rounded-xl p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-200 h-full">
+                    <div className="flex items-start gap-5">
+                      <div className="w-12 h-12 shrink-0 rounded-xl bg-primary/10 flex items-center justify-center">
+                        <IconComponent className="w-6 h-6 text-primary" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-lg font-bold text-white mb-1">
+                        <h3 className="text-lg font-bold text-foreground mb-1">
                           {info.title}
                         </h3>
-                        <p className="text-white/60 text-sm leading-relaxed">
+                        <p className="text-muted-foreground text-sm leading-relaxed">
                           {info.description}
                         </p>
-                        <div className="mt-4 pt-4 border-t border-white/10">
-                          <span className="text-white font-semibold text-lg group-hover:text-primary transition-colors">
+                        <div className="mt-4 pt-4 border-t border-gray-100">
+                          <span className="text-foreground font-semibold text-lg group-hover:text-primary transition-colors">
                             {info.contact}
                           </span>
                         </div>
@@ -346,7 +329,7 @@ const Contact = () => {
       </section>
 
       {/* Location Section */}
-      <section className="py-16 px-4 bg-muted">
+      <section className="py-16 px-4 bg-gray-50">
         <div className="container mx-auto max-w-7xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
             {/* Address Information */}
@@ -358,7 +341,7 @@ const Contact = () => {
               <div className="space-y-6">
                 <div className="flex items-start space-x-3">
                   <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-6 h-6 text-black" />
+                    <MapPin className="w-6 h-6 text-primary-foreground" />
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-foreground mb-2">
@@ -373,7 +356,7 @@ const Contact = () => {
 
                 <div className="flex items-start space-x-3">
                   <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
-                    <Clock className="w-6 h-6 text-black" />
+                    <Clock className="w-6 h-6 text-primary-foreground" />
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-foreground mb-2">
@@ -391,7 +374,7 @@ const Contact = () => {
 
             {/* Google Map */}
             <div className="w-full">
-              <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+              <div className="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
                 <iframe
                   src={address.mapsEmbedUrl}
                   width="100%"
@@ -421,7 +404,7 @@ const Contact = () => {
           <div className="mt-4 text-sm text-muted-foreground">
             <div className="space-y-4">
               <h3 className="text-lg font-semibold">{t('legal.privacy_policy.section_2_1.title')}</h3>
-              <div className="bg-muted/50 p-4 rounded-lg">
+              <div className="bg-gray-50 p-4 rounded-lg">
                 <p><strong>{t('legal.privacy_policy.section_2_1.company_name')}:</strong> Luxury Car</p>
                 <p><strong>{t('legal.privacy_policy.section_2_1.address')}:</strong> {address.full}</p>
                 <p><strong>{t('legal.privacy_policy.section_2_1.phone')}:</strong> {getPhoneNumber()}</p>

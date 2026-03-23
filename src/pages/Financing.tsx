@@ -343,63 +343,56 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler ? formatPric
 
       <main className="flex-1">
         {/* Hero Section with Form */}
-        <section className="relative pt-36 pb-20 px-4 overflow-hidden">
-          {/* Background Image */}
-          <div className="absolute inset-0">
-            <img
-              src={financingBg}
-              alt=""
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/50" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20" />
-          </div>
+        <section className="relative pt-8 pb-20 px-4 overflow-hidden bg-gradient-to-br from-gray-50 via-white to-blue-50/40">
+          {/* Dot pattern */}
+          <div className="absolute inset-0 opacity-[0.4]" style={{ backgroundImage: 'radial-gradient(circle, #d1d5db 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4" />
 
           <div className="container mx-auto max-w-7xl relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
               {/* Left side - Title, subtitle, and benefits */}
               <div className="lg:col-span-2 space-y-8">
                 <div className="space-y-4">
-                  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-amber-400 text-sm font-medium">
+                  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/8 border border-primary/15 text-primary text-sm font-medium">
                     <Sparkles className="w-4 h-4" />
                     {t('financing_page.hero.title')}
                   </div>
-                  <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight">
+                  <h1 className="text-4xl md:text-5xl font-bold text-foreground leading-tight">
                     {t('financing_page.hero.title')}
                   </h1>
-                  <p className="text-xl text-gray-300 leading-relaxed">
+                  <p className="text-xl text-muted-foreground leading-relaxed">
                     {t('financing_page.hero.subtitle')}
                   </p>
                 </div>
 
                 {/* Benefits checklist */}
                 <div className="space-y-5">
-                  <div className="flex items-start gap-4 p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-colors">
-                    <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-amber-500/20 flex items-center justify-center">
-                      <Shield className="w-5 h-5 text-amber-400" />
+                  <div className="flex items-start gap-4 p-4 rounded-xl bg-gray-50 border border-gray-100 hover:bg-gray-100 transition-colors">
+                    <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                      <Shield className="w-5 h-5 text-primary" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-lg text-white mb-0.5">{t('financing_page.benefits.reduced_payments.title')}</h3>
+                      <h3 className="font-bold text-lg text-foreground mb-0.5">{t('financing_page.benefits.reduced_payments.title')}</h3>
                       <p className="text-gray-400 text-sm">{t('financing_page.benefits.reduced_payments.description')}</p>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-4 p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-colors">
-                    <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-amber-500/20 flex items-center justify-center">
-                      <Clock className="w-5 h-5 text-amber-400" />
+                  <div className="flex items-start gap-4 p-4 rounded-xl bg-gray-50 border border-gray-100 hover:bg-gray-100 transition-colors">
+                    <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                      <Clock className="w-5 h-5 text-primary" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-lg text-white mb-0.5">{t('financing_page.benefits.fast_approval.title')}</h3>
+                      <h3 className="font-bold text-lg text-foreground mb-0.5">{t('financing_page.benefits.fast_approval.title')}</h3>
                       <p className="text-gray-400 text-sm">{t('financing_page.benefits.fast_approval.description')}</p>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-4 p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-colors">
-                    <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-amber-500/20 flex items-center justify-center">
-                      <CheckCircle2 className="w-5 h-5 text-amber-400" />
+                  <div className="flex items-start gap-4 p-4 rounded-xl bg-gray-50 border border-gray-100 hover:bg-gray-100 transition-colors">
+                    <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                      <CheckCircle2 className="w-5 h-5 text-primary" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-lg text-white mb-0.5">{t('financing_page.benefits.no_surprises.title')}</h3>
+                      <h3 className="font-bold text-lg text-foreground mb-0.5">{t('financing_page.benefits.no_surprises.title')}</h3>
                       <p className="text-gray-400 text-sm">{t('financing_page.benefits.no_surprises.description')}</p>
                     </div>
                   </div>
@@ -408,7 +401,7 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler ? formatPric
 
               {/* Right side - Form */}
               <div className="lg:col-span-3">
-                <Card className="bg-white/95 backdrop-blur-md shadow-2xl border border-white/20 rounded-2xl">
+                <Card className="bg-white shadow-sm border border-gray-100 rounded-xl">
                   <CardHeader className="space-y-4">
                     {currentStep === 1 && (
                       <div className="space-y-2">
@@ -775,7 +768,7 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler ? formatPric
                                 value={formData.numeroHijos}
                                 onChange={handleInputChange}
                                 min="0"
-                                className="bg-gray-50 border-gray-200"
+                                className="bg-white border-gray-200"
                               />
                             </div>
                             <div className="space-y-2">
@@ -872,7 +865,7 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler ? formatPric
                                 onChange={handleInputChange}
                                 min="0"
                                 step="0.5"
-                                className="bg-gray-50 border-gray-200"
+                                className="bg-white border-gray-200"
                               />
                             </div>
                             <div className="space-y-2">
@@ -882,7 +875,7 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler ? formatPric
                                 placeholder={t('financing_page.form.company_name_placeholder')}
                                 value={formData.empresaTrabajo}
                                 onChange={handleInputChange}
-                                className="bg-gray-50 border-gray-200"
+                                className="bg-white border-gray-200"
                               />
                             </div>
                           </div>
@@ -916,7 +909,7 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler ? formatPric
                                 onChange={handleInputChange}
                                 min="0"
                                 step="50"
-                                className="bg-gray-50 border-gray-200"
+                                className="bg-white border-gray-200"
                               />
                             </div>
                           </div>
@@ -1122,7 +1115,7 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler ? formatPric
                     {currentStep === 6 && (
                       <div className="space-y-6">
                         <div className="space-y-6 text-center py-8 animate-fade-in">
-                          <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto">
+                          <div className="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center mx-auto">
                             <CheckCircle className="w-10 h-10 text-green-600" />
                           </div>
 
@@ -1192,7 +1185,7 @@ Gastos hipoteca/alquiler mensual: ${formData.gastosHipotecaAlquiler ? formatPric
           <div className="mt-4 text-sm text-muted-foreground">
             <div className="space-y-4">
               <h3 className="text-lg font-semibold">{t('legal.privacy_policy.section_2_1.title')}</h3>
-              <div className="bg-muted/50 p-4 rounded-lg">
+              <div className="bg-gray-50 p-4 rounded-lg">
                 <p><strong>{t('legal.privacy_policy.section_2_1.company_name')}:</strong> Luxury Car</p>
                 <p><strong>{t('legal.privacy_policy.section_2_1.address')}:</strong> {address.full}</p>
                 <p><strong>{t('legal.privacy_policy.section_2_1.phone')}:</strong> {getPhoneNumber()}</p>

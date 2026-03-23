@@ -98,15 +98,15 @@ const VehicleDetail = () => {
   if (isLoading || !vehicle) {
     return <div className="min-h-screen bg-background">
         <Header />
-        <div className="container mx-auto px-4 pt-36 pb-8">
+        <div className="container mx-auto px-4 pt-8 pb-8">
           <div className="animate-pulse">
-            <div className="h-8 bg-muted rounded w-1/3 mb-4"></div>
+            <div className="h-8 bg-gray-50 rounded w-1/3 mb-4"></div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <div className="aspect-video bg-muted rounded"></div>
+              <div className="aspect-video bg-gray-50 rounded"></div>
               <div className="space-y-4">
-                <div className="h-6 bg-muted rounded w-2/3"></div>
-                <div className="h-4 bg-muted rounded w-1/2"></div>
-                <div className="h-10 bg-muted rounded w-1/3"></div>
+                <div className="h-6 bg-gray-50 rounded w-2/3"></div>
+                <div className="h-4 bg-gray-50 rounded w-1/2"></div>
+                <div className="h-10 bg-gray-50 rounded w-1/3"></div>
               </div>
             </div>
           </div>
@@ -315,7 +315,7 @@ const VehicleDetail = () => {
       <SEO page="vehicle_detail" vehicleName={vehicle ? `${vehicle.brand} ${vehicle.model}` : undefined} />
       <Header />
       
-      <main className="container mx-auto px-4 pt-36 pb-8">
+      <main className="container mx-auto px-4 pt-8 pb-8">
         {/* Breadcrumb */}
         <nav className="mb-6">
           <Button variant="ghost" onClick={() => navigate('/stock')} className="p-0 h-auto text-muted-foreground hover:text-muted-foreground hover:bg-transparent">
@@ -347,19 +347,19 @@ const VehicleDetail = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
           {/* Image Gallery */}
           <div className="lg:col-span-2 space-y-4">
-            <div className="relative aspect-video rounded-lg overflow-hidden bg-muted group">
+            <div className="relative aspect-video rounded-lg overflow-hidden bg-gray-50 group">
               {vehicle.status === 'Reserved' && <ReservedBanner size="large" />}
               <img src={vehicle.images[currentImageIndex]} alt={`${vehicle.brand} ${vehicle.model}`} className="w-full h-full object-cover" />
               
               {vehicle.images.length > 1 && <>
-                  <button onClick={prevImage} className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                  <button onClick={prevImage} className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/90 text-foreground opacity-0 group-hover:opacity-100 transition-opacity">
                     <ChevronLeft className="w-5 h-5" />
                   </button>
-                  <button onClick={nextImage} className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                  <button onClick={nextImage} className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/90 text-foreground opacity-0 group-hover:opacity-100 transition-opacity">
                     <ChevronRight className="w-5 h-5" />
                   </button>
                   
-                  <div className="absolute bottom-4 right-4 bg-black/70 text-white px-2 py-1 rounded text-sm">
+                  <div className="absolute bottom-4 right-4 bg-black/50 text-white px-2 py-1 rounded text-sm">
                     {currentImageIndex + 1} / {vehicle.images.length}
                   </div>
                 </>}
@@ -374,7 +374,7 @@ const VehicleDetail = () => {
 
             {/* Vehicle Description */}
             <Card>
-              <CardHeader className="bg-muted">
+              <CardHeader className="bg-gray-50">
                 <CardTitle>{t('vehicle_detail.details.title')}</CardTitle>
               </CardHeader>
               <CardContent className="pt-6">
@@ -397,7 +397,7 @@ const VehicleDetail = () => {
 
             {/* Basic Data */}
             <Card>
-              <CardHeader className="bg-muted">
+              <CardHeader className="bg-gray-50">
                 <CardTitle>{t('vehicle_detail.specifications.title')}</CardTitle>
               </CardHeader>
               <CardContent className="pt-6">
@@ -458,8 +458,8 @@ const VehicleDetail = () => {
             {/* Pricing */}
             <div>
               <div className="text-sm text-muted-foreground mb-2">{t('vehicle_detail.pricing.label')}</div>
-              <div className="bg-[#111] px-3 py-1 rounded inline-block mb-4">
-                <div className="text-2xl font-bold text-white">
+              <div className="bg-primary/10 px-3 py-1 rounded-lg inline-block mb-4">
+                <div className="text-2xl font-bold text-primary">
                   {formatPrice(vehicle.price)}
                 </div>
               </div>
@@ -496,7 +496,7 @@ const VehicleDetail = () => {
                             id="reservationName"
                             placeholder={t('vehicle_detail.form.name_placeholder')}
                             required
-                            className="bg-gray-50 border-gray-200"
+                            className="bg-white border-gray-200"
                             value={reservationFormData.nombre}
                             onChange={(e) => setReservationFormData({ ...reservationFormData, nombre: e.target.value })}
                           />
@@ -507,7 +507,7 @@ const VehicleDetail = () => {
                             id="reservationSurname"
                             placeholder={t('vehicle_detail.form.surname_placeholder')}
                             required
-                            className="bg-gray-50 border-gray-200"
+                            className="bg-white border-gray-200"
                             value={reservationFormData.apellido}
                             onChange={(e) => setReservationFormData({ ...reservationFormData, apellido: e.target.value })}
                           />
@@ -522,7 +522,7 @@ const VehicleDetail = () => {
                             type="email"
                             placeholder={t('vehicle_detail.form.email_placeholder')}
                             required
-                            className="bg-gray-50 border-gray-200"
+                            className="bg-white border-gray-200"
                             value={reservationFormData.email}
                             onChange={(e) => setReservationFormData({ ...reservationFormData, email: e.target.value })}
                           />
@@ -536,7 +536,7 @@ const VehicleDetail = () => {
                             <Input
                               id="reservationPhone"
                               placeholder={t('vehicle_detail.form.phone_placeholder')}
-                              className="bg-gray-50 border-gray-200 rounded-l-none"
+                              className="bg-white border-gray-200 rounded-l-none"
                               required
                               value={reservationFormData.telefono}
                               onChange={(e) => setReservationFormData({ ...reservationFormData, telefono: e.target.value })}
@@ -550,7 +550,7 @@ const VehicleDetail = () => {
                         <Textarea
                           id="reservationMessage"
                           placeholder={`${t('vehicle_detail.form.message_placeholder_reserve')} ${vehicle.brand} ${vehicle.model}`}
-                          className="min-h-[80px] resize-none bg-gray-50 border-gray-200"
+                          className="min-h-[80px] resize-none bg-white border-gray-200"
                           required
                           rows={5}
                           value={reservationFormData.mensaje}
@@ -613,7 +613,7 @@ const VehicleDetail = () => {
                           id="appointmentName"
                           placeholder={t('vehicle_detail.form.name_placeholder')}
                           required
-                          className="bg-gray-50 border-gray-200"
+                          className="bg-white border-gray-200"
                           value={appointmentFormData.nombre}
                           onChange={(e) => setAppointmentFormData({ ...appointmentFormData, nombre: e.target.value })}
                         />
@@ -624,7 +624,7 @@ const VehicleDetail = () => {
                           id="appointmentSurname"
                           placeholder={t('vehicle_detail.form.surname_placeholder')}
                           required
-                          className="bg-gray-50 border-gray-200"
+                          className="bg-white border-gray-200"
                           value={appointmentFormData.apellido}
                           onChange={(e) => setAppointmentFormData({ ...appointmentFormData, apellido: e.target.value })}
                         />
@@ -639,7 +639,7 @@ const VehicleDetail = () => {
                           type="email"
                           placeholder={t('vehicle_detail.form.email_placeholder')}
                           required
-                          className="bg-gray-50 border-gray-200"
+                          className="bg-white border-gray-200"
                           value={appointmentFormData.email}
                           onChange={(e) => setAppointmentFormData({ ...appointmentFormData, email: e.target.value })}
                         />
@@ -653,7 +653,7 @@ const VehicleDetail = () => {
                           <Input
                             id="appointmentPhone"
                             placeholder={t('vehicle_detail.form.phone_placeholder')}
-                            className="bg-gray-50 border-gray-200 rounded-l-none"
+                            className="bg-white border-gray-200 rounded-l-none"
                             required
                             value={appointmentFormData.telefono}
                             onChange={(e) => setAppointmentFormData({ ...appointmentFormData, telefono: e.target.value })}
@@ -669,7 +669,7 @@ const VehicleDetail = () => {
                           id="appointmentDate"
                           type="date"
                           required
-                          className="bg-gray-50 border-gray-200 text-gray-900 placeholder:text-gray-500"
+                          className="bg-white border-gray-200 text-gray-900 placeholder:text-gray-500"
                           value={appointmentFormData.fecha}
                           onChange={(e) => setAppointmentFormData({ ...appointmentFormData, fecha: e.target.value })}
                         />
@@ -681,7 +681,7 @@ const VehicleDetail = () => {
                           value={appointmentFormData.hora}
                           onValueChange={(value) => setAppointmentFormData({ ...appointmentFormData, hora: value })}
                         >
-                          <SelectTrigger className="bg-gray-50 border-gray-200 text-gray-900 data-[placeholder]:text-gray-500">
+                          <SelectTrigger className="bg-white border-gray-200 text-gray-900 data-[placeholder]:text-gray-500">
                             <SelectValue placeholder={t('vehicle_detail.appointment.time_placeholder')} />
                           </SelectTrigger>
                           <SelectContent>
@@ -709,7 +709,7 @@ const VehicleDetail = () => {
                       <Textarea
                         id="appointmentMessage"
                         placeholder={`${t('vehicle_detail.appointment.message_placeholder')} ${vehicle.brand} ${vehicle.model}`}
-                        className="min-h-[80px] resize-none bg-gray-50 border-gray-200"
+                        className="min-h-[80px] resize-none bg-white border-gray-200"
                         required
                         rows={5}
                         value={appointmentFormData.mensaje}
@@ -751,7 +751,7 @@ const VehicleDetail = () => {
               <CardContent>
                 {isContactSubmitted ? (
                   <div className="text-center py-8">
-                    <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-green-100 flex items-center justify-center">
+                    <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-green-50 flex items-center justify-center">
                       <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
@@ -807,7 +807,7 @@ const VehicleDetail = () => {
                     <div>
                       <Label htmlFor="phone">{t('vehicle_detail.form.phone')}</Label>
                       <div className="flex">
-                        <div className="flex items-center px-3 border border-r-0 border-input rounded-l-md bg-muted text-sm whitespace-nowrap">
+                        <div className="flex items-center px-3 border border-r-0 border-input rounded-l-md bg-gray-50 text-sm whitespace-nowrap">
                           {getFlag()} {language === "es" ? "+34" : language === "en" ? "+44" : "+33"}
                         </div>
                         <Input
@@ -857,7 +857,7 @@ const VehicleDetail = () => {
           <div className="mt-4 text-sm text-muted-foreground">
             <div className="space-y-4">
               <h3 className="text-lg font-semibold">{t('legal.privacy_policy.section_2_1.title')}</h3>
-              <div className="bg-muted/50 p-4 rounded-lg">
+              <div className="bg-gray-50 p-4 rounded-lg">
                 <p><strong>{t('legal.privacy_policy.section_2_1.company_name')}:</strong> Luxury Car</p>
                 <p><strong>{t('legal.privacy_policy.section_2_1.address')}:</strong> {address.full}</p>
                 <p><strong>{t('legal.privacy_policy.section_2_1.phone')}:</strong> {getPhoneNumber()}</p>
